@@ -1,0 +1,60 @@
+const products = [
+    {
+        id: '1',
+        name: 'Casio AE-1200WHD-1AVDF – Nam – Kính Nhựa – Quartz (Pin) – Dây Kim Loại',
+        brand: 'Casio',
+        image: 'https://cdn3.dhht.vn/wp-content/uploads/2017/07/AE-1200WHD-1AVDF.jpg',
+        description: 'Đồng hồ nam Casio AE1200WHD có mặt đồng hồ vuông to với phong cách thể thao, mặt số điện tử với những tính năng hiện đại tiện dụng, kết hợp với dây đeo bằng kim loại đem lại vẻ mạnh mẽ cá tính dành cho phái nam.',
+        price: '1.300.000',
+    },
+    {
+        id: '2',
+        name: 'Citizen BI5072-01A – Nam – Quartz (Pin) – Dây Da',
+        brand: 'Citizen',
+        image: 'https://cdn3.dhht.vn/wp-content/uploads/2018/09/212_BI5072-01A.jpg',
+        description:'Ẩn chứa dưới vẻ ngoài giản dị của mẫu Citizen BI5072-01A với mẫu dây da lịch lãm tông màu nâu, các chi tiết vạch số tạo hình mỏng chứa đựng sự tinh tế sang trọng khi được bao phủ tông màu vàng nổi bật.',
+        price: '3.600.000',
+    },
+    {
+        id: '3',
+        name: 'Orient RA-AR0001S10B – Nam – Kính Sapphire – Automatic (Tự Động) – Dây Kim Loại',
+        brand: 'Orient',
+        image: 'https://cdn3.dhht.vn/wp-content/uploads/2019/04/36_RA-AR0001S10B-399x399.jpg',
+        description: 'Mẫu Orient RA-AR0001S10B thiết kế đặc trưng Open Heart với ô chân kính lộ ra 1 phần của bô máy cơ tạo nên vẻ độc đáo trước mặt kính Sapphire.',
+        price: '11.760.000',
+    },
+    {
+        id: '4',
+        name: 'Orient RA-AR0004S10B – Nam – Kính Sapphire – Automatic (Tự Động) – Dây Da',
+        brand: 'Orient',
+        image: 'https://cdn3.dhht.vn/wp-content/uploads/2019/09/RA-AR0004S10B-399x399.jpg',
+        description: 'Mẫu Orient RA-AR0004S10B điểm nhấn nổi bật với thiết kế máy cơ lộ tim vẻ ngoài độc đáo trên nền mặt trắng size 40mm, vỏ máy cơ dày dặn nam tính sang trọng với kim loại mạ bạc.',
+        price: '9.500.000',
+    },
+    {
+        id: '5',
+        name: 'Orient SK RA-AA0B02R19B – Nam – Automatic – Máy Nhật, Trữ Cót 40 Giờ, Mặt Số 41mm',
+        brand: 'Orient',
+        image: 'https://cdn3.dhht.vn/wp-content/uploads/2019/07/RA-AA0B02R19B-399x399.jpg',
+        description: 'Mẫu Orient RA-AA0B02R19B phiên bản mạ vàng với mẫu kim chỉ nổi bật trên mặt số size 41.7mm đi kèm thiết kế 2 núm vặn điều chỉnh, vỏ máy kim loại mạ bạc kiểu dáng dày dặn của bô máy cơ.',
+        price: '7.800.000',
+    },
+    {
+        id: '6',
+        name: 'Tissot T006.407.16.033.00 – Nam – Kính Sapphire – Automatic (Tự Động) – Dây Da',
+        brand: 'Tissot',
+        image: 'https://cdn3.dhht.vn/wp-content/uploads/2017/07/T006.407.16.033.00-1-399x399.jpg',
+        description: 'Mẫu Tissot T006.407.16.033.00 với thiết kế chữ số được in theo phong cách chữ la mã mang đậm nét cổ điển trên nền mặt kính Sapphire, kết hợp cùng dây đeo bằng da có vân tăng thêm vẻ lịch lãm.',
+        price: '15.600.000',
+    },
+    {
+        id: '7',
+        name: 'Tissot T006.407.22.033.00 – Nam – Kính Sapphire – Automatic (Tự Động) – Dây Kim Loại',
+        brand: 'Tissot',
+        image: 'https://cdn3.dhht.vn/wp-content/uploads/2018/05/95_T006.407.22.033.00-1-399x399.jpg',
+        description: 'Mẫu đồng hồ T006.407.22.033.00 nổi bật cùng các chi tiết núm vặn cho đến nền cọc số phong cách chữ la mã tạo nét mỏng cách tân khoác lên vẻ sang trọng thời trang cho phái mạnh đến từ thương hiệu Tissot.',
+        price: '20.250.000',
+    },
+];
+
+export default products;

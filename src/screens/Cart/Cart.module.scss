@@ -1,0 +1,159 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: var(--padding-top-header);
+
+    .inner {
+        width: var(--max-width);
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+
+        .container {
+            .heading {
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            span {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 17px;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+        }
+
+
+    }
+}
+
+.both {
+    clear: both;
+}
+
+.content {
+    height: 1000px;
+    width: 100%;
+}
+
+.left {
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    width: 75%;
+    height: 300px;
+
+    .left-heading {
+        display: flex;
+        justify-content: space-between;
+        height: 54px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .left-content {
+        border-bottom: 1px solid #ccc;
+        height: 200px;
+        display: flex;
+        justify-content: space-between;
+
+        img {
+            height: 90px;
+            width: 90px;
+        }
+    }
+
+}
+
+.width20 {
+    width: 20%;
+}
+
+.width30 {
+    width: 30%;
+}
+
+.width10 {
+    width: 10%;
+}
+
+.product-info-top {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 0 10px;
+    width: 116px;
+}
+
+.product-info-midle {
+    height: 200px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 128px;
+}
+
+.left-info-bottom {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 40px;
+
+    span {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+    }
+}
+
+.left-info-bottom span:first-child {
+
+    font-size: 20px;
+}
+
+
+
+.ta-none {
+    font-size: 14px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.product-info-midle button {
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 6px;
+}
+
+.checkout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 40px;
+
+    .ctn-shopping {
+        padding: 20px 58px; 
+        background-color: var(--primary-color);
+        cursor: pointer;
+
+        Link {
+            padding: 40px;
+        }
+    }
+
+    .checkout-btn {
+        background-color: var(--primary-color);
+        padding: 20px 58px;
+        cursor: pointer;
+
+        :hover {
+            opacity: 0.9;
+        }
+    }
+}
