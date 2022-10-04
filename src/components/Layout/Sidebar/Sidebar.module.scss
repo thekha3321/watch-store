@@ -18,11 +18,11 @@
 .sidebar-item {
     position: relative;
     display: flex;
+    cursor: pointer;
     text-transform: uppercase;
     margin-left: 20px;
-    cursor: pointer;
     font-weight: 500;
-
+    transition: 0.3s all ease;
     &:hover {
         color: var(--primary-color);
         text-decoration: underline;

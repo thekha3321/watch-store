@@ -55,6 +55,14 @@ const products = [
         description: 'Mẫu đồng hồ T006.407.22.033.00 nổi bật cùng các chi tiết núm vặn cho đến nền cọc số phong cách chữ la mã tạo nét mỏng cách tân khoác lên vẻ sang trọng thời trang cho phái mạnh đến từ thương hiệu Tissot.',
         price: '20.250.000',
     },
+    {
+        id: '8',
+        name: 'Tissot T006.407.22.033.00 – Nam – Kính Sapphire – Automatic (Tự Động) – Dây Kim Loại',
+        brand: 'Tissot',
+        image: 'https://cdn3.dhht.vn/wp-content/uploads/2018/05/95_T006.407.22.033.00-1-399x399.jpg',
+        description: 'Mẫu đồng hồ T006.407.22.033.00 nổi bật cùng các chi tiết núm vặn cho đến nền cọc số phong cách chữ la mã tạo nét mỏng cách tân khoác lên vẻ sang trọng thời trang cho phái mạnh đến từ thương hiệu Tissot.',
+        price: '20.250.000',
+    },
 ];
 
 export default products;

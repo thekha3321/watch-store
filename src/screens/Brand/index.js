@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames/bind';
-import styles from './ShopSection.module.scss';
-import { Link } from 'react-router-dom';
+import styles from './Brand.module.scss';
+import { Link, useParams } from 'react-router-dom';
 
-import firebase from '../../../firebase/config';
-import Loading from '../../Layout/Loading';
+import firebase from '../../firebase/config'
+import Loading from '../../components/Layout/Loading';
+import Sidebar from '../../components/Layout/Sidebar';
+import Header from '../../components/Layout/Header';
+import SlideBanner from '../../components/Layout/SlideBanner';
 const cx = classnames.bind(styles);
 
-function ShopSection() {
+function Brand() {
     //lay db tu firebase
     const [products , setProducts] = useState([])
     const [loading , setLoading] = useState(false)
-    const ref = firebase.firestore().collection('products')
-
+    const {productBrand} = useParams();
+    console.log(productBrand) 
+    const ref = firebase.firestore().collection('products').where('brand', '==', `${productBrand}`)
+    
     function getProducts () {
         setLoading(true)
         ref.onSnapshot((querySnapShot) => {
@@ -30,7 +35,7 @@ function ShopSection() {
     const renderProducts = (
         <div className={cx('inner')}>
                 {products.map((product, index) => (
-                    <Link key={index} className={cx('product')} to={`products/${product.id}`}>
+                    <Link key={index} className={cx('product')} to={`/products/${product.id}`}>
                         <div className={cx('top')} >
                             <img className="product-img" src={product.image} alt="" />
                             <div className={cx('pay')}></div>
@@ -47,11 +52,15 @@ function ShopSection() {
     
 
     return (
-        <div className={cx('wrapper')}>
-            <header>sản phẩm bán chạy</header>
-            {loading ? <Loading/> : renderProducts}
-        </div>
+      <>
+            <Header/>
+            <div className={cx('wrapper')}>
+                <Sidebar/>
+                <SlideBanner/>
+                {loading ? <Loading/> : renderProducts}
+            </div>
+      </>
     );
 }
 
-export default ShopSection;
+export default Brand;

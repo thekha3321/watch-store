@@ -10,8 +10,8 @@
     --margin-component: 20px;
     --max-width: 1100px;
     --padding-top-header: 120px;
-    --primary-color: #a1a1a1;
-    --primary-background-color: #fbfbfe;
+    --primary-color: #f1bc31;
+    --primary-background-color: #ffffff;
     --border-radius-btn: 8px;
 }
 
@@ -32,16 +32,11 @@ input,
 [tabindex] {
     outline: none;
     border: none;
-
-    
 }
-button { 
-    &:active { 
-        opacity: 0.5;
-    }
-
-    &:hover { 
-        opacity: 0.9 !important;
+button {
+    cursor: pointer;
+    &:hover {
+        opacity: 0.8;
     }
 }
 
@@ -49,6 +44,6 @@ a[href] {
     color: var(--text-color);
     text-decoration: none;
 }
-li{
+li {
     list-style: none;
 }

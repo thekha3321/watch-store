@@ -1,0 +1,32 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0px 4px 1px rgb(0 0 0 / 12%);
+    margin-right: 10px;
+    height: 721px;
+    width: 200px;
+    .inner {
+        height: 100%;
+        background-color: var(--primary-background-color);
+
+        .heading {
+            padding: 20px;
+
+            h1 {
+                color: var(--primary-color);
+                text-align: center;
+            }
+        }
+        .container {
+            .content {
+                padding: 10px;
+                margin: 10px;
+                .icon {
+                    opacity: 0.9;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}

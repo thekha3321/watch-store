@@ -1,26 +1,44 @@
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames/bind';
 import styles from './Sidebar.module.scss';
 import Tippy from '@tippyjs/react';
-import products from '../../../data';
-import { Link } from 'react-router-dom';
+// import products from '../../../data/products';
+import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import firebase from '../../../firebase/config';
 
 const cx = classnames.bind(styles);
 
-// Handle loop brand
-let brand = [];
-
-brand.push(...products.map((product) => product.brand));
-let brandHandled = brand.reduce(function (accumulator, element) {
-    if (accumulator.indexOf(element) === -1) {
-        accumulator.push(element);
-    }
-    return accumulator;
-}, []);
-//------------------
-
 function Sidebar() {
+    const [products, setProducts] = useState([]);
+
+    const ref = firebase.firestore().collection('products');
+
+    function getProducts() {
+        ref.onSnapshot((querySnapShot) => {
+            const items = [];
+            querySnapShot.forEach((doc) => {
+                items.push(doc.data());
+            });
+            setProducts(items);
+        });
+    }
+    useEffect(() => {
+        getProducts();
+    }, []);
+    // Handle fil brand
+    let brand = [];
+
+    brand.push(...products.map((product) => product.brand));
+
+    let brandHandled = brand.reduce(function (accumulator, element) {
+        if (accumulator.indexOf(element) === -1) {
+            accumulator.push(element);
+        }
+        return accumulator;
+    }, []);
+    //------------------
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -33,7 +51,7 @@ function Sidebar() {
                     content={
                         <div className={cx('tippy-container')}>
                             {brandHandled.map((brand, index) => (
-                                <Link className={cx('tippy-content')} to={`brand/${brand}`}>
+                                <Link className={cx('tippy-content')} to={`/brand/${brand}`}>
                                     <div key={index}>{brand}</div>
                                 </Link>
                             ))}
@@ -43,11 +61,6 @@ function Sidebar() {
                 >
                     <div className={cx('sidebar-item')}>
                         Thương hiệu
-                        {/* <ul>
-                        <li>a</li>
-                        <li>b</li>
-                        <li>c</li>
-                    </ul> */}
                         <FontAwesomeIcon className={cx('sidebar-item-icon')} icon={faCaretDown} />
                     </div>
                 </Tippy>
@@ -56,7 +69,9 @@ function Sidebar() {
                     <FontAwesomeIcon className={cx('sidebar-item-icon')} />
                 </div>
                 <div className={cx('sidebar-item')}>Phụ Kiện đồng hồ</div>
-                <div className={cx('sidebar-item')}>khuyến mãi</div>
+                <div className={cx('sidebar-item')}>
+                    <Link to="/saling">khuyến mãi</Link>
+                </div>
             </div>
         </div>
     );

@@ -38,10 +38,13 @@
                     width: 260px;
                     height: 260px;
                     transition: 0.3;
-                    background-color: #ffffff;
-                    &:hover ~ .pay {
+
+                    &:hover ~ .pay{
                     }
+                   
+                    
                 }
+                
             }
 
             .bottom {
@@ -53,6 +56,7 @@
                 justify-content: center;
 
                 .product-name {
+
                     &:hover {
                         text-decoration: underline;
                     }
@@ -66,6 +70,7 @@
                     font-size: 13px;
                 }
             }
+
         }
     }
 }

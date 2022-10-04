@@ -1,0 +1,30 @@
+.bottom {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+.product-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 254px;
+    text-align: center;
+}
+img {
+    width: 100px;
+    height: 100px;
+}
+.btn {
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 4px;
+    text-transform: uppercase;
+    background-color: transparent;
+    &:first-child{
+                background-color: #d1e7dd;
+            }
+            &:last-child { 
+                background-color: #f8d7da;
+            }
+}

@@ -1,38 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
+import { Link, useParams } from 'react-router-dom';
+import firebase from '../../firebase/config';
+
 import styles from './SingleProduct.module.scss';
 import Footer from '../../components/Layout/Footer';
 import Sidebar from './../../../src/components/Layout/Sidebar';
-import products from '../../data';
+// import products from '../../data/products';
+import Header from '../../components/Layout/Header';
+import SingleProduct__ from './SingleProduct__';
+
+// import firebase from '../../firebase/config';
 
 const cx = classNames.bind(styles);
 
-function SingleProduct  ({ match }) {
-    const product = products.find((p) => p.id) ;
+function SingleProduct() {
+    window.scrollTo(0,0)
+   
+    // function handleFilId () {
+    //     products.map((product) => {
+    //         if(product.id === productId) {
+    //         }
+    //     })
+    // }
+    // console.log(products[0])
+    
     return (
         <>
+            <Header />
             <Sidebar />
-            <div className={cx('wapper')}>
-                <div className={cx('inner')}>
-                    <div className={cx('heading')}>
-                        <span>THÔNG TIN SẢN PHẨM</span>
-                    </div>
-                    <div className={cx('container')}>
-                        <div className={cx('left')}>
-                            <img src={product.image} alt="" />
-                        </div>
-                        <div className={cx('right')}>
-                            <span className={cx('product-name')}>{product.name}</span>
-                            <span className={cx('product-price')}>{`${product.price} đ`}</span>
-                            <span className={cx('product-description')}>{product.description}</span>
-                            <button>THÊM VÀO GIỎ</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <SingleProduct__  />
             <Footer />
         </>
     );
-};
+}
 
 export default SingleProduct;

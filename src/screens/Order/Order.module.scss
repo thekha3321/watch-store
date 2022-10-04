@@ -11,9 +11,15 @@
         .order-place {
             box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 12%);
             display: flex;
+            justify-content: space-between;
             flex-direction: column;
             padding: 24px;
             margin-bottom: 10px;
+
+            .place-info {
+                display: flex;
+                justify-content: space-between;
+            }
 
             .place-heading {
                 display: flex;
@@ -29,27 +35,36 @@
                 }
             }
 
-            .address {
+            .contact {
                 display: flex;
                 flex-direction: row;
 
                 h4 {
+                    margin-left: 24px;
                     font-size: 18px;
                 }
 
-                p {
-                    font-size: 16px;
-                    margin: 0 20px;
-                }
+
 
                 .change {
-                    color: var(--primary-color);
+                    Link {
+                        color: red;
+                    }
+                    
 
                     &:hover {
                         text-decoration: underline;
                     }
                 }
             }
+
+            .address {
+                margin: 0 20px;
+                span {
+                    margin: 0 20px;
+                    font-size: 18px; }
+            }
+
         }
 
         .order-bill {
@@ -145,4 +160,8 @@
             }
         }
     }
+}
+
+.change span { 
+    color: var(--primary-color);
 }
