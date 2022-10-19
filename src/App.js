@@ -1,6 +1,8 @@
 // import classnames from 'classnames/bind';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import firebase from './firebase/config';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 import AdminAccountManager from './adminscreens/AdminAccountManager';
 import AdminAddProduct from './adminscreens/AdminAddProduct';
@@ -23,30 +25,90 @@ import SingleProduct from './screens/SingleProduct';
 // const cx = classnames.bind(styles);
 
 function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/login' element={<Login/>}/>
-                <Route path='/register' element={<Register/>}/>
-                <Route path='/cart' element={<Cart/>}/>
-                <Route path='/shipping' element={<Shipping/>}/>
-                <Route path='/order' element={<Order/>}/>
-                <Route path='/products/:productId' element={<SingleProduct/>}/>
-                <Route path='/admin' element={<AdminHome/>}/>
-                <Route path='/admin/products' element={<AdminProducts/>}/>
-                <Route path='/admin/addproduct' element={<AdminAddProduct/>}/>
-                <Route path='/admin/bill' element={<AdminBill/>}/>
-                <Route path='/admin/accountmanager' element={<AdminAccountManager/>}/>
-                <Route path='/admin/promotion' element={<AdminPromotion/>}/>
-                <Route path='/admin/statistical' element={<AdminStatistical/>}/>
-                <Route path='/brand/:productBrand' element={<Brand/>}/>
-                <Route path='/saling' element={<ShopSaling/>}/>
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [address, setAddress] = useState('');
+    const [phone, setPhone] = useState('');
+    const authentication = getAuth();
+    let navigate = useNavigate();
 
-            
-                {/* <Route path='/products/:id' element={<SingleProduct/>}/> */}
-            </Routes>
-        </Router>
+    // if (localStorage.getItem('Auth Token')) {
+    //     const uid = authentication.lastNotifiedUid;
+    //     console.log(uid);
+    // }
+    const handleAction = (id) => {
+        if (id === 1) {
+            signInWithEmailAndPassword(authentication, email, password, name, address, phone).then((response) => {
+                navigate('/home');
+                localStorage.setItem('Auth Token', `${email}`);
+                localStorage.setItem('Name', `${name}`);
+                localStorage.setItem('Address', `${address}`);
+                localStorage.setItem('Phone', `${phone}`);
+            });
+        }
+        if (id === 2) {
+            createUserWithEmailAndPassword(authentication, email, password, name, address, phone).then((response) => {
+                navigate('/home');
+                localStorage.setItem('Auth Token', `${email}`);
+                localStorage.setItem('Name', `${name}`);
+                localStorage.setItem('Address', `${address}`);
+                localStorage.setItem('Phone', `${phone}`);
+            });
+        }
+    };
+    useEffect(() => {
+        let authToken = localStorage.getItem('Auth Token');
+
+        if (authToken !== 'admin@gmail.com') {
+            navigate('/home');
+        }
+    }, []);
+
+    return (
+        <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route
+                path="/login"
+                element={
+                    <Login
+                        title="Đăng Nhập"
+                        setEmail={setEmail}
+                        setPassword={setPassword}
+                        handleAction={() => handleAction(1)}
+                    />
+                }
+            />
+            <Route
+                path="/register"
+                element={
+                    <Register
+                        title="Đăng Ký"
+                        setEmail={setEmail}
+                        setPassword={setPassword}
+                        setName={setName}
+                        setAddress={setAddress}
+                        setPhone={setPhone}
+                        handleAction={() => handleAction(2)}
+                    />
+                }
+            />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/products/:productId" element={<SingleProduct />} />
+            <Route path="/admin" element={<AdminHome />} />
+            <Route path="/admin/products" element={<AdminProducts />} />
+            <Route path="/admin/addproduct" element={<AdminAddProduct />} />
+            <Route path="/admin/bill" element={<AdminBill />} />
+            <Route path="/admin/accountmanager" element={<AdminAccountManager />} />
+            <Route path="/admin/promotion" element={<AdminPromotion />} />
+            <Route path="/admin/statistical" element={<AdminStatistical />} />
+            <Route path="/brand/:productBrand" element={<Brand />} />
+            <Route path="/saling" element={<ShopSaling />} />
+
+            {/* <Route path='/products/:id' element={<SingleProduct/>}/> */}
+        </Routes>
     );
 }
 

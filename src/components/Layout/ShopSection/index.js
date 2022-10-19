@@ -30,7 +30,7 @@ function ShopSection() {
     const renderProducts = (
         <div className={cx('inner')}>
                 {products.map((product, index) => (
-                    <Link key={index} className={cx('product')} to={`products/${product.id}`}>
+                    <Link key={index} className={cx('product')} to={`/products/${product.id}`}>
                         <div className={cx('top')} >
                             <img className="product-img" src={product.image} alt="" />
                             <div className={cx('pay')}></div>

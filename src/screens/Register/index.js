@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/Layout/Header';
 import { v4 as uuidv4 } from 'uuid';
 import firebase from '../../firebase/config';
-import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 const cx = classnames.bind(styles);
 
 const ref = firebase.firestore().collection('users');
@@ -18,19 +16,21 @@ const notiPasswordConfirm = document.getElementById('notipasswordconfirm');
 const notiAddress = document.getElementById('notiaddress');
 const notiPhone = document.getElementById('notiphone');
 
-function Register() {
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
+function Register({ title, setEmail, setPassword, handleAction, setName, setAddress, setPhone }) {
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
-    const [address, setAddress] = useState('');
-    const [phone, setPhone] = useState('');
 
-    // const [createUserWithEmailAndPassword, userr, loading, error] = useCreateUserWithEmailAndPassword(auth);
-
-    const createDoc = (newDataObj) => {
-        alert('Thêm sản phẩm thành công');
-        ref.doc(newDataObj.id).set(newDataObj);
-    };
+    //     const handleSignIn = () => {    const authentication = getAuth()
+    //     createUserWithEmailAndPassword(authentication, username, password)
+    //     .then ((response) => {
+    //         console.log(response)
+    //     })
+    // }
+    // const createDoc = (newDataObj) => {
+    //     alert('Thêm sản phẩm thành công');
+    //     ref.doc(newDataObj.id).set(newDataObj);
+    // };
 
     return (
         <>
@@ -39,12 +39,12 @@ function Register() {
                 <div className={cx('inner')}>
                     <form className={cx('form')}>
                         <div className={cx('container')}>
-                            <h1 className={cx('heading')}>Đăng ký</h1>
+                            <h1 className={cx('heading')}>{title}</h1>
                             <label htmlFor="user" className={cx('title')}>
                                 Email
                             </label>
                             <input
-                                onChange={(e) => setUser(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                                 // onBlur={() => {
                                 //     user.length > 0
                                 //         ? (notiUser.innerHTML = 'Mời tiếp tục nhập')
@@ -62,9 +62,9 @@ function Register() {
                             <input
                                 onChange={(e) => setPassword(e.target.value)}
                                 onBlur={() => {
-                                    password.length > 0
-                                        ? (notiPassword.innerHTML = '')
-                                        : (notiPassword.innerHTML = 'Mục này không được để trống');
+                                    // password.length > 0
+                                    //     ? (notiPassword.innerHTML = '')
+                                    //     : (notiPassword.innerHTML = 'Mục này không được để trống');
                                 }}
                                 type="password"
                                 placeholder="Password"
@@ -72,7 +72,52 @@ function Register() {
                                 id="password"
                             />
                             <span id="notipassword"></span>
-                            <label htmlFor="passwordConfirm" className={cx('title')}>
+                            <label htmlFor="name" className={cx('title')}>
+                                Tên
+                            </label>
+                            <input
+                                onChange={(e) => setName(e.target.value)}
+                                onBlur={() => {
+                                    // password.length > 0
+                                    //     ? (notiPassword.innerHTML = '')
+                                    //     : (notiPassword.innerHTML = 'Mục này không được để trống');
+                                }}
+                                type="text"
+                                placeholder="Tên"
+                                className={cx('input')}
+                                id="name"
+                            />
+                            <label htmlFor="name" className={cx('title')}>
+                                Địa chỉ
+                            </label>
+                            <input
+                                onChange={(e) => setAddress(e.target.value)}
+                                onBlur={() => {
+                                    // password.length > 0
+                                    //     ? (notiPassword.innerHTML = '')
+                                    //     : (notiPassword.innerHTML = 'Mục này không được để trống');
+                                }}
+                                type="text"
+                                placeholder="Địa chỉ"
+                                className={cx('input')}
+                                id="addr"
+                            />
+                            <label htmlFor="name" className={cx('title')}>
+                                Số điện thoại
+                            </label>
+                            <input
+                                onChange={(e) => setPhone(e.target.value)}
+                                onBlur={() => {
+                                    // password.length > 0
+                                    //     ? (notiPassword.innerHTML = '')
+                                    //     : (notiPassword.innerHTML = 'Mục này không được để trống');
+                                }}
+                                type="text"
+                                placeholder="SĐT..."
+                                className={cx('input')}
+                                id="phone"
+                            />
+                            {/* <label htmlFor="passwordConfirm" className={cx('title')}>
                                 Xác nhận mật khẩu
                             </label>
                             <input
@@ -120,17 +165,20 @@ function Register() {
                                 id="address"
                             />
                             <span id="notiaddress"></span>
+                             */}
                             <div
+                                variant="contained"
+                                onClick={handleAction}
                                 className={cx('btn')}
-                                onClick={() => {
-                                    createDoc({ user, passwordConfirm, address, phone, id: uuidv4() });
-                                    document.getElementById('user').value = '';
-                                    document.getElementById('passwordconfirm').value = '';
-                                    document.getElementById('phone').value = '';
-                                    document.getElementById('address').value = '';
-                                }}
+                                // onClick={() => {
+                                // createDoc({ user, passwordConfirm, address, phone, id: uuidv4() });
+                                // document.getElementById('user').value = '';
+                                // document.getElementById('passwordconfirm').value = '';
+                                // document.getElementById('phone').value = '';
+                                // document.getElementById('address').value = '';
+                                // }}
                             >
-                                Đăng ký
+                                {title}
                             </div>
                             <p>
                                 <Link to="/login">

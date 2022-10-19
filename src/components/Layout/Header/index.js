@@ -1,7 +1,7 @@
 import { faMagnifyingGlass, faCartShopping, faCircleRadiation, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import React, { useState, useEffect } from 'react';
 
@@ -10,13 +10,14 @@ import Login from '../../../screens/Login';
 import Register from '../../../screens/Register';
 import Cart from '../../../screens/Cart';
 import firebase from '../../../firebase/config';
+import Search from './Search';
 
 const cx = classNames.bind(styles);
 
 function Header() {
-    const [user, setUser] = useState(true);
+    // const [user, setUser] = useState(true);
     const [products, setProducts] = useState([]);
-    const [value, setValue] = useState('');
+    const name = localStorage.getItem('Name');
 
     const rec = firebase.firestore().collection('cart');
 
@@ -29,8 +30,17 @@ function Header() {
             setProducts(items);
         });
     }
+    const handleLogout = () => {
+        localStorage.removeItem('Auth Token');
+        localStorage.removeItem('Name');
+        localStorage.removeItem('Address');
+        localStorage.removeItem('Phone');
+        navigate('/login');
+    };
+    let navigate = useNavigate();
     useEffect(() => {
         getProducts();
+        let authToken = localStorage.getItem('Auth Token');
     }, []);
     let quality = 0;
     products.map((product) => {
@@ -55,12 +65,7 @@ function Header() {
                 content={
                     <div className={cx('user-content')}>
                         <button>tài khoản</button>
-                        <button
-                            onClick={() => {
-                                setUser(false);
-                            }}
-                            className={cx('signout-btn')}
-                        >
+                        <button onClick={handleLogout} className={cx('signout-btn')}>
                             đăng xuất
                         </button>
                     </div>
@@ -80,20 +85,10 @@ function Header() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link className={cx('logo')} to="/">
+                <Link className={cx('logo')} to="/home">
                     <h1>LOGO</h1>
                 </Link>
-                <div className={cx('search-box')}>
-                    <input
-                        placeholder="Tìm Kiếm..."
-                        className={cx('search-input')}
-                        onChange={(e) => setValue(e.target.value)}
-                        value={value}
-                    />
-                    {/* <button className={cx('search-btn')}>
-                        <FontAwesomeIcon className={cx('search-icon')} icon={faMagnifyingGlass} />
-                    </button> */}
-                </div>
+                <Search />
                 <div className={cx('actions')}>
                     <Tippy content={'Giỏ hàng'}>
                         <Link to="/cart" element={<Cart />} className={cx('cart')}>
@@ -101,7 +96,7 @@ function Header() {
                             <span className={cx('quality')}>{quality}</span>
                         </Link>
                     </Tippy>
-                    {user ? headerUser : headerRegister}
+                    {localStorage.getItem('Auth Token') ? headerUser : headerRegister}
                 </div>
             </div>
         </div>

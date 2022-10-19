@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Cart.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import Header from '../../components/Layout/Header';
@@ -12,8 +12,10 @@ const cx = classNames.bind(styles);
 function Cart() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+
     const ref = firebase.firestore().collection('cart');
 
+    let navigate = useNavigate();
     function getProducts() {
         setLoading(true);
         ref.onSnapshot((querySnapShot) => {
@@ -28,17 +30,16 @@ function Cart() {
     useEffect(() => {
         getProducts();
     }, []);
+    console.log(ref);
 
     const handleDeleteProduct = (docx) => {
-        // eslint-disable-next-line no-restricted-globals
-        if (confirm('Bạn có chắc muốn xóa sản phẩm này ra khỏi giỏ hàng ?')) {
-            ref.doc(docx.id)
-                .delete()
-                .catch((err) => {
-                    alert(err);
-                    console.log(err);
-                });
-        }
+        ref.doc(docx.id)
+            .delete()
+            .catch((err) => {
+                alert(err);
+                console.log(err);
+            });
+
         //eslint-disable-line
     };
 
@@ -111,9 +112,20 @@ function Cart() {
                                 <Link to="/">
                                     <div className={cx('ctn-shopping')}>TIẾP TỤC MUA SẮM</div>
                                 </Link>
-                                <Link to="/order">
-                                    <button className={cx('checkout-btn')}>ĐẶT HÀNG</button>
-                                </Link>
+
+                                <button
+                                    onClick={() => {
+                                        if (localStorage.getItem('Auth Token')) {
+                                            navigate('/order');
+                                            // eslint-disable-next-line no-restricted-globals
+                                        } else if (confirm('bạn chưa đăng nhập, bạn có muốn đăng nhập không ?')) {
+                                            navigate('/login');
+                                        }
+                                    }}
+                                    className={cx('checkout-btn')}
+                                >
+                                    ĐẶT HÀNG
+                                </button>
                             </div>
                         </div>
                     </div>

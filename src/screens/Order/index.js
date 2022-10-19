@@ -10,6 +10,9 @@ import Header from '../../components/Layout/Header';
 const cx = classNames.bind(sytles);
 
 function Order() {
+    const name = localStorage.getItem('Name');
+    const phone = localStorage.getItem('Phone');
+    const addr = localStorage.getItem('Address');
     return (
         <>
             <Header />
@@ -22,9 +25,13 @@ function Order() {
                         </div>
                         <div className={cx('place-info')}>
                             <div className={cx('contact')}>
-                                <h4>Đoàn Thế Kha 0325564885</h4>
+                                <h4>
+                                    {name} {phone}
+                                </h4>
                             </div>
-                            <div className={cx('address')}><span>213 đường ABC Thành phố XYZ</span></div>
+                            <div className={cx('address')}>
+                                <span>{addr}</span>
+                            </div>
                             <Link className={cx('change')} to="/shipping">
                                 <span>Thay đổi</span>
                             </Link>

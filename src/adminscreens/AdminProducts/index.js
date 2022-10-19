@@ -8,6 +8,7 @@ import AdminAddProduct from '../AdminAddProduct';
 import AdminEditProduct from '../../components/adminlayout/AdminEditProduct/index.js';
 import AdminShowProducts from '../../components/adminlayout/AdminShowProducts';
 import Loading from '../../components/Layout/Loading';
+import Header from '../../components/Layout/Header';
 
 const cx = classNames.bind(styles);
 
@@ -61,15 +62,18 @@ function AdminProducts() {
                     </div>
     )
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('inner')}>
-                <AdminSibar />
-                <div className={cx('container')}>
-                    <AdminHeader />
-                    {loading ? <Loading/> : renderProducts}
+        <>
+            <Header/>
+            <div className={cx('wrapper')}>
+                <div className={cx('inner')}>
+                    <AdminSibar />
+                    <div className={cx('container')}>
+                        {/* <AdminHeader /> */}
+                        {loading ? <Loading/> : renderProducts}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 export { ref };

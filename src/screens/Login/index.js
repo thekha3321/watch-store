@@ -2,55 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from '../../firebase/config';
 import classnames from 'classnames/bind';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import propTypes from 'prop-types';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 import styles from './Login.module.scss';
 import Header from '../../components/Layout/Header';
-// import { PasswordOutlined } from '@mui/icons-material';
 
 const cx = classnames.bind(styles);
 const ref = firebase.firestore().collection('users');
-function Login() {
-    const [users, setUsers] = useState('');
 
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
+function Login({ title, setEmail, setPassword, handleAction }) {
+    const handleSubmit = () => {};
 
-    function getUsers() {
-        ref.onSnapshot((querySnapShot) => {
-            const items = [];
-            querySnapShot.forEach((doc) => {
-                items.push(doc.data());
-            });
-            setUsers(items);
-        });
-    }
-    useEffect(() => {
-        getUsers();
-    }, []);
-
-    const handleLogin = () => {
-        users.map((e, index) =>
-            user === e.user && password === e.passwordConfirm
-                ? console.log(e.user, e.passwordConfirm, e.address, e.phone)
-                : console.log('khong trung'),
-        );
-    };
-    useEffect(() => {});
     return (
         <>
             <Header />
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
-                    <form className={cx('form')}>
+                    <form onSubmit={handleSubmit} className={cx('form')}>
                         <div className={cx('container')}>
-                            <h1 className={cx('heading')}>Đăng Nhập</h1>
-                            <label className={cx('title')}>Tên tài khoản</label>
+                            <h1 className={cx('heading')}>{title}</h1>
+                            <label className={cx('title')}>Email</label>
                             <input
-                                onChange={(e) => setUser(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                                 type="text"
-                                placeholder="tài khoản"
+                                placeholder="Email"
                                 className={cx('input')}
                             />
                             <label className={cx('title')}>Mật khẩu</label>
@@ -61,8 +37,8 @@ function Login() {
                                 className={cx('input')}
                             />
                             <div className={cx('')}>
-                                <div onClick={handleLogin} className={cx('btn')}>
-                                    Đăng nhập
+                                <div variant="contained" onClick={handleAction} className={cx('btn')}>
+                                    {title}
                                 </div>
                             </div>
                             <p>
