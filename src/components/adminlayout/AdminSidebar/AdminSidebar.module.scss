@@ -2,6 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 50;
     box-shadow: 2px 0px 4px 1px rgb(0 0 0 / 12%);
     margin-right: 10px;
     height: 721px;
@@ -22,6 +23,12 @@
             .content {
                 padding: 10px;
                 margin: 10px;
+                transition: 0.3s all ease;
+
+                &:hover {
+                    color: var(--primary-color);
+                    text-decoration: underline;
+                }
                 .icon {
                     opacity: 0.9;
                     margin-right: 20px;

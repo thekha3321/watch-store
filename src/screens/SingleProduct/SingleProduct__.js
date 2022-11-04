@@ -16,7 +16,7 @@ function SingleProduct__() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const { productId } = useParams();
-    
+    console.log(productId);
     const ref = firebase.firestore().collection('products').where('id', '==', `${productId}`);
     const rec = firebase.firestore().collection('cart');
 
@@ -41,8 +41,7 @@ function SingleProduct__() {
 
     // push product to cart
     const createDoc = (newDataObj) => {
-        rec.doc(newDataObj.id)
-        .set(newDataObj);
+        rec.doc(newDataObj.id).set(newDataObj);
         alert('Đã thêm sản phẩm vào giỏ hàng');
     };
     useEffect(() => {
@@ -60,7 +59,9 @@ function SingleProduct__() {
                 </div>
                 <div className={cx('right')}>
                     <span className={cx('product-name')}>{products[0]?.name}</span>
-                    <span className={cx('product-price')}>{new Intl.NumberFormat('de-DE').format(products[0]?.price)} đ</span>
+                    <span className={cx('product-price')}>
+                        {new Intl.NumberFormat('de-DE').format(products[0]?.price)} đ
+                    </span>
                     <span className={cx('product-description')}>{products[0]?.desc}</span>
                     <button
                         onClick={() => {
@@ -69,7 +70,7 @@ function SingleProduct__() {
                             setImage(products[0].image);
                             setPrice(products[0].price);
                             setDesc(products[0].desc);
-                            setId(products[0].id)
+                            setId(products[0].id);
                             createDoc({ name, brand, image, price, desc, id });
                         }}
                     >

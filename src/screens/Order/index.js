@@ -1,18 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-import sytles from './Order.module.scss';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import firebase from '../../firebase/config';
+
+import sytles from './Order.module.scss';
 import Header from '../../components/Layout/Header';
 
 const cx = classNames.bind(sytles);
+const ref = firebase.firestore().collection('cart');
 
+console.log(ref);
 function Order() {
     const name = localStorage.getItem('Name');
     const phone = localStorage.getItem('Phone');
     const addr = localStorage.getItem('Address');
+
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    function getProducts() {
+        setLoading(true);
+        ref.onSnapshot((querySnapShot) => {
+            const items = [];
+            querySnapShot.forEach((doc) => {
+                items.push(doc.data());
+            });
+            setProducts(items);
+            setLoading(false);
+        });
+    }
+    let allId = [];
+    products.map((product) => {
+        allId.push(product.id);
+    });
+    console.log(allId);
+    useEffect(() => {
+        getProducts();
+    }, []);
+    const handleDeleteProduct = (allId) => {
+        // eslint-disable-next-line no-restricted-globals
+        ref.doc()
+            .delete()
+            .catch((err) => {
+                alert(err);
+                console.log(err);
+            });
+        alert('Đặt hàng thành công!');
+        //eslint-disable-line
+    };
     return (
         <>
             <Header />
@@ -75,7 +112,9 @@ function Order() {
                             <span>1.330.000</span>
                         </div>
                         <div className={cx('btn')}>
-                            <button className={cx('order-btn')}>Đặt hàng</button>
+                            <button onClick={() => handleDeleteProduct(allId)} className={cx('order-btn')}>
+                                Đặt hàng
+                            </button>
                         </div>
                     </div>
                 </div>

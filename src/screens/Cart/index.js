@@ -14,6 +14,11 @@ function Cart() {
     const [loading, setLoading] = useState(false);
 
     const ref = firebase.firestore().collection('cart');
+    // const email = localStorage.getItem('Auth Token');
+    // console.log(email);
+    // const createDoc = () => {
+    //     ref.doc(email);
+    // };
 
     let navigate = useNavigate();
     function getProducts() {
@@ -29,6 +34,7 @@ function Cart() {
     }
     useEffect(() => {
         getProducts();
+        // createDoc();
     }, []);
     console.log(ref);
 
@@ -109,7 +115,7 @@ function Cart() {
                                 <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney)} đ`}</span>
                             </div>
                             <div className={cx('checkout')}>
-                                <Link to="/">
+                                <Link to="/home">
                                     <div className={cx('ctn-shopping')}>TIẾP TỤC MUA SẮM</div>
                                 </Link>
 

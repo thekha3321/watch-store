@@ -37,7 +37,7 @@ function SearchList({ value, input }) {
     });
     return (
         <>
-            <ul id="search-product-list">
+            <ul onBlur={() => console.log('1')} id="search-product-list">
                 {value
                     ? filteredData.map((product) => (
                           <Link to={`/products/${product.id}`}>

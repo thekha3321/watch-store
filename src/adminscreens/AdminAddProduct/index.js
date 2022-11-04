@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import classNames from 'classnames/bind';
 import { v4 as uuidv4 } from 'uuid';
 
+import classNames from 'classnames/bind';
 import styles from './AdminAddproduct.module.scss';
 import AdminSidebar from '../../components/adminlayout/AdminSidebar';
 import AdminHeader from '../../components/adminlayout/AdminHeader/AdminHeader';
@@ -20,12 +20,13 @@ function AdminAddProduct() {
 
     const createDoc = (newDataObj) => {
         alert('Thêm sản phẩm thành công');
-        ref.doc(newDataObj.id)
-            .set(newDataObj)
+        ref.doc(newDataObj.id).set(newDataObj);
     };
 
     return (
-        <>  <Header/>
+        <>
+            {' '}
+            <Header />
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <AdminSidebar />
@@ -51,7 +52,12 @@ function AdminAddProduct() {
                                     onChange={(e) => setBrand(e.target.value)}
                                 />
                                 <label>Giá</label>
-                                <textarea id="price" name="name" type="text" onChange={(e) => setPrice(Number(e.target.value))} />
+                                <textarea
+                                    id="price"
+                                    name="name"
+                                    type="text"
+                                    onChange={(e) => setPrice(Number(e.target.value))}
+                                />
                                 <label>Hình ảnh</label>
                                 <textarea
                                     id="img"

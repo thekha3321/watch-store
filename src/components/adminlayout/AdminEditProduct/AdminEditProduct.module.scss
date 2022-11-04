@@ -1,5 +1,4 @@
 .wrapper {
-
     width: 1270px;
     height: 600px;
     margin: 60px 0 0 210px;
@@ -22,7 +21,7 @@
                 top: 0;
                 right: 0;
                 background-color: rgb(248 215 218 / 1);
-                button { 
+                button {
                     background-color: transparent;
                     cursor: pointer;
                     padding: 8px 14px;
@@ -38,7 +37,7 @@
                     font-size: 18px;
                 }
 
-                textarea[name=name] {
+                textarea[name='name'] {
                     padding: 6px;
                     line-height: 100%;
                     resize: none;
@@ -47,11 +46,10 @@
                     height: 30px;
                 }
 
-                input[name=file] {
-
+                input[name='file'] {
                 }
 
-                textarea[name=desc] {
+                textarea[name='desc'] {
                     background-color: #f8f8f8;
                     width: 100%;
                     padding: 12px 20px;
@@ -60,12 +58,13 @@
                     box-sizing: border-box;
                 }
             }
-            .btn{ 
+            .btn {
                 margin-top: 20px;
                 display: flex;
                 justify-content: center;
-                
-                button { 
+
+                button {
+                    color: #fff;
                     cursor: pointer;
                     padding: 10px 40px;
                     background-color: var(--primary-color);

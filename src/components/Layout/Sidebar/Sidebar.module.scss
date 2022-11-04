@@ -45,10 +45,12 @@
 }
 
 .tippy-container {
+    overflow: hidden;
     display: block;
 }
 
 .tippy-content {
+    overflow: hidden;
     div:hover {
         background-color: #ccc;
     }

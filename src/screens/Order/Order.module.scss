@@ -1,5 +1,5 @@
 .wrapper {
-    padding-top: var(--padding-top-header);
+    padding-top: 60px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -44,13 +44,10 @@
                     font-size: 18px;
                 }
 
-
-
                 .change {
                     Link {
                         color: red;
                     }
-                    
 
                     &:hover {
                         text-decoration: underline;
@@ -62,9 +59,9 @@
                 margin: 0 20px;
                 span {
                     margin: 0 20px;
-                    font-size: 18px; }
+                    font-size: 18px;
+                }
             }
-
         }
 
         .order-bill {
@@ -90,7 +87,6 @@
             }
 
             .bill-info {
-
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -106,7 +102,8 @@
                     width: 70px;
                 }
 
-                span {}
+                span {
+                }
 
                 .product-bill {
                     width: 50%;
@@ -115,15 +112,12 @@
                         width: 33.333;
                     }
 
-                    .bill-quality {}
+                    .bill-quality {
+                    }
 
-                    .bill-total {}
-
-
+                    .bill-total {
+                    }
                 }
-
-
-
             }
         }
 
@@ -140,8 +134,6 @@
                 span {
                     padding: 10px;
                 }
-
-
             }
 
             .btn {
@@ -162,6 +154,6 @@
     }
 }
 
-.change span { 
+.change span {
     color: var(--primary-color);
 }
