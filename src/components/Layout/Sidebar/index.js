@@ -51,8 +51,8 @@ function Sidebar() {
                     content={
                         <div className={cx('tippy-container')}>
                             {brandHandled.map((brand, index) => (
-                                <Link className={cx('tippy-content')} to={`/brand/${brand}`}>
-                                    <div key={index}>{brand}</div>
+                                <Link key={index} className={cx('tippy-content')} to={`/brand/${brand}`}>
+                                    <div>{brand}</div>
                                 </Link>
                             ))}
                         </div>

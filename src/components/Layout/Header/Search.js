@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import firebase from '../../../firebase/config';
 import classNames from 'classnames/bind';
 import ReactDOM from 'react-dom/client';
@@ -14,9 +14,8 @@ const ref = firebase.firestore().collection('products');
 function Search() {
     const [products, setProducts] = useState([]);
     const [value, setValue] = useState('');
-
+    let isBlur;
     const input = document.querySelector('.search-input');
-    // const searchProducts = document.getElementById('search-product-list');
 
     function getProducts() {
         ref.onSnapshot((querySnapShot) => {
@@ -41,7 +40,7 @@ function Search() {
         <div>
             <div className="search-box">
                 <input placeholder="Tìm Kiếm..." className="search-input" onChange={inputHandle} />
-                {value ? (
+                {value && (
                     <FontAwesomeIcon
                         icon={faXmark}
                         className="icon"
@@ -50,10 +49,8 @@ function Search() {
                             input.value = '';
                         }}
                     />
-                ) : (
-                    ''
                 )}
-                <SearchList value={value} input={input} />
+                <SearchList id="search-list" isBlur={isBlur} value={value} input={input} />
             </div>
         </div>
     );

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import React, { useState, useEffect } from 'react';
 import firebase from './firebase/config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
 import AdminAccountManager from './adminscreens/AdminAccountManager';
 import AdminAddProduct from './adminscreens/AdminAddProduct';
@@ -37,24 +38,33 @@ function App() {
     //     const uid = authentication.lastNotifiedUid;
     //     console.log(uid);
     // }
-    const handleAction = (id) => {
+    const handleAction = async (id) => {
         if (id === 1) {
             signInWithEmailAndPassword(authentication, email, password, name, address, phone).then((response) => {
                 navigate('/home');
-                localStorage.setItem('Auth Token', `${email}`);
+                localStorage.setItem('Email', `${email}`);
                 localStorage.setItem('Name', `${name}`);
                 localStorage.setItem('Address', `${address}`);
                 localStorage.setItem('Phone', `${phone}`);
             });
         }
         if (id === 2) {
-            createUserWithEmailAndPassword(authentication, email, password, name, address, phone).then((response) => {
-                navigate('/home');
-                localStorage.setItem('Auth Token', `${email}`);
-                localStorage.setItem('Name', `${name}`);
-                localStorage.setItem('Address', `${address}`);
-                localStorage.setItem('Phone', `${phone}`);
-            });
+            const res = createUserWithEmailAndPassword(authentication, email, password, name, address, phone).then(
+                (response) => {
+                    navigate('/home');
+                    localStorage.setItem('Email', `${email}`);
+                    localStorage.setItem('Name', `${name}`);
+                    localStorage.setItem('Address', `${address}`);
+                    localStorage.setItem('Phone', `${phone}`);
+                },
+            );
+            console.log(res);
+            // await setDoc(doc(firebase.firestore(), 'users', res.user.uid), {
+            //     uid: res.user.uid,
+            //     name,
+            //     email,
+            //     password,
+            // });
         }
     };
     useEffect(() => {
@@ -64,6 +74,7 @@ function App() {
             navigate('/home');
         }
     }, []);
+    console.log(email, password, name, address, phone);
 
     return (
         <Routes>

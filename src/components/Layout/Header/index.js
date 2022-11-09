@@ -31,7 +31,7 @@ function Header() {
         });
     }
     const handleLogout = () => {
-        localStorage.removeItem('Auth Token');
+        localStorage.removeItem('Email');
         localStorage.removeItem('Name');
         localStorage.removeItem('Address');
         localStorage.removeItem('Phone');
@@ -96,7 +96,7 @@ function Header() {
                             <span className={cx('quality')}>{quality}</span>
                         </Link>
                     </Tippy>
-                    {localStorage.getItem('Auth Token') ? headerUser : headerRegister}
+                    {localStorage.getItem('Email') ? headerUser : headerRegister}
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ import firebase from '../../../firebase/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-function SearchList({ value, input }) {
+function SearchList({ isBlur, value, input }) {
     const ref = firebase.firestore().collection('products');
     const [products, setProducts] = useState([]);
     // const searchProducts = document.getElementById('search-product-list');
@@ -37,11 +37,11 @@ function SearchList({ value, input }) {
     });
     return (
         <>
-            <ul onBlur={() => console.log('1')} id="search-product-list">
+            <ul id="search-product-list">
                 {value
                     ? filteredData.map((product) => (
                           <Link to={`/products/${product.id}`}>
-                              <li key={product.id}>
+                              <li className="product" key={product.id}>
                                   <img src={product.image} alt="" />
                                   <span>{product.name}</span>
                               </li>
