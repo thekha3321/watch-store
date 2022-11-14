@@ -11,6 +11,7 @@ import Register from '../../../screens/Register';
 import Cart from '../../../screens/Cart';
 import firebase from '../../../firebase/config';
 import Search from './Search';
+import { database } from '../../../firebase/config';
 
 const cx = classNames.bind(styles);
 

@@ -9,14 +9,15 @@ const cx = classNames.bind(styles);
 
 function AdminBill() {
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('inner')}>
-                <AdminSidebar />
-                <div className={cx('container')}>
-                    <Header />
+        <>
+            <Header />
+            <div className={cx('wrapper')}>
+                <div className={cx('inner')}>
+                    <AdminSidebar />
+                    <div className={cx('container')}></div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

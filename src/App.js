@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from './firebase/config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
+import { v4 as uuidv4 } from 'uuid';
 
 import AdminAccountManager from './adminscreens/AdminAccountManager';
 import AdminAddProduct from './adminscreens/AdminAddProduct';
@@ -38,6 +39,15 @@ function App() {
     //     const uid = authentication.lastNotifiedUid;
     //     console.log(uid);
     // }
+    let dataUser = {
+        email,
+        password,
+        name,
+        address,
+        phone,
+        uid: uuidv4(),
+    };
+    const firestorageUser = firebase.firestore().collection('users');
     const handleAction = async (id) => {
         if (id === 1) {
             signInWithEmailAndPassword(authentication, email, password, name, address, phone).then((response) => {
@@ -49,16 +59,18 @@ function App() {
             });
         }
         if (id === 2) {
-            const res = createUserWithEmailAndPassword(authentication, email, password, name, address, phone).then(
-                (response) => {
+            createUserWithEmailAndPassword(authentication, email, password, name, address, phone)
+                .then((response) => {
+                    firestorageUser.doc(dataUser.uid).set(dataUser);
                     navigate('/home');
                     localStorage.setItem('Email', `${email}`);
                     localStorage.setItem('Name', `${name}`);
                     localStorage.setItem('Address', `${address}`);
                     localStorage.setItem('Phone', `${phone}`);
-                },
-            );
-            console.log(res);
+                })
+                .catch(() => {
+                    alert(`Tài khoản Email: ${email} đã tồn tại`);
+                });
             // await setDoc(doc(firebase.firestore(), 'users', res.user.uid), {
             //     uid: res.user.uid,
             //     name,
@@ -70,11 +82,11 @@ function App() {
     useEffect(() => {
         let authToken = localStorage.getItem('Auth Token');
 
-        if (authToken !== 'admin@gmail.com') {
-            navigate('/home');
-        }
+        // phan quyen admin
+        // if (authToken !== 'admin@gmail.com') {
+        //     navigate('/home');
+        // }
     }, []);
-    console.log(email, password, name, address, phone);
 
     return (
         <Routes>

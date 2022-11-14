@@ -9,14 +9,15 @@ const cx = classNames.bind(styles);
 
 function AdminAcountManager() {
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('inner')}>
-                <AdminSidebar />
-                <div className={cx('container')}>
-                    <Header />
+        <>
+            <Header />
+            <div className={cx('wrapper')}>
+                <div className={cx('inner')}>
+                    <AdminSidebar />
+                    <div className={cx('container')}></div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

@@ -161,14 +161,17 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                              */}
                             <div
                                 variant="contained"
-                                onClick={handleAction}
+                                onClick={() => {
+                                    handleAction();
+                                    document.getElementById('email').value = '';
+                                    document.getElementById('password').value = '';
+                                    document.getElementById('name').value = '';
+                                    document.getElementById('phone').value = '';
+                                    document.getElementById('addr').value = '';
+                                }}
                                 className={cx('btn')}
                                 // onClick={() => {
                                 // createDoc({ user, passwordConfirm, address, phone, id: uuidv4() });
-                                // document.getElementById('user').value = '';
-                                // document.getElementById('passwordconfirm').value = '';
-                                // document.getElementById('phone').value = '';
-                                // document.getElementById('address').value = '';
                                 // }}
                             >
                                 {title}
