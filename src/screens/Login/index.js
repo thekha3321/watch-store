@@ -37,7 +37,7 @@ function Login({ title, setEmail, setPassword, handleAction }) {
                                 className={cx('input')}
                             />
                             <div className={cx('')}>
-                                <div variant="contained" onClick={handleAction} className={cx('btn')}>
+                                <div type="submit" onClick={handleAction} className={cx('btn')}>
                                     {title}
                                 </div>
                             </div>

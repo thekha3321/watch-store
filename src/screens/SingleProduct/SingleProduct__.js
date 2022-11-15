@@ -16,7 +16,6 @@ function SingleProduct__() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const { productId } = useParams();
-    console.log(productId);
     const ref = firebase.firestore().collection('products').where('id', '==', `${productId}`);
     const rec = firebase.firestore().collection('cart');
 

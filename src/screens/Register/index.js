@@ -161,14 +161,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                              */}
                             <div
                                 variant="contained"
-                                onClick={() => {
-                                    handleAction();
-                                    document.getElementById('email').value = '';
-                                    document.getElementById('password').value = '';
-                                    document.getElementById('name').value = '';
-                                    document.getElementById('phone').value = '';
-                                    document.getElementById('addr').value = '';
-                                }}
+                                onClick={handleAction}
                                 className={cx('btn')}
                                 // onClick={() => {
                                 // createDoc({ user, passwordConfirm, address, phone, id: uuidv4() });

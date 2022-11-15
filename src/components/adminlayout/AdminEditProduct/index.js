@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 const ref = firebase.firestore().collection('products');
 
 function AdminEditProduct({ product, setEditbox }) {
-    const [name, setName] = useState('ưdaaaaaaaaa');
+    const [name, setName] = useState('');
     const [brand, setBrand] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('');

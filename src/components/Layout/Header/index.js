@@ -11,17 +11,14 @@ import Register from '../../../screens/Register';
 import Cart from '../../../screens/Cart';
 import firebase from '../../../firebase/config';
 import Search from './Search';
-import { database } from '../../../firebase/config';
 
 const cx = classNames.bind(styles);
 
 function Header() {
     // const [user, setUser] = useState(true);
     const [products, setProducts] = useState([]);
-    const name = localStorage.getItem('Name');
 
     const rec = firebase.firestore().collection('cart');
-
     function getProducts() {
         rec.onSnapshot((querySnapShot) => {
             const items = [];
@@ -31,17 +28,16 @@ function Header() {
             setProducts(items);
         });
     }
+
     const handleLogout = () => {
-        localStorage.removeItem('Email');
-        localStorage.removeItem('Name');
-        localStorage.removeItem('Address');
-        localStorage.removeItem('Phone');
+        firebase.auth().signOut();
+        sessionStorage.clear();
         navigate('/login');
     };
+
     let navigate = useNavigate();
     useEffect(() => {
         getProducts();
-        let authToken = localStorage.getItem('Auth Token');
     }, []);
     let quality = 0;
     products.map((product) => {
@@ -97,7 +93,7 @@ function Header() {
                             <span className={cx('quality')}>{quality}</span>
                         </Link>
                     </Tippy>
-                    {localStorage.getItem('Email') ? headerUser : headerRegister}
+                    {sessionStorage.getItem('Email') ? headerUser : headerRegister}
                 </div>
             </div>
         </div>

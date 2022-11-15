@@ -34,18 +34,14 @@ function Cart() {
     }
     useEffect(() => {
         getProducts();
-        // createDoc();
     }, []);
-    console.log(ref);
 
     const handleDeleteProduct = (docx) => {
         ref.doc(docx.id)
             .delete()
             .catch((err) => {
                 alert(err);
-                console.log(err);
             });
-
         //eslint-disable-line
     };
 
@@ -121,7 +117,7 @@ function Cart() {
 
                                 <button
                                     onClick={() => {
-                                        if (localStorage.getItem('Auth Token')) {
+                                        if (firebase.auth().currentUser) {
                                             navigate('/order');
                                             // eslint-disable-next-line no-restricted-globals
                                         } else if (confirm('bạn chưa đăng nhập, bạn có muốn đăng nhập không ?')) {
