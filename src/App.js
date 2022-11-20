@@ -23,6 +23,7 @@ import Order from './screens/Order';
 import Register from './screens/Register';
 import Shipping from './screens/Shipping';
 import SingleProduct from './screens/SingleProduct';
+import Profile from './screens/profile';
 
 // const cx = classnames.bind(styles);
 
@@ -47,6 +48,7 @@ function App() {
         uid: uuidv4(),
         rule: 'khách hàng',
     };
+    let cloneData = {};
 
     function getUsers() {
         firestorageUser.onSnapshot((querySnapShot) => {
@@ -71,7 +73,7 @@ function App() {
         if (id === 2) {
             await createUserWithEmailAndPassword(authentication, email, password, name, address, phone)
                 .then((response) => {
-                    firestorageCart.doc(dataUser.uid).set({});
+                    firestorageCart.doc(dataUser.email).set(cloneData);
                     firestorageUser.doc(dataUser.uid).set(dataUser);
                     navigate('/home');
                     sessionStorage.setItem('Email', email);
@@ -130,8 +132,7 @@ function App() {
             <Route path="/admin/statistical" element={<AdminStatistical />} />
             <Route path="/brand/:productBrand" element={<Brand />} />
             <Route path="/saling" element={<ShopSaling />} />
-
-            {/* <Route path='/products/:id' element={<SingleProduct/>}/> */}
+            <Route path="/profile" element={<Profile />} />
         </Routes>
     );
 }

@@ -16,6 +16,7 @@ function SingleProduct__() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const { productId } = useParams();
+    const currentEmail = sessionStorage.getItem('Email');
     const ref = firebase.firestore().collection('products').where('id', '==', `${productId}`);
     const rec = firebase.firestore().collection('cart');
 
@@ -39,8 +40,8 @@ function SingleProduct__() {
     }
 
     // push product to cart
-    const createDoc = (newDataObj) => {
-        rec.doc(newDataObj.id).set(newDataObj);
+    const createDoc = (props) => {
+        rec.doc(props.id).set(props);
         alert('Đã thêm sản phẩm vào giỏ hàng');
     };
     useEffect(() => {

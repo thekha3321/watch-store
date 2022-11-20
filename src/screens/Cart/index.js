@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 function Cart() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-
+    const currentEmail = sessionStorage.getItem('Email');
     const ref = firebase.firestore().collection('cart');
     // const email = localStorage.getItem('Auth Token');
     // console.log(email);
