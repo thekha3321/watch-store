@@ -1,6 +1,6 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -12,7 +12,7 @@
     --margin-component: 20px;
     --max-width: 1100px;
     --padding-top-header: 120px;
-    --primary-color: #339994;
+    --primary-color: #39b2ac;
     --primary-background-color: #ffffff;
     --border-radius-btn: 8px;
 }
@@ -22,7 +22,7 @@ html {
 }
 
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
