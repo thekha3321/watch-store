@@ -11,25 +11,16 @@ const cx = classNames.bind(styles);
 
 function Cart() {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
-
     const ref = firebase.firestore().collection('cart');
-    // const email = localStorage.getItem('Auth Token');
-    // console.log(email);
-    // const createDoc = () => {
-    //     ref.doc(email);
-    // };
 
     let navigate = useNavigate();
     function getProducts() {
-        setLoading(true);
         ref.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
             });
             setProducts(items);
-            setLoading(false);
         });
     }
     useEffect(() => {
@@ -46,9 +37,7 @@ function Cart() {
     };
 
     let totalMoney = 0;
-    products.map((product) => {
-        totalMoney += product.price;
-    });
+    products.map((product) => (totalMoney += product.price));
 
     return (
         <>
@@ -81,16 +70,7 @@ function Cart() {
                                     <div className={cx('product-info-midle')}>
                                         <span>{new Intl.NumberFormat('de-DE').format(product.price)}đ</span>
                                     </div>
-                                    <div className={cx('product-info-midle')}>
-                                        1
-                                        {/* <select className={cx('select-quality')}>
-                                            <option value='1'>1</option>
-                                            <option value='2'>2</option>
-                                            <option value='3'>3</option>
-                                            <option value='4'>4</option>
-                                            <option value='5'>5</option>
-                                        </select> */}
-                                    </div>
+                                    <div className={cx('product-info-midle')}>1</div>
                                     <div className={cx('product-info-midle')}>
                                         <span>{new Intl.NumberFormat('de-DE').format(product.price)}đ</span>
                                     </div>
@@ -111,7 +91,7 @@ function Cart() {
                                 <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney)} đ`}</span>
                             </div>
                             <div className={cx('checkout')}>
-                                <Link to="/home">
+                                <Link to="/">
                                     <div className={cx('ctn-shopping')}>TIẾP TỤC MUA SẮM</div>
                                 </Link>
 

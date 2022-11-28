@@ -17,6 +17,7 @@
 }
 
 .sidebar-item {
+    padding-bottom: 8px;
     position: relative;
     display: flex;
     cursor: pointer;
@@ -27,6 +28,15 @@
     &:hover {
         color: var(--primary-color);
         text-decoration: underline;
+        animation: move 0.3s ease forwards;
+    }
+    @keyframes move {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-4px);
+        }
     }
 }
 

@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import firebase from '../../firebase/config';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import styles from './SingleProduct.module.scss';
 import Loading from '../../components/Layout/Loading';
-import Sidebar from './../../../src/components/Layout/Sidebar';
-import Footer from '../../components/Layout/Footer';
-import Header from '../../components/Layout/Header';
-import { v4 as uuidv4 } from 'uuid';
 
 const cx = classNames.bind(styles);
 
@@ -39,8 +35,8 @@ function SingleProduct__() {
     }
 
     // push product to cart
-    const createDoc = (newDataObj) => {
-        rec.doc(newDataObj.id).set(newDataObj);
+    const createDoc = (props) => {
+        rec.doc(props.id).set(props);
         alert('Đã thêm sản phẩm vào giỏ hàng');
     };
     useEffect(() => {

@@ -1,7 +1,6 @@
 import classnames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-// import Logo from './../../../../src/assets/img/Logo.png';
 
 const cx = classnames.bind(styles);
 
@@ -85,7 +84,7 @@ function Footer() {
                     <div className={cx('container')}>
                         <h1>LOGO</h1>
                         <div className={cx('contact')}>
-                            <Link to=''>CÔNG TY CỔ PHẦN TRỰC TUYẾN ALT</Link>
+                            <Link to="">CÔNG TY CỔ PHẦN TRỰC TUYẾN ALT</Link>
                             <p>Địa chỉ: 41 Phố ABC, Phường. XYZ, Quận. HAIBABON, NAMSAUBAY</p>
                             <p>Hotline: 1800 XXXX</p>
                             <p>Email: info@alt.vn</p>

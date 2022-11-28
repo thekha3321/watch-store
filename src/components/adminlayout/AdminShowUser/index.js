@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './AdminShowUser.module.scss';
-import AdminEditProduct from '../AdminEditProduct';
 import firebase from '../../../firebase/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faLock, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -39,10 +38,7 @@ function AdminShowUser({ user }) {
                 <div className={cx('product-title')}>{user.email}</div>
                 <div className={cx('product-title')}>{user.rule}</div>
                 <div className={cx('product-title')}>
-                    <button
-                        className={cx('btn')}
-                        // onClick={() => setEditbox(!editbox)}
-                    >
+                    <button className={cx('btn')}>
                         <FontAwesomeIcon icon={faCircleInfo} />
                     </button>
                     <button className={cx('btn')}>
@@ -52,7 +48,6 @@ function AdminShowUser({ user }) {
                         <FontAwesomeIcon icon={faTrash} />
                     </button>
                 </div>
-                {/* {editbox === true && <AdminEditProduct product={product} setEditbox={setEditbox} />} */}
             </div>
         </div>
     );

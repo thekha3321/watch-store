@@ -5,8 +5,6 @@ import firebase from '../../firebase/config';
 import styles from './AdminAcountManager.module.scss';
 import Header from '../../components/Layout/Header';
 import AdminSidebar from '../../components/adminlayout/AdminSidebar';
-import AdminHeader from '../../components/adminlayout/AdminHeader/AdminHeader';
-import AdminShowProducts from '../../components/adminlayout/AdminShowProducts';
 import Loading from '../../components/Layout/Loading';
 import AdminShowUser from '../../components/adminlayout/AdminShowUser';
 

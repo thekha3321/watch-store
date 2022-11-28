@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
-import { Link, useParams } from 'react-router-dom';
-import firebase from '../../firebase/config';
 
 import styles from './SingleProduct.module.scss';
 import Footer from '../../components/Layout/Footer';
@@ -12,11 +10,10 @@ import SingleProduct__ from './SingleProduct__';
 
 // import firebase from '../../firebase/config';
 
-const cx = classNames.bind(styles);
-
 function SingleProduct() {
-    window.scrollTo(0,0)
-   
+    const cx = classNames.bind(styles);
+    window.scrollTo(0, 0);
+
     // function handleFilId () {
     //     products.map((product) => {
     //         if(product.id === productId) {
@@ -24,12 +21,12 @@ function SingleProduct() {
     //     })
     // }
     // console.log(products[0])
-    
+
     return (
         <>
             <Header />
             <Sidebar />
-            <SingleProduct__  />
+            <SingleProduct__ />
             <Footer />
         </>
     );

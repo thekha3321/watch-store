@@ -1,9 +1,7 @@
-// import classnames from 'classnames/bind';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import firebase from './firebase/config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 
 import AdminAccountManager from './adminscreens/AdminAccountManager';
@@ -13,7 +11,6 @@ import AdminHome from './adminscreens/AdminHome';
 import AdminProducts from './adminscreens/AdminProducts';
 import AdminPromotion from './adminscreens/AdminPromotion';
 import AdminStatistical from './adminscreens/AdminStatistical';
-import Loading from './components/Layout/Loading';
 import ShopSaling from './components/Layout/ShopSaling';
 import Brand from './screens/Brand';
 import Cart from './screens/Cart';
@@ -23,14 +20,14 @@ import Order from './screens/Order';
 import Register from './screens/Register';
 import Shipping from './screens/Shipping';
 import SingleProduct from './screens/SingleProduct';
+import Profile from './screens/profile';
 
 // const cx = classnames.bind(styles);
 
 function App() {
     const firestorageUser = firebase.firestore().collection('users');
     const firestorageCart = firebase.firestore().collection('cart');
-    const [users, setUsers] = useState([]);
-    const [userValid, setUserValid] = useState(false);
+    // const [users, setUsers] = useState([]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -47,21 +44,22 @@ function App() {
         uid: uuidv4(),
         rule: 'khách hàng',
     };
+    let cloneData = {};
 
     function getUsers() {
-        firestorageUser.onSnapshot((querySnapShot) => {
-            const items = [];
-            querySnapShot.forEach((doc) => {
-                items.push(doc.data());
-            });
-            setUsers(items);
-        });
+        // firestorageUser.onSnapshot((querySnapShot) => {
+        //     const items = [];
+        //     querySnapShot.forEach((doc) => {
+        //         items.push(doc.data());
+        //     });
+        //     // setUsers(items);
+        // });
     }
     const handleAction = async (id) => {
         if (id === 1) {
             await signInWithEmailAndPassword(authentication, email, password, name, address, phone)
                 .then((response) => {
-                    navigate('/home');
+                    navigate('/');
                     sessionStorage.setItem('Email', email);
                 })
                 .catch(() => {
@@ -71,9 +69,9 @@ function App() {
         if (id === 2) {
             await createUserWithEmailAndPassword(authentication, email, password, name, address, phone)
                 .then((response) => {
-                    firestorageCart.doc(dataUser.uid).set({});
+                    firestorageCart.doc(dataUser.email).set(cloneData);
                     firestorageUser.doc(dataUser.uid).set(dataUser);
-                    navigate('/home');
+                    navigate('/');
                     sessionStorage.setItem('Email', email);
                     sessionStorage.setItem('Name', name);
                     sessionStorage.setItem('Address', address);
@@ -85,13 +83,12 @@ function App() {
         }
     };
     useEffect(() => {
-        let email = localStorage.getItem('Email');
         getUsers();
     }, []);
 
     return (
         <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route
                 path="/login"
                 element={
@@ -130,8 +127,7 @@ function App() {
             <Route path="/admin/statistical" element={<AdminStatistical />} />
             <Route path="/brand/:productBrand" element={<Brand />} />
             <Route path="/saling" element={<ShopSaling />} />
-
-            {/* <Route path='/products/:id' element={<SingleProduct/>}/> */}
+            <Route path="/profile" element={<Profile />} />
         </Routes>
     );
 }

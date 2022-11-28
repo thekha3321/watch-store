@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import firebase from '../../firebase/config';
 import classnames from 'classnames/bind';
-import propTypes from 'prop-types';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 import styles from './Login.module.scss';
 import Header from '../../components/Layout/Header';
 
 const cx = classnames.bind(styles);
-const ref = firebase.firestore().collection('users');
 
 function Login({ title, setEmail, setPassword, handleAction }) {
     const handleSubmit = () => {};

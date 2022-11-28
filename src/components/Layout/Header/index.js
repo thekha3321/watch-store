@@ -1,7 +1,7 @@
-import { faMagnifyingGlass, faCartShopping, faCircleRadiation, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import React, { useState, useEffect } from 'react';
 
@@ -12,10 +12,8 @@ import Cart from '../../../screens/Cart';
 import firebase from '../../../firebase/config';
 import Search from './Search';
 
-const cx = classNames.bind(styles);
-
 function Header() {
-    // const [user, setUser] = useState(true);
+    const cx = classNames.bind(styles);
     const [products, setProducts] = useState([]);
 
     const rec = firebase.firestore().collection('cart');
@@ -40,9 +38,7 @@ function Header() {
         getProducts();
     }, []);
     let quality = 0;
-    products.map((product) => {
-        quality += 1;
-    });
+    products.map((product) => (quality += 1));
 
     const headerRegister = (
         <div>
@@ -82,12 +78,12 @@ function Header() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link className={cx('logo')} to="/home">
+                <Link className={cx('logo')} to="/">
                     <h1>LOGO</h1>
                 </Link>
                 <Search />
                 <div className={cx('actions')}>
-                    <Tippy content={'Giỏ hàng'}>
+                    <Tippy>
                         <Link to="/cart" element={<Cart />} className={cx('cart')}>
                             <FontAwesomeIcon className={cx('cart-icon')} icon={faCartShopping} />
                             <span className={cx('quality')}>{quality}</span>

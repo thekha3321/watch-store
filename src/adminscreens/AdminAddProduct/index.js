@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import classNames from 'classnames/bind';
 import styles from './AdminAddproduct.module.scss';
 import AdminSidebar from '../../components/adminlayout/AdminSidebar';
-import AdminHeader from '../../components/adminlayout/AdminHeader/AdminHeader';
 import firebase from './../../firebase/config';
 import Header from '../../components/Layout/Header';
 

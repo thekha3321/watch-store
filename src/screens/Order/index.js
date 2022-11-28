@@ -18,24 +18,18 @@ function Order() {
     const addr = localStorage.getItem('Address');
 
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
 
     function getProducts() {
-        setLoading(true);
         ref.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
             });
             setProducts(items);
-            setLoading(false);
         });
     }
     let allId = [];
-    products.map((product) => {
-        allId.push(product.id);
-    });
-    console.log(allId);
+    products.map((product) => allId.push(product.id));
     useEffect(() => {
         getProducts();
     }, []);

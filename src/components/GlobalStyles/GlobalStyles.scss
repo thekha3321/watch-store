@@ -5,12 +5,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: var(--text-color);
 }
 :root {
+    --text-color: #232323;
     --margin-component: 20px;
     --max-width: 1100px;
     --padding-top-header: 120px;
-    --primary-color: #f1bc31;
+    --primary-color: #339994;
     --primary-background-color: #ffffff;
     --border-radius-btn: 8px;
 }

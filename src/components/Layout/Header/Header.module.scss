@@ -1,8 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 .wrapper {
     display: flex;
     justify-content: center;
@@ -99,7 +94,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: #339994;
     border-radius: 50%;
     width: 14px;
     height: 14px;
@@ -139,12 +134,12 @@
 .signup-btn,
 .signin-btn {
     padding: 8px 16px;
-    border-radius: var(--border-radius-btn);
     margin-left: 14px;
+    border: 1px solid var(--primary-color);
 }
 
 .signup-btn {
-    border: 1px solid #e5e4f9;
+    border: 1px solid var(--primary-color);
 }
 
 .signin-btn {

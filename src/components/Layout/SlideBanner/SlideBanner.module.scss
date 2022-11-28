@@ -1,4 +1,4 @@
-@import "react-slideshow-image/dist/styles.css";
+@import 'react-slideshow-image/dist/styles.css';
 
 .wrapper {
     width: 100%;
@@ -7,19 +7,54 @@
 
 .inner {
     width: 100%;
-    height: 100%;
+    height: 350px;
 
     .banner-img {
         width: 100%;
-        height: 100%;
+        height: 350px;
     }
 
     img {
         width: 100%;
-        height: 100%;
+        height: 350px;
     }
 
     .each-slide {
+        position: relative;
+        color: #ffffff;
         height: 328px;
+    }
+
+    span {
+        z-index: 30;
+        position: absolute;
+        color: #ffffff;
+        top: 42%;
+        transform: translateX(826px);
+    }
+    p {
+        margin-left: 16px;
+        display: inline;
+        color: #ffffff;
+    }
+    h1 {
+        display: inline;
+        font-size: 30px;
+        font-weight: 400;
+        color: #ffffff;
+    }
+    h4 {
+        width: 300px;
+        font-weight: 400;
+        font-size: 18px;
+        color: #ffffff;
+    }
+    .btn {
+        color: #fff;
+        position: absolute;
+        right: 0;
+        margin-top: 10px;
+        padding: 12px 30px;
+        background-color: rgba(239, 92, 110);
     }
 }

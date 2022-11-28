@@ -3,7 +3,7 @@ import classnames from 'classnames/bind';
 import styles from './Sidebar.module.scss';
 import Tippy from '@tippyjs/react';
 // import products from '../../../data/products';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import firebase from '../../../firebase/config';

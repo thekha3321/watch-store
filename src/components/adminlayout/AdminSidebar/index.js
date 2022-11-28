@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import className from 'classnames/bind';
-import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faFolderPlus,
@@ -10,17 +9,11 @@ import {
     faMap,
     faFileInvoice,
 } from '@fortawesome/free-solid-svg-icons';
-
-// import { } from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-router-dom';
-
 import styles from './AdminSidebar.module.scss';
 
-const cx = className.bind(styles);
-
 function AdminSidebar() {
-    const { products } = useParams();
-
+    const cx = className.bind(styles);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>

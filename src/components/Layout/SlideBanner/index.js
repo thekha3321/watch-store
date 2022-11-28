@@ -8,16 +8,25 @@ const cx = classnames.bind(styles);
 
 const banners = [
     {
-        url: 'http://watchvarious.somee.com/images/1.jpg',
+        url: 'https://cdn.eoniq.co/assets/diver@d@4096-bbe14caf454443a05e90176d652660ce.jpg',
         caption: 'Slide 1',
+        name: 'EXPEDITION',
+        price: 'USD270',
+        detail: 'powered by Seiko automatic movements.',
     },
     {
-        url: 'http://watchvarious.somee.com/images/2.jpg',
+        url: 'https://cdn.eoniq.co/spree/images/246718/desktop/new-pinot-banner_5661b67f7150ff2f8fa7481403b075f2.jpg?1636984156',
         caption: 'Slide 2',
+        name: 'Pinot Blanc',
+        price: 'USD318',
+        detail: 'Skeleton watch for all occasions.',
     },
     {
-        url: 'http://watchvarious.somee.com/images/3.jpg',
+        url: 'https://cdn.eoniq.co/spree/images/641258/desktop/WC-NVSWS_1c169019cc62689878e19a53649ca3f4.jpg?1619777587',
         caption: 'Slide 3',
+        name: 'Navigator Swiss',
+        price: 'USD698',
+        detail: ' The Best Just Got Better.',
     },
 ];
 
@@ -28,9 +37,13 @@ function SlideBanner() {
                 <Slide indicators={true} className={cx('slide')}>
                     {banners.map((banner, index) => (
                         <div className="each-slide" key={index}>
-                            <div>
-                                <img src={banner.url} alt="" />
-                            </div>
+                            <img src={banner.url} alt="Banner" />
+                            <span>
+                                <h1>{banner.name}</h1>
+                                <p>{banner.price}</p>
+                                <h4>{banner.detail}</h4>
+                                <button className={cx('btn')}>Mua Ngay</button>
+                            </span>
                         </div>
                     ))}
                 </Slide>
