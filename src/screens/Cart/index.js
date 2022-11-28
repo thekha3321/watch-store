@@ -11,6 +11,11 @@ const cx = classNames.bind(styles);
 
 function Cart() {
     const [products, setProducts] = useState([]);
+<<<<<<< HEAD
+=======
+    const [loading, setLoading] = useState(false);
+    const currentEmail = sessionStorage.getItem('Email');
+>>>>>>> b302ee1e975586307a3d920e554a82b39f0dfee8
     const ref = firebase.firestore().collection('cart');
 
     let navigate = useNavigate();
