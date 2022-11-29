@@ -33,7 +33,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                                 onChange={(e) => setPassword(e.target.value)}
                                 onBlur={() => {}}
                                 type="password"
-                                placeholder="Password"
+                                placeholder="Mật khẩu..."
                                 className={cx('input')}
                                 id="password"
                             />
@@ -76,7 +76,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                             </div>
                             <p>
                                 <Link to="/login">
-                                    I have Account <strong>Đăng Nhập</strong>
+                                    Bạn đã có tài khoản ?<strong>Đăng Nhập</strong>
                                 </Link>
                             </p>
                         </div>

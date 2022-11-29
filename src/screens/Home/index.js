@@ -8,6 +8,7 @@ import ShopSection from '../../components/Layout/ShopSection';
 import SlideBanner from '../../components/Layout/SlideBanner';
 import Footer from '../../components/Layout/Footer';
 import Header from '../../components/Layout/Header';
+import LogoBanner from '../../components/Layout/LogoBanner';
 // import Header from '../../components/Layout/Header';
 // import ShopSaling from '../../components/Layout/ShopSaling';
 
@@ -25,6 +26,7 @@ function Home() {
             <SlideBanner />
             {/* <Banner src="https://cdn.eoniq.co/spree/images/845685/desktop/EONIQ_Navigator_custom_pilot_watches_230fa7e2c7e91f18f5a72d056384f963.jpg?1619777370" /> */}
             <ShopSection />
+            <LogoBanner />
             <Footer />
         </div>
     );

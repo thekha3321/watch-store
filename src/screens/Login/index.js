@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
@@ -29,7 +29,7 @@ function Login({ title, setEmail, setPassword, handleAction }) {
                             <input
                                 onChange={(e) => setPassword(e.target.value)}
                                 type="password"
-                                placeholder="Password"
+                                placeholder="Mật khẩu..."
                                 className={cx('input')}
                             />
                             <div className={cx('')}>

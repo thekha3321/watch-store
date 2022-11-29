@@ -79,7 +79,7 @@ function Header() {
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <Link className={cx('logo')} to="/">
-                    <h1>LOGO</h1>
+                    <div className={cx('logo-img')} />
                 </Link>
                 <Search />
                 <div className={cx('actions')}>

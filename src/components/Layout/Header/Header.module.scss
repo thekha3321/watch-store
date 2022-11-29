@@ -22,7 +22,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    .logo-img {
+        width: 100px;
+        height: 100px;
 
+        background: url('../../../../public/img/Logo.png');
+    }
     h1 {
         color: var(--primary-color);
     }

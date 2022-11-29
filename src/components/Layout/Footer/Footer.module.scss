@@ -5,51 +5,82 @@
     display: flex;
     justify-content: center;
 
-
-    .inner {
-        width: var(--max-width);
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-
+    .container {
+        margin: var(--margin-component) 0 0 0;
+        width: 100%;
+        background: url('https://demo.artureanec.com/themes/cosmecos-new/wp-content/uploads/2021/01/home2-bg-10.jpg');
         .top {
+            margin-top: var(--margin-component);
+            font-size: 16px;
+            font-weight: 500;
             display: flex;
-            justify-content: space-around;
-
-            .container {
+            justify-content: center;
+            align-items: center;
+            h4 {
+                font-size: 24px;
+                font-weight: 600;
+            }
+            .contact-icon {
+                margin-right: 8px;
+            }
+            .left {
+                width: 25%;
+                margin: 30px 10px 0 10px;
+            }
+            .mid {
+                width: 25%;
+                margin: 30px 10px 0 10px;
                 display: flex;
-                flex-direction: column;
-                text-align: center;
-                padding: 10px;
-
-                .heading {
+            }
+            .right {
+                width: 25%;
+                margin: 30px 10px 0 10px;
+                input {
+                    background-color: initial;
+                    width: 300px;
+                    height: 50px;
+                    font-size: 18px;
+                    border-bottom: 1px solid black;
+                }
+                button {
+                    margin-top: 8px;
+                    font-size: 18px;
                     font-weight: 500;
-                    font-size: 16px;
-                }
-
-                Link {}
-
-                img {
-                    width: 250px;
-                    height: 140px;
+                    text-transform: uppercase;
+                    border: 1px solid black;
+                    background-color: initial;
+                    display: block;
+                    width: 300px;
+                    height: 50px;
                 }
             }
         }
-
-        .bottom {
-
-            .container {
+        .bot {
+            border-top: 1px solid #ccc;
+            padding: 30px 50px;
+            margin-top: var(--margin-component);
+            display: flex;
+            justify-content: space-between;
+            span {
+            }
+            ul {
                 display: flex;
-
-                h1 {
-                    width: 50%;
-                }
-
-                div {
-                    width: 50%;
+                height: 10px;
+                li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid #ccc;
+                    border-radius: 50%;
+                    margin: 0 10px;
+                    width: 30px;
+                    height: 30px;
+                    transition: all 0.3s linear;
+                    &:hover {
+                        background-color: rgb(214, 214, 214);
+                    }
                 }
             }
         }
-
     }
 }
