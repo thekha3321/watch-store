@@ -10,7 +10,9 @@
     }
 
     .heading {
+        padding-top: 20px;
         text-align: center;
+        font-weight: 600;
         text-transform: uppercase;
 
         span {
@@ -41,7 +43,7 @@
             flex-direction: column;
             justify-content: center;
 
-            span { 
+            span {
                 margin: 10px 0;
             }
 
@@ -56,13 +58,13 @@
                 text-align: center;
             }
 
-            .product-description {}
+            .product-description {
+            }
 
-            button { 
+            button {
                 background-color: var(--primary-color);
                 padding: 20px 50px;
             }
         }
     }
-
 }

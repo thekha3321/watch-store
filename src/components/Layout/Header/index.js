@@ -14,9 +14,10 @@ import Search from './Search';
 
 function Header() {
     const cx = classNames.bind(styles);
-    const [products, setProducts] = useState([]);
-
     const rec = firebase.firestore().collection('cart');
+    const [products, setProducts] = useState([]);
+    const [small, setSmall] = useState(false);
+
     function getProducts() {
         rec.onSnapshot((querySnapShot) => {
             const items = [];
@@ -36,6 +37,9 @@ function Header() {
     let navigate = useNavigate();
     useEffect(() => {
         getProducts();
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', () => setSmall(window.pageYOffset > 200));
+        }
     }, []);
     let quality = 0;
     products.map((product) => (quality += 1));
@@ -76,10 +80,10 @@ function Header() {
         </div>
     );
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', `${small ? 'small' : ''}`)}>
             <div className={cx('inner')}>
                 <Link className={cx('logo')} to="/">
-                    <div className={cx('logo-img')} />
+                    <div className={cx('logo-img', `${small ? 'hide' : ''}`)} />
                 </Link>
                 <Search />
                 <div className={cx('actions')}>

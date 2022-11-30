@@ -1,10 +1,11 @@
 .wrapper {
     width: 86.6%;
-    margin: 20px 0 0 200px;
+    margin: 0 0 0 200px;
     background-color: var(--primary-background-color);
     box-shadow: 0px 0px 3px 2px rgb(0 0 0 / 12%);
     .inner {
         .container {
+            padding-top: 100px;
             .product-info {
                 width: 100%;
                 .heading {

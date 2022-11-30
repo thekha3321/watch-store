@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Profile.module.scss';
 import classNames from 'classnames/bind';
 import Header from '../../components/Layout/Header';
 
 function Profile() {
     const cx = classNames.bind(styles);
+    const [file, setFile] = useState('');
+    console.log(file);
     return (
         <>
             <Header />
@@ -20,7 +22,7 @@ function Profile() {
                                 alt="avatar"
                             />
                             <label className={cx('label')}>
-                                <input type="file" required />
+                                <input type="file" required onChange={(e) => setFile(e.target.files[0].name)} />
                                 <span>Chọn ảnh đại diện</span>
                             </label>
                         </div>
