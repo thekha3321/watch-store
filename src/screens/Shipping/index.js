@@ -34,8 +34,8 @@ function Shipping() {
                             <Link to="/order">
                                 <div
                                     onClick={() => {
-                                        localStorage.setItem('Address', `${addr}`);
-                                        localStorage.setItem('Phone', `${phone}`);
+                                        sessionStorage.setItem('Address', `${addr}`);
+                                        sessionStorage.setItem('Phone', `${phone}`);
                                     }}
                                     className={cx('btn')}
                                 >

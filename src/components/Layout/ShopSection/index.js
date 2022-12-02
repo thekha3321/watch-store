@@ -20,7 +20,7 @@ function ShopSection() {
     const [id, setId] = useState('');
     const ref = firebase.firestore().collection('products');
     const rec = firebase.firestore().collection('cart');
-    // const iconHearts = document.querySelectorAll('.ShopSection_icon-heart__6Vr0r');
+
     function getProducts() {
         setLoading(true);
         ref.onSnapshot((querySnapShot) => {
@@ -33,8 +33,12 @@ function ShopSection() {
         });
     }
     const createDoc = async (props) => {
-        await rec.doc(props.id).set(props);
-        alert('Đã thêm sản phẩm vào giỏ hàng');
+        try {
+            await rec.doc(props.id).set(props);
+            alert('Đã thêm sản phẩm vào giỏ hàng');
+        } catch (e) {
+            console.log(e);
+        }
     };
     useEffect(() => {
         getProducts();
@@ -84,7 +88,7 @@ function ShopSection() {
                             Thêm vào giỏ hàng
                         </button>
                         <Link to={`/products/${product.id}`} className={cx('detail')}>
-                            Xem sản phẩm
+                            <span>Xem sản phẩm</span>
                         </Link>
                     </div>
                 </div>

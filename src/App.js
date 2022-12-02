@@ -69,8 +69,6 @@ function App() {
         if (id === 2) {
             await createUserWithEmailAndPassword(authentication, email, password, name, address, phone)
                 .then((response) => {
-                    firestorageCart.doc(dataUser.email).set(cloneData);
-                    firestorageUser.doc(dataUser.uid).set(dataUser);
                     navigate('/');
                     sessionStorage.setItem('Email', email);
                     sessionStorage.setItem('Name', name);

@@ -5,16 +5,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import Header from '../../components/Layout/Header';
+import { v4 as uuidv4 } from 'uuid';
 import firebase from '../../firebase/config';
 
-const cx = classNames.bind(styles);
-
 function Cart() {
+    const cx = classNames.bind(styles);
     const [products, setProducts] = useState([]);
     const ref = firebase.firestore().collection('cart');
-
+    const randomId = uuidv4();
     let navigate = useNavigate();
-    function getProducts() {
+
+    const getProducts = () => {
         ref.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
@@ -22,10 +23,14 @@ function Cart() {
             });
             setProducts(items);
         });
-    }
+    };
+
     useEffect(() => {
         getProducts();
     }, []);
+
+    let totalMoney = 0;
+    products.map((product) => (totalMoney += product.price));
 
     const handleDeleteProduct = (docx) => {
         ref.doc(docx.id)
@@ -35,9 +40,22 @@ function Cart() {
             });
         //eslint-disable-line
     };
-
-    let totalMoney = 0;
-    products.map((product) => (totalMoney += product.price));
+    let bill = {
+        id: randomId,
+        name: sessionStorage.getItem('Name'),
+        email: sessionStorage.getItem('Email'),
+        phone: sessionStorage.getItem('Phone'),
+        address: sessionStorage.getItem('Address'),
+        allProducts: [...products],
+    };
+    const handleCreateBill = async () => {
+        if (products.length !== 0) {
+            localStorage.setItem('AllProducts', JSON.stringify(bill.allProducts));
+            navigate('/order');
+        } else {
+            alert('bạn chưa có đơn hàng');
+        }
+    };
 
     return (
         <>
@@ -98,7 +116,7 @@ function Cart() {
                                 <button
                                     onClick={() => {
                                         if (firebase.auth().currentUser) {
-                                            navigate('/order');
+                                            handleCreateBill();
                                             // eslint-disable-next-line no-restricted-globals
                                         } else if (confirm('bạn chưa đăng nhập, bạn có muốn đăng nhập không ?')) {
                                             navigate('/login');

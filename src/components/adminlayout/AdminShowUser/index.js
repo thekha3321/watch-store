@@ -7,7 +7,7 @@ import { faCircleInfo, faLock, faTrash } from '@fortawesome/free-solid-svg-icons
 
 function AdminShowUser({ user }) {
     const ref = firebase.firestore().collection('users');
-
+    const userId = user.uid.slice(0, 4);
     const cx = classNames.bind(styles);
     const handleDeleteProduct = async (user) => {
         // eslint-disable-next-line no-restricted-globals
@@ -33,7 +33,7 @@ function AdminShowUser({ user }) {
     return (
         <div key={user.uid}>
             <div className={cx('bottom')}>
-                <div className={cx('product-title')}>{user.uid}</div>
+                <div className={cx('product-title', 'text-upper')}>{userId}</div>
                 <div className={cx('product-title')}>{user.name}</div>
                 <div className={cx('product-title')}>{user.email}</div>
                 <div className={cx('product-title')}>{user.rule}</div>

@@ -6,44 +6,64 @@ import { Link } from 'react-router-dom';
 import firebase from '../../firebase/config';
 
 import sytles from './Order.module.scss';
+import { v4 as uuidv4 } from 'uuid';
 import Header from '../../components/Layout/Header';
 
-const cx = classNames.bind(sytles);
-const ref = firebase.firestore().collection('cart');
-
-console.log(ref);
 function Order() {
-    const name = localStorage.getItem('Name');
-    const phone = localStorage.getItem('Phone');
-    const addr = localStorage.getItem('Address');
+    const cx = classNames.bind(sytles);
+    const rec = firebase.firestore().collection('cart');
+    const ref = firebase.firestore().collection('bills');
 
+    const name = sessionStorage.getItem('Name');
+    const phone = sessionStorage.getItem('Phone');
+    const addr = sessionStorage.getItem('Address');
+
+    const [productsInLocal, setProductsInLocal] = useState([]);
     const [products, setProducts] = useState([]);
+    const randomId = uuidv4();
 
-    function getProducts() {
-        ref.onSnapshot((querySnapShot) => {
+    const getProductsInLocal = () => {
+        if (localStorage.getItem('AllProducts')) {
+            const allProducts = localStorage.getItem('AllProducts');
+            setProductsInLocal(JSON.parse(allProducts));
+        }
+    };
+
+    const getProducts = () => {
+        rec.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
             });
             setProducts(items);
         });
-    }
-    let allId = [];
-    products.map((product) => allId.push(product.id));
+    };
+
     useEffect(() => {
         getProducts();
+        getProductsInLocal();
     }, []);
-    const handleDeleteProduct = (allId) => {
-        // eslint-disable-next-line no-restricted-globals
-        ref.doc()
-            .delete()
-            .catch((err) => {
-                alert(err);
-                console.log(err);
-            });
-        alert('Đặt hàng thành công!');
-        //eslint-disable-line
+
+    let bill = {
+        id: randomId,
+        name: sessionStorage.getItem('Name'),
+        email: sessionStorage.getItem('Email'),
+        phone: sessionStorage.getItem('Phone'),
+        address: sessionStorage.getItem('Address'),
+        allProducts: [...products],
     };
+
+    const handlePay = async () => {
+        await ref.doc(randomId).set(bill);
+        await products.forEach((product) => rec.doc(product.id).delete());
+        localStorage.clear('Allproducts');
+    };
+
+    let totalMoney = 0;
+    productsInLocal.forEach((product) => {
+        totalMoney += product.price;
+    });
+
     return (
         <>
             <Header />
@@ -77,25 +97,28 @@ function Order() {
                                 <div className={cx('heading-title')}>Thành Tiền</div>
                             </div>
                         </div>
-                        <div className={cx('bill-info')}>
-                            <div className={cx('product-info')}>
-                                <img
-                                    src="https://cdn3.dhht.vn/wp-content/uploads/2017/07/AE-1200WHD-1AVDF.jpg"
-                                    alt=""
-                                />
-                                <div>Casio AE-1200WHD-1AVDF – Nam – Kính Nhựa – Quartz (Pin) – Dây Kim Loại</div>
+                        {productsInLocal.map((product) => (
+                            <div className={cx('bill-info')}>
+                                <div className={cx('product-info')}>
+                                    <img src={product.image} alt="" />
+                                    <div>{product.name}</div>
+                                </div>
+                                <div className={cx('title')}>
+                                    <span className={cx('heading-title')}>{`${new Intl.NumberFormat('de-DE').format(
+                                        product.price,
+                                    )} đ`}</span>
+                                    <span className={cx('heading-title')}>1</span>
+                                    <span className={cx('heading-title')}>{`${new Intl.NumberFormat('de-DE').format(
+                                        product.price,
+                                    )} đ`}</span>
+                                </div>
                             </div>
-                            <div className={cx('title')}>
-                                <span className={cx('heading-title')}>1.300.000</span>
-                                <span className={cx('heading-title')}>1</span>
-                                <span className={cx('heading-title')}>1.300.000</span>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                     <div className={cx('order')}>
                         <div className={cx('order-container')}>
                             <span>Tổng tiền hàng</span>
-                            <span>1.300.000</span>
+                            <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney)} đ`}</span>
                         </div>
                         <div className={cx('order-container')}>
                             <span>Phí vận chuyển</span>
@@ -103,10 +126,10 @@ function Order() {
                         </div>
                         <div className={cx('order-container')}>
                             <span>Tổng thanh toán</span>
-                            <span>1.330.000</span>
+                            <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney + 30000)} đ`}</span>
                         </div>
                         <div className={cx('btn')}>
-                            <button onClick={() => handleDeleteProduct(allId)} className={cx('order-btn')}>
+                            <button onClick={handlePay} className={cx('order-btn')}>
                                 Đặt hàng
                             </button>
                         </div>
