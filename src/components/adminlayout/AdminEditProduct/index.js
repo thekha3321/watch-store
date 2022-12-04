@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './AdminEditProduct.module.scss';
 import firebase from '../../../firebase/config';
@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
-const ref = firebase.firestore().collection('products');
+const productsRef = firebase.firestore().collection('products');
 
 function AdminEditProduct({ product, setEditbox }) {
     const [name, setName] = useState('');
@@ -18,7 +18,8 @@ function AdminEditProduct({ product, setEditbox }) {
     const handleEditProduct = (updtProduct) => {
         // eslint-disable-next-line no-restricted-globals
         if (confirm('Bạn có chắc muốn sửa sản phẩm ?')) {
-            ref.doc(updtProduct.id)
+            productsRef
+                .doc(updtProduct.id)
                 .update(updtProduct)
                 .catch((err) => {
                     alert(err);

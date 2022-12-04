@@ -126,14 +126,18 @@
             padding: 10px;
             cursor: pointer;
             &:hover {
-                background-color: #ccc !important;
-                border: 2px solid #ccc;
             }
         }
     }
 }
-.signout-btn {
-    padding: 10px;
+.btn-profile,
+.btn-logout {
+    padding: 4px;
+    &:hover {
+        background-color: #ccc;
+        padding-bottom: 2px;
+        opacity: 1 !important;
+    }
 }
 
 .signup-btn,

@@ -7,10 +7,9 @@ import AdminSidebar from '../../components/adminlayout/AdminSidebar';
 import firebase from './../../firebase/config';
 import Header from '../../components/Layout/Header';
 
-const cx = classNames.bind(styles);
-const ref = firebase.firestore().collection('products');
-
 function AdminAddProduct() {
+    const cx = classNames.bind(styles);
+    const productsRef = firebase.firestore().collection('products');
     const [name, setName] = useState('');
     const [brand, setBrand] = useState('');
     const [price, setPrice] = useState('');
@@ -18,8 +17,8 @@ function AdminAddProduct() {
     const [desc, setDesc] = useState('');
 
     const createDoc = (newDataObj) => {
+        productsRef.doc(newDataObj.id).set(newDataObj);
         alert('Thêm sản phẩm thành công');
-        ref.doc(newDataObj.id).set(newDataObj);
     };
 
     return (

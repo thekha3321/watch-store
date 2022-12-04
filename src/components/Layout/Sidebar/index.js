@@ -13,10 +13,10 @@ const cx = classnames.bind(styles);
 function Sidebar() {
     const [products, setProducts] = useState([]);
 
-    const ref = firebase.firestore().collection('products');
+    const productsRef = firebase.firestore().collection('products');
 
     function getProducts() {
-        ref.onSnapshot((querySnapShot) => {
+        productsRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());

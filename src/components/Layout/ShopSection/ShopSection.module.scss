@@ -53,8 +53,7 @@
                 }
             }
             &:hover img {
-                height: 100%;
-                width: 100%;
+                padding: 2px 8px 16px 8px;
             }
 
             .icon-heart {
@@ -70,8 +69,8 @@
             }
             img {
                 margin: 6px auto;
-                width: calc(100% - 32px);
-                height: calc(100% - 32px);
+                height: 100%;
+                width: 100%;
                 padding: 10px 8px;
                 border: 1px solid black;
                 transition: 0.5s all ease;

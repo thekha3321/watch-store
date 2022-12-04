@@ -6,7 +6,6 @@ import Header from '../../components/Layout/Header';
 
 function Register({ title, setEmail, setPassword, handleAction, setName, setAddress, setPhone }) {
     const cx = classnames.bind(styles);
-
     return (
         <>
             <Header />
@@ -71,7 +70,13 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                                 className={cx('input')}
                                 id="phone"
                             />
-                            <div variant="contained" onClick={handleAction} className={cx('btn')}>
+                            <div
+                                variant="contained"
+                                onClick={() => {
+                                    handleAction(2);
+                                }}
+                                className={cx('btn')}
+                            >
                                 {title}
                             </div>
                             <p>

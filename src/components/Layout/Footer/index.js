@@ -5,9 +5,8 @@ import styles from './Footer.module.scss';
 import { faEnvelope, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-const cx = classnames.bind(styles);
-
 function Footer() {
+    const cx = classnames.bind(styles);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>

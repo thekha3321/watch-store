@@ -39,6 +39,9 @@
             .contact {
                 display: flex;
                 flex-direction: row;
+                p {
+                    margin-left: 10px;
+                }
 
                 h4 {
                     margin-left: 24px;

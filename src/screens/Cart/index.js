@@ -11,12 +11,12 @@ import firebase from '../../firebase/config';
 function Cart() {
     const cx = classNames.bind(styles);
     const [products, setProducts] = useState([]);
-    const ref = firebase.firestore().collection('cart');
+    const cartRef = firebase.firestore().collection('cart');
     const randomId = uuidv4();
     let navigate = useNavigate();
 
     const getProducts = () => {
-        ref.onSnapshot((querySnapShot) => {
+        cartRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
@@ -33,7 +33,8 @@ function Cart() {
     products.map((product) => (totalMoney += product.price));
 
     const handleDeleteProduct = (docx) => {
-        ref.doc(docx.id)
+        cartRef
+            .doc(docx.id)
             .delete()
             .catch((err) => {
                 alert(err);

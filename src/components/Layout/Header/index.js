@@ -14,12 +14,12 @@ import Search from './Search';
 
 function Header() {
     const cx = classNames.bind(styles);
-    const rec = firebase.firestore().collection('cart');
+    const cartRef = firebase.firestore().collection('cart');
     const [products, setProducts] = useState([]);
     const [small, setSmall] = useState(false);
 
     function getProducts() {
-        rec.onSnapshot((querySnapShot) => {
+        cartRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
@@ -61,8 +61,8 @@ function Header() {
                 interactive
                 content={
                     <div className={cx('user-content')}>
-                        <button>tài khoản</button>
-                        <button onClick={handleLogout} className={cx('signout-btn')}>
+                        <button className={cx('btn-profile')}>tài khoản</button>
+                        <button onClick={handleLogout} className={cx('btn-logout')}>
                             đăng xuất
                         </button>
                     </div>

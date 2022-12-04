@@ -12,9 +12,8 @@ function SingleProduct__() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const { productId } = useParams();
-    const currentEmail = sessionStorage.getItem('Email');
-    const ref = firebase.firestore().collection('products').where('id', '==', `${productId}`);
-    const rec = firebase.firestore().collection('cart');
+    const productsRef = firebase.firestore().collection('products').where('id', '==', `${productId}`);
+    const cartRef = firebase.firestore().collection('cart');
 
     const [name, setName] = useState('');
     const [brand, setBrand] = useState('');
@@ -25,7 +24,7 @@ function SingleProduct__() {
     // get products
     function getProducts() {
         setLoading(true);
-        ref.onSnapshot((querySnapShot) => {
+        productsRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
@@ -37,7 +36,7 @@ function SingleProduct__() {
 
     // push product to cart
     const createDoc = (props) => {
-        rec.doc(props.id).set(props);
+        cartRef.doc(props.id).set(props);
         alert('Đã thêm sản phẩm vào giỏ hàng');
     };
     useEffect(() => {

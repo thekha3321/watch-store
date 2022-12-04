@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import firebase from '../../../firebase/config';
 import classNames from 'classnames/bind';
-import ReactDOM from 'react-dom/client';
 import styles from './Search.css';
 import SearchList from './SearchList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-
-const cx = classNames.bind(styles);
 
 const ref = firebase.firestore().collection('products');
 

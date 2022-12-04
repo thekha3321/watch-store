@@ -11,13 +11,13 @@ import AdminShowUser from '../../components/adminlayout/AdminShowUser';
 function AdminAcountManager() {
     const cx = classNames.bind(styles);
 
-    const ref = firebase.firestore().collection('users');
+    const usersRef = firebase.firestore().collection('users');
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
 
     function getUsers() {
         setLoading(true);
-        ref.onSnapshot((querySnapShot) => {
+        usersRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
@@ -41,7 +41,7 @@ function AdminAcountManager() {
                     <div className={cx('product-title')}>hành động</div>
                 </div>
                 {users.map((user) => (
-                    <AdminShowUser user={user} />
+                    <AdminShowUser user={user} key={user.id} />
                 ))}
             </div>
         </div>

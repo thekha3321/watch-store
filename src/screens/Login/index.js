@@ -5,9 +5,8 @@ import classnames from 'classnames/bind';
 import styles from './Login.module.scss';
 import Header from '../../components/Layout/Header';
 
-const cx = classnames.bind(styles);
-
 function Login({ title, setEmail, setPassword, handleAction }) {
+    const cx = classnames.bind(styles);
     const handleSubmit = () => {};
 
     return (
@@ -33,7 +32,7 @@ function Login({ title, setEmail, setPassword, handleAction }) {
                                 className={cx('input')}
                             />
                             <div className={cx('')}>
-                                <div type="submit" onClick={handleAction} className={cx('btn')}>
+                                <div type="submit" onClick={() => handleAction(1)} className={cx('btn')}>
                                     {title}
                                 </div>
                             </div>

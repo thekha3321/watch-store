@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import firebase from './firebase/config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { v4 as uuidv4 } from 'uuid';
+import firebase from './firebase/config';
 
 import AdminAccountManager from './adminscreens/AdminAccountManager';
 import AdminAddProduct from './adminscreens/AdminAddProduct';
@@ -22,12 +22,7 @@ import Shipping from './screens/Shipping';
 import SingleProduct from './screens/SingleProduct';
 import Profile from './screens/profile';
 
-// const cx = classnames.bind(styles);
-
 function App() {
-    const firestorageUser = firebase.firestore().collection('users');
-    const firestorageCart = firebase.firestore().collection('cart');
-    // const [users, setUsers] = useState([]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -35,26 +30,16 @@ function App() {
     const [phone, setPhone] = useState('');
     const authentication = getAuth();
     let navigate = useNavigate();
-    let dataUser = {
+    const usersRef = firebase.firestore().collection('users');
+
+    const users = {
+        name,
         email,
         password,
-        name,
         address,
         phone,
-        uid: uuidv4(),
-        rule: 'khách hàng',
+        id: uuidv4().slice(0, 5),
     };
-    let cloneData = {};
-
-    function getUsers() {
-        // firestorageUser.onSnapshot((querySnapShot) => {
-        //     const items = [];
-        //     querySnapShot.forEach((doc) => {
-        //         items.push(doc.data());
-        //     });
-        //     // setUsers(items);
-        // });
-    }
     const handleAction = async (id) => {
         if (id === 1) {
             await signInWithEmailAndPassword(authentication, email, password, name, address, phone)
@@ -69,6 +54,7 @@ function App() {
         if (id === 2) {
             await createUserWithEmailAndPassword(authentication, email, password, name, address, phone)
                 .then((response) => {
+                    usersRef.doc(users.id).set(users);
                     navigate('/');
                     sessionStorage.setItem('Email', email);
                     sessionStorage.setItem('Name', name);
@@ -80,9 +66,7 @@ function App() {
                 });
         }
     };
-    useEffect(() => {
-        getUsers();
-    }, []);
+    useEffect(() => {}, []);
 
     return (
         <Routes>

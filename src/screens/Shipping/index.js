@@ -4,9 +4,8 @@ import styles from './Shipping.module.scss';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Layout/Header';
 
-const cx = classNames.bind(styles);
-
 function Shipping() {
+    const cx = classNames.bind(styles);
     const [addr, setAddr] = useState('');
     const [phone, setPhone] = useState('');
     return (

@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './AdminProducts.module.scss';
 import AdminSibar from './../../components/adminlayout/AdminSidebar';
-import AdminHeader from '../../components/adminlayout/AdminHeader/AdminHeader';
 import firebase from '../../firebase/config';
-import AdminAddProduct from '../AdminAddProduct';
-import AdminEditProduct from '../../components/adminlayout/AdminEditProduct/index.js';
 import AdminShowProducts from '../../components/adminlayout/AdminShowProducts';
 import Loading from '../../components/Layout/Loading';
 import Header from '../../components/Layout/Header';
@@ -13,14 +10,14 @@ import Header from '../../components/Layout/Header';
 function AdminProducts() {
     const cx = classNames.bind(styles);
 
-    const ref = firebase.firestore().collection('products');
+    const productsRef = firebase.firestore().collection('products');
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
     function getProducts() {
         setLoading(true);
-        ref.onSnapshot((querySnapShot) => {
+        productsRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
@@ -44,7 +41,7 @@ function AdminProducts() {
                     <div className={cx('product-title')}>hành động</div>
                 </div>
                 {products.map((product) => (
-                    <AdminShowProducts product={product} />
+                    <AdminShowProducts product={product} key={product.id} />
                 ))}
             </div>
         </div>

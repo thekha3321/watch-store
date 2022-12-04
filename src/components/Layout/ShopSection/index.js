@@ -18,12 +18,13 @@ function ShopSection() {
     const [image, setImage] = useState('');
     const [desc, setDesc] = useState('');
     const [id, setId] = useState('');
-    const ref = firebase.firestore().collection('products');
-    const rec = firebase.firestore().collection('cart');
+
+    const productsRef = firebase.firestore().collection('products');
+    const cartRef = firebase.firestore().collection('cart');
 
     function getProducts() {
         setLoading(true);
-        ref.onSnapshot((querySnapShot) => {
+        productsRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
@@ -32,17 +33,20 @@ function ShopSection() {
             setLoading(false);
         });
     }
+
     const createDoc = async (props) => {
         try {
-            await rec.doc(props.id).set(props);
-            alert('Đã thêm sản phẩm vào giỏ hàng');
+            await cartRef.doc(props.id).set(props);
+            // setIsShowToast(true);
         } catch (e) {
             console.log(e);
         }
     };
+
     useEffect(() => {
         getProducts();
     }, []);
+
     const renderProducts = (
         <div className={cx('inner')}>
             {products.map((product, index) => (

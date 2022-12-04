@@ -1,15 +1,13 @@
 import React from 'react';
 import className from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faBell, faMagnifyingGlass, faMessage, faUser, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faMagnifyingGlass, faMessage, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import { Link } from 'react-router-dom';
-
 import styles from './AdminHeader.module.scss';
 
-const cx = className.bind(styles);
-
 function AdminHeader() {
+    const cx = className.bind(styles);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames/bind';
 import styles from './ShopSaling.module.scss';
-import products from '../../../data/products';
 import { Link } from 'react-router-dom';
 
 import firebase from '../../../firebase/config';
@@ -16,11 +15,11 @@ function ShopSaling() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const ref = firebase.firestore().collection('products');
+    const productsRef = firebase.firestore().collection('products');
 
     function getProducts() {
         setLoading(true);
-        ref.onSnapshot((querySnapShot) => {
+        productsRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
