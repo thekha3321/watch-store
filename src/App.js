@@ -38,7 +38,7 @@ function App() {
         password,
         address,
         phone,
-        id: uuidv4().slice(0, 5),
+        id: uuidv4().slice(0, 6),
     };
     const handleAction = async (id) => {
         if (id === 1) {

@@ -20,7 +20,7 @@ function Order() {
 
     const [productsInLocal, setProductsInLocal] = useState([]);
     const [products, setProducts] = useState([]);
-    const randomId = uuidv4().slice(0, 5);
+    const randomId = uuidv4().slice(0, 6);
     const date = new Date();
     const day = date.getDate();
     let month = date.getMonth() + 1;
