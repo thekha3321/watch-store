@@ -58,7 +58,7 @@ function Order() {
         phone: sessionStorage.getItem('Phone'),
         address: sessionStorage.getItem('Address'),
         orderDate: `${day}/${month}/${year}`,
-        totalMoney: totalMoney + 30000,
+        totalMoney: totalMoney + totalMoney / 10 + 30000,
         allProducts: [...products],
     };
 
@@ -76,7 +76,7 @@ function Order() {
                     <div className={cx('order-place')}>
                         <div className={cx('place-heading')}>
                             <FontAwesomeIcon className={cx('place-heading-icon')} icon={faLocationDot} />
-                            <span>Địa chỉ nhận hàng</span>
+                            <span className={cx('text-upper', 'fz-16')}>delivery address</span>
                         </div>
                         <div className={cx('place-info')}>
                             <div className={cx('contact')}>
@@ -87,17 +87,17 @@ function Order() {
                                 <span>{addr}</span>
                             </div>
                             <Link className={cx('change')} to="/shipping">
-                                <span>Thay đổi</span>
+                                <span className={cx('fz-16')}>Change</span>
                             </Link>
                         </div>
                     </div>
                     <div className={cx('order-bill')}>
                         <div className={cx('bill-heading')}>
-                            <h3>Sản phẩm</h3>
+                            <h3>Product</h3>
                             <div className={cx('title')}>
-                                <div className={cx('heading-title')}>Đơn giá</div>
-                                <div className={cx('heading-title')}>Số lượng</div>
-                                <div className={cx('heading-title')}>Thành Tiền</div>
+                                <div className={cx('heading-title')}>Price</div>
+                                <div className={cx('heading-title')}>quality</div>
+                                <div className={cx('heading-title')}>Total</div>
                             </div>
                         </div>
                         {productsInLocal.map((product) => (
@@ -120,15 +120,19 @@ function Order() {
                     </div>
                     <div className={cx('order')}>
                         <div className={cx('order-container')}>
-                            <span>Tổng tiền hàng</span>
+                            <span>Total</span>
                             <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney)} đ`}</span>
                         </div>
                         <div className={cx('order-container')}>
-                            <span>Phí vận chuyển</span>
+                            <span>VAT</span>
+                            <span>{totalMoney / 10}</span>
+                        </div>
+                        <div className={cx('order-container')}>
+                            <span>Transportation expenses</span>
                             <span>30.000</span>
                         </div>
                         <div className={cx('order-container')}>
-                            <span>Tổng thanh toán</span>
+                            <span>total payable amount</span>
                             <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney + 30000)} đ`}</span>
                         </div>
                         <div className={cx('btn')}>

@@ -19,7 +19,7 @@
     .inner {
         width: var(--max-width);
         display: flex;
-            justify-content: flex-start;
+        justify-content: flex-start;
         flex-wrap: wrap;
         margin: 10px 0;
         gap: 15px;
@@ -28,7 +28,7 @@
             text-align: center;
             display: flex;
             // margin: 20px 6px;
-            width: calc(calc( 100% / 4) - 15px );
+            width: calc(calc(100% / 4) - 15px);
             height: 400px;
             transition: 0.5s all ease;
             .top {

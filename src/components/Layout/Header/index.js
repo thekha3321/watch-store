@@ -47,10 +47,10 @@ function Header() {
     const headerRegister = (
         <div>
             <Link to="/register" element={<Register />} className={cx('signup-btn')}>
-                Đăng Ký
+                Sign up
             </Link>
             <Link to="/login" element={<Login />} className={cx('signin-btn')}>
-                Đăng Nhập
+                Log in
             </Link>
         </div>
     );
@@ -61,9 +61,9 @@ function Header() {
                 interactive
                 content={
                     <div className={cx('user-content')}>
-                        <button className={cx('btn-profile')}>tài khoản</button>
+                        <button className={cx('btn-profile')}>Your profile</button>
                         <button onClick={handleLogout} className={cx('btn-logout')}>
-                            đăng xuất
+                            Log out
                         </button>
                     </div>
                 }

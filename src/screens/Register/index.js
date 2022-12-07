@@ -26,13 +26,13 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                             />
                             <span id="notiuser"></span>
                             <label htmlFor="password" className={cx('title')}>
-                                Mật Khẩu
+                                Password
                             </label>
                             <input
                                 onChange={(e) => setPassword(e.target.value)}
                                 onBlur={() => {}}
                                 type="password"
-                                placeholder="Mật khẩu..."
+                                placeholder="Password"
                                 className={cx('input')}
                                 id="password"
                             />
@@ -44,29 +44,29 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                                 onChange={(e) => setName(e.target.value)}
                                 onBlur={() => {}}
                                 type="text"
-                                placeholder="Tên"
+                                placeholder="Name"
                                 className={cx('input')}
                                 id="name"
                             />
                             <label htmlFor="name" className={cx('title')}>
-                                Địa chỉ
+                                Address
                             </label>
                             <input
                                 onChange={(e) => setAddress(e.target.value)}
                                 onBlur={() => {}}
                                 type="text"
-                                placeholder="Địa chỉ"
+                                placeholder="Address"
                                 className={cx('input')}
                                 id="addr"
                             />
                             <label htmlFor="name" className={cx('title')}>
-                                Số điện thoại
+                                Phone number
                             </label>
                             <input
                                 onChange={(e) => setPhone(e.target.value)}
                                 onBlur={() => {}}
                                 type="text"
-                                placeholder="SĐT..."
+                                placeholder="+84"
                                 className={cx('input')}
                                 id="phone"
                             />
@@ -81,7 +81,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                             </div>
                             <p>
                                 <Link to="/login">
-                                    Bạn đã có tài khoản ?<strong>Đăng Nhập</strong>
+                                    I have an account ?<strong>Log in</strong>
                                 </Link>
                             </p>
                         </div>

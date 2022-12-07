@@ -28,6 +28,15 @@ body {
     text-rendering: optimizeSpeed;
     color: var(--text-color);
 }
+.text-upper {
+    text-transform: uppercase;
+}
+.fz-16 {
+    font-size: 16px;
+}
+.fz-18 {
+    font-size: 18px;
+}
 
 button,
 input,

@@ -142,16 +142,17 @@
 
 .signup-btn,
 .signin-btn {
-    padding: 8px 16px;
     margin-left: 14px;
     border: 1px solid var(--primary-color);
 }
 
 .signup-btn {
+    padding: 8px 16px;
     border: 1px solid var(--primary-color);
 }
 
 .signin-btn {
+    padding: 8px 20px;
     background-color: var(--primary-color);
     color: #fff !important;
 

@@ -24,11 +24,11 @@ function Login({ title, setEmail, setPassword, handleAction }) {
                                 placeholder="Email"
                                 className={cx('input')}
                             />
-                            <label className={cx('title')}>Mật khẩu</label>
+                            <label className={cx('title')}>Password</label>
                             <input
                                 onChange={(e) => setPassword(e.target.value)}
                                 type="password"
-                                placeholder="Mật khẩu..."
+                                placeholder="Password..."
                                 className={cx('input')}
                             />
                             <div className={cx('')}>
@@ -38,7 +38,7 @@ function Login({ title, setEmail, setPassword, handleAction }) {
                             </div>
                             <p>
                                 <Link to="/register">
-                                    <strong>Tạo tài khoản</strong>
+                                    <strong>Create</strong>
                                 </Link>
                             </p>
                         </div>

@@ -41,7 +41,7 @@ function SlideBanner() {
                                 <h1>{banner.name}</h1>
                                 <p>{banner.price}</p>
                                 <h4>{banner.detail}</h4>
-                                <button className={cx('btn')}>Mua Ngay</button>
+                                <button className={cx('btn')}>Buy Now</button>
                             </span>
                         </div>
                     ))}

@@ -65,18 +65,18 @@ function Cart() {
                 <div className={cx('inner')}>
                     <div className={cx('container')}>
                         <div className={cx('heading')}>
-                            <span>Giỏ hàng</span>
+                            <span>Cart</span>
                         </div>
                     </div>
                     <div className="content">
                         <div className={cx('left')}>
                             <span className={cx('left-heading')}>
-                                <div className={cx('product-info-top')}>HÌNH ẢNH</div>
-                                <div className={cx('product-info-top')}>SẢN PHẨM</div>
-                                <div className={cx('product-info-top')}>GIÁ</div>
-                                <div className={cx('product-info-top')}>SỐ LƯỢNG</div>
-                                <div className={cx('product-info-top')}>THÀNH TIỀN</div>
-                                <div className={cx('product-info-top')}>XÓA</div>
+                                <div className={cx('product-info-top', 'text-upper')}>Image</div>
+                                <div className={cx('product-info-top', 'text-upper')}>Product name</div>
+                                <div className={cx('product-info-top', 'text-upper')}>Price</div>
+                                <div className={cx('product-info-top', 'text-upper')}>quality</div>
+                                <div className={cx('product-info-top', 'text-upper')}>Amount</div>
+                                <div className={cx('product-info-top', 'text-upper')}>Delete</div>
                             </span>
                             {products.map((product, index) => (
                                 <div key={index} className={cx('left-content')}>
@@ -87,11 +87,15 @@ function Cart() {
                                         <Link to={`/products/${product.id}`}>{product.name}</Link>
                                     </div>
                                     <div className={cx('product-info-midle')}>
-                                        <span>{new Intl.NumberFormat('de-DE').format(product.price)}đ</span>
+                                        <span className={cx('fz-16')}>
+                                            {new Intl.NumberFormat('de-DE').format(product.price)}đ
+                                        </span>
                                     </div>
                                     <div className={cx('product-info-midle')}>1</div>
                                     <div className={cx('product-info-midle')}>
-                                        <span>{new Intl.NumberFormat('de-DE').format(product.price)}đ</span>
+                                        <span className={cx('fz-16')}>
+                                            {new Intl.NumberFormat('de-DE').format(product.price)}đ
+                                        </span>
                                     </div>
                                     <div className={cx('product-info-midle')}>
                                         <button
@@ -106,12 +110,14 @@ function Cart() {
                                 </div>
                             ))}
                             <div className={cx('left-info-bottom')}>
-                                <span>TỔNG TIỀN: </span>
-                                <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney)} đ`}</span>
+                                <span className={cx('text-upper')}>Total: </span>
+                                <span className={cx('fz-16')}>{`${new Intl.NumberFormat('de-DE').format(
+                                    totalMoney,
+                                )} đ`}</span>
                             </div>
                             <div className={cx('checkout')}>
                                 <Link to="/">
-                                    <div className={cx('ctn-shopping')}>TIẾP TỤC MUA SẮM</div>
+                                    <div className={cx('ctn-shopping')}>Continue Shopping</div>
                                 </Link>
 
                                 <button
@@ -123,9 +129,9 @@ function Cart() {
                                             navigate('/login');
                                         }
                                     }}
-                                    className={cx('checkout-btn')}
+                                    className={cx('checkout-btn', 'text-upper')}
                                 >
-                                    ĐẶT HÀNG
+                                    Buy
                                 </button>
                             </div>
                         </div>

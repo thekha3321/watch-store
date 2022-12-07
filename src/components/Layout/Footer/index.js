@@ -28,21 +28,21 @@ function Footer() {
                     </div>
                     <div className={cx('mid')}>
                         <div>
-                            <h4>Liên hệ</h4>
-                            <p>trang chủ</p>
-                            <p>trang khác</p>
-                            <p>Đầu tư</p>
+                            <h4>Contact</h4>
+                            <p>FanPage</p>
+                            <p>another page</p>
+                            <p>invest</p>
                         </div>
                     </div>
                     <div className={cx('right')}>
-                        <h4>Đặt mua</h4>
-                        <input placeholder="Thông tin..."></input>
-                        <button>Nộp</button>
+                        <h4>Order</h4>
+                        <input placeholder="Your Info..."></input>
+                        <button>Submit</button>
                     </div>
                 </div>
 
                 <div className={cx('bot')}>
-                    <span>© 2021 Cosmecos Theme</span>
+                    <span>© 2022 Cosmecos Theme</span>
                     <span>Terms and Conditions</span>
                     <ul>
                         <li>

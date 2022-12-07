@@ -46,7 +46,7 @@ function SingleProduct__() {
     const renderproduct = (
         <div className={cx('inner')}>
             <div className={cx('heading')}>
-                <span>THÔNG TIN SẢN PHẨM</span>
+                <span>products information</span>
             </div>
             <div className={cx('container')}>
                 <div className={cx('left')}>
@@ -69,7 +69,7 @@ function SingleProduct__() {
                             createDoc({ name, brand, image, price, desc, id });
                         }}
                     >
-                        THÊM VÀO GIỎ
+                        Add to cart
                     </button>
                 </div>
             </div>

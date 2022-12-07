@@ -89,10 +89,10 @@ function ShopSection() {
                             }}
                             className={cx('btn')}
                         >
-                            Thêm vào giỏ hàng
+                            Add to cart
                         </button>
                         <Link to={`/products/${product.id}`} className={cx('detail')}>
-                            <span>Xem sản phẩm</span>
+                            <span>View product</span>
                         </Link>
                     </div>
                 </div>
@@ -102,7 +102,7 @@ function ShopSection() {
 
     return (
         <div className={cx('wrapper')}>
-            <header>sản phẩm bán chạy</header>
+            <header>Featured products</header>
             {loading ? <Loading /> : renderProducts}
         </div>
     );

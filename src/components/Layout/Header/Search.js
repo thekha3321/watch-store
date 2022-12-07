@@ -36,7 +36,7 @@ function Search() {
     return (
         <div>
             <div className="search-box">
-                <input placeholder="Tìm Kiếm..." className="search-input" onChange={inputHandle} />
+                <input placeholder="Search..." className="search-input" onChange={inputHandle} />
                 {value && (
                     <FontAwesomeIcon
                         icon={faXmark}

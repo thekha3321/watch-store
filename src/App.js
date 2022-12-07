@@ -75,7 +75,7 @@ function App() {
                 path="/login"
                 element={
                     <Login
-                        title="Đăng Nhập"
+                        title="Login"
                         setEmail={setEmail}
                         setPassword={setPassword}
                         handleAction={() => handleAction(1)}
@@ -86,7 +86,7 @@ function App() {
                 path="/register"
                 element={
                     <Register
-                        title="Đăng Ký"
+                        title="Sign up"
                         setEmail={setEmail}
                         setPassword={setPassword}
                         setName={setName}

@@ -2,11 +2,9 @@ import React from 'react';
 
 import Footer from '../../components/Layout/Footer';
 import Sidebar from './../../../src/components/Layout/Sidebar';
-// import products from '../../data/products';
 import Header from '../../components/Layout/Header';
 import SingleProduct__ from './SingleProduct__';
-
-// import firebase from '../../firebase/config';
+import Rate from '../../components/Layout/Rate';
 
 function SingleProduct() {
     window.scrollTo(0, 0);
@@ -24,6 +22,7 @@ function SingleProduct() {
             <Header />
             <Sidebar />
             <SingleProduct__ />
+            <Rate />
             <Footer />
         </>
     );

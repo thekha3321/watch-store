@@ -7,7 +7,7 @@
 
 .inner {
     width: 100%;
-    min-height: 250px;
+    min-height: 350px;
 
     .banner-img {
         width: 100%;
@@ -29,8 +29,7 @@
         z-index: 30;
         position: absolute;
         color: #ffffff;
-        top: 42%;
-        transform: translateX(826px);
+        transform: translate(996px, 128px);
     }
     p {
         margin-left: 16px;

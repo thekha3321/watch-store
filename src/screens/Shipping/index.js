@@ -15,19 +15,19 @@ function Shipping() {
                 <div className={cx('inner')}>
                     <form className={cx('form')}>
                         <div className={cx('container')}>
-                            <h1 className={cx('heading')}>ĐỊA CHỈ GIAO HÀNG</h1>
-                            <label className={cx('title')}>Địa chỉ</label>
+                            <h1 className={cx('heading', 'text-upper')}>Delivery address</h1>
+                            <label className={cx('title')}>Address</label>
                             <input
                                 type="text"
                                 onChange={(e) => setAddr(e.target.value)}
-                                placeholder="Địa chỉ nhà"
+                                placeholder="Your address"
                                 className={cx('input')}
                             />
-                            <label className={cx('title')}>số điện thoại</label>
+                            <label className={cx('title')}>Phone</label>
                             <input
                                 type="text"
                                 onChange={(e) => setPhone(e.target.value)}
-                                placeholder="số điện thoại"
+                                placeholder="Phone"
                                 className={cx('input')}
                             />
                             <Link to="/order">
@@ -38,7 +38,7 @@ function Shipping() {
                                     }}
                                     className={cx('btn')}
                                 >
-                                    TIẾP TỤC
+                                    continue
                                 </div>
                             </Link>
                         </div>

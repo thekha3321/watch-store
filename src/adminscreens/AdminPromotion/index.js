@@ -2,12 +2,10 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './AdminPromotion.module.scss';
 import AdminSidebar from '../../components/adminlayout/AdminSidebar';
-import AdminHeader from '../../components/adminlayout/AdminHeader/AdminHeader';
 import Header from '../../components/Layout/Header';
 
-const cx = classNames.bind(styles);
-
 function AdminPromotion() {
+    const cx = classNames.bind(styles);
     return (
         <>
             <Header />
