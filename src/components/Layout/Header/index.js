@@ -38,7 +38,7 @@ function Header() {
     useEffect(() => {
         getProducts();
         if (typeof window !== 'undefined') {
-            window.addEventListener('scroll', () => setSmall(window.pageYOffset > 200));
+            window.addEventListener('scroll', () => setSmall(window.pageYOffset > 300));
         }
     }, []);
     let quality = 0;
@@ -83,7 +83,7 @@ function Header() {
         <div className={cx('wrapper', `${small ? 'small' : ''}`)}>
             <div className={cx('inner')}>
                 <Link className={cx('logo')} to="/">
-                    <div className={cx('logo-img', `${small ? 'hide' : ''}`)} />
+                    <div className={cx('logo-img')} />
                 </Link>
                 <Search />
                 <div className={cx('actions')}>

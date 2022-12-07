@@ -72,7 +72,7 @@
                 height: 100%;
                 width: 100%;
                 padding: 10px 8px;
-                border: 1px solid black;
+                border: 2px solid #5c5c5d;
                 transition: 0.5s all ease;
                 background-color: #ffffff;
             }
@@ -128,7 +128,7 @@
                     z-index: 10;
                     margin-top: 20px;
                     padding: 10px 20px;
-                    border: 1px solid black;
+                    border: 2px solid #5c5c5d;
                     color: var(--text-color);
                     transition: all 0.2s linear;
                     &:hover {
@@ -145,9 +145,9 @@
                     color: var(--text-color) !important;
                     overflow: hidden;
                     margin-top: 20px;
-                    border-top: 1px solid black;
-                    border-right: 1px solid black;
-                    border-bottom: 1px solid black;
+                    border-top: 2px solid #5c5c5d;
+                    border-right: 2px solid #5c5c5d;
+                    border-bottom: 2px solid #5c5c5d;
                     &:hover span {
                         color: #ffffff;
                         background-color: var(--primary-color);
@@ -167,7 +167,7 @@
                 span {
                     transition: all 0.2s linear;
                     display: block;
-                    padding: 10px 20px;
+                    padding: 9px 20px;
                     font-size: 16px;
                     text-decoration: none;
                 }

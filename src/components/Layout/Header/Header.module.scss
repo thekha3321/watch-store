@@ -1,5 +1,4 @@
 .wrapper {
-    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,11 +10,11 @@
     background-color: var(--primary-background-color);
 }
 .small {
-    height: 70px !important;
+    position: fixed;
 }
-.hide {
-    visibility: hidden;
-}
+// .hide {
+//     visibility: hidden;
+// }
 
 .inner {
     display: flex;

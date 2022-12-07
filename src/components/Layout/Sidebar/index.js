@@ -12,6 +12,7 @@ const cx = classnames.bind(styles);
 
 function Sidebar() {
     const [products, setProducts] = useState([]);
+    const [small, setSmall] = useState(false);
 
     const productsRef = firebase.firestore().collection('products');
 
@@ -26,6 +27,9 @@ function Sidebar() {
     }
     useEffect(() => {
         getProducts();
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', () => setSmall(window.pageYOffset > 300));
+        }
     }, []);
     // Handle fil brand
     let brand = [];
@@ -40,7 +44,7 @@ function Sidebar() {
     }, []);
     //------------------
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', `${small ? 'paddingHeader' : ''}`)}>
             <div className={cx('inner')}>
                 <Tippy
                     className={cx('tippy-navbar')}
