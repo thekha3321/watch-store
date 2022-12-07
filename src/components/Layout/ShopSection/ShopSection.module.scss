@@ -19,16 +19,16 @@
     .inner {
         width: var(--max-width);
         display: flex;
-        justify-content: space-around;
+            justify-content: flex-start;
         flex-wrap: wrap;
         margin: 10px 0;
-
+        gap: 15px;
         .product {
             position: relative;
             text-align: center;
             display: flex;
-            margin: 20px 6px;
-            width: 260px;
+            // margin: 20px 6px;
+            width: calc(calc( 100% / 4) - 15px );
             height: 400px;
             transition: 0.5s all ease;
             .top {
