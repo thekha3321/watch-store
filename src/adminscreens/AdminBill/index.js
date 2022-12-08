@@ -5,7 +5,6 @@ import firebase from '../../firebase/config';
 import Header from '../../components/Layout/Header';
 import AdminSidebar from '../../components/adminlayout/AdminSidebar';
 import AdminShowBill from '../../components/adminlayout/AdminShowBill';
-import Loading from '../../components/Layout/Loading';
 
 function AdminBill() {
     const cx = classNames.bind(styles);

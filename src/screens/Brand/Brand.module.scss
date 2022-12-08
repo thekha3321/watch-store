@@ -9,7 +9,14 @@
     padding: 30px 0;
     margin-bottom: 30px;
     background-color: var(--primary-background-color);
-
+    h3 {
+        margin: 50px auto 20px;
+        text-transform: uppercase;
+        transition: all 0.3s linear;
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
     header {
         text-transform: uppercase;
         text-align: center;
@@ -39,12 +46,9 @@
                     height: 260px;
                     transition: 0.3;
 
-                    &:hover ~ .pay{
+                    &:hover ~ .pay {
                     }
-                   
-                    
                 }
-                
             }
 
             .bottom {
@@ -56,7 +60,6 @@
                 justify-content: center;
 
                 .product-name {
-
                     &:hover {
                         text-decoration: underline;
                     }
@@ -70,7 +73,6 @@
                     font-size: 13px;
                 }
             }
-
         }
     }
 }
