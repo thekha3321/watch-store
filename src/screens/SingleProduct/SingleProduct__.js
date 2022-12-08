@@ -5,12 +5,13 @@ import { useParams } from 'react-router-dom';
 
 import styles from './SingleProduct.module.scss';
 import Loading from '../../components/Layout/Loading';
-
-const cx = classNames.bind(styles);
+import Rate from '../../components/Layout/Rate';
 
 function SingleProduct__() {
+    const cx = classNames.bind(styles);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [initContentEvo, setInitContentEvo] = useState([]);
     const { productId } = useParams();
     const productsRef = firebase.firestore().collection('products').where('id', '==', `${productId}`);
     const cartRef = firebase.firestore().collection('cart');
@@ -22,18 +23,18 @@ function SingleProduct__() {
     const [desc, setDesc] = useState('');
     const [id, setId] = useState('');
     // get products
-    function getProducts() {
+    async function getProducts() {
         setLoading(true);
-        productsRef.onSnapshot((querySnapShot) => {
+        await productsRef.onSnapshot((querySnapShot) => {
             const items = [];
             querySnapShot.forEach((doc) => {
                 items.push(doc.data());
             });
             setProducts(items);
+            setInitContentEvo(items[0].contentEvo);
             setLoading(false);
         });
     }
-
     // push product to cart
     const createDoc = (props) => {
         cartRef.doc(props.id).set(props);
@@ -73,6 +74,17 @@ function SingleProduct__() {
                     </button>
                 </div>
             </div>
+            <Rate products={products[0]} initContentEvo={initContentEvo} />
+            {initContentEvo.map((e) => (
+                <div className={cx('product-evo')}>
+                    <img className={cx('evoluater-avatar')} src="" alt="" />
+                    <div className={cx('evoluater-content')}>
+                        <div className={cx('evoluater-name')}>{e.name}</div>
+                        <div className={cx('evoluater-rate')}>{e.rating}</div>
+                        <div className={cx('evoluater-content')}>{e.value}</div>
+                    </div>
+                </div>
+            ))}
         </div>
     );
     return <div className={cx('wapper')}>{loading ? <Loading /> : renderproduct}</div>;

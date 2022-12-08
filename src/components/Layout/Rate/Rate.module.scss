@@ -6,5 +6,28 @@
     align-items: center;
     .container {
         width: var(--max-width);
+        .evaluate {
+            margin-top: 8px;
+            p {
+                font-weight: 500;
+            }
+            .rating {
+                display: flex;
+                line-height: 16px;
+                span {
+                    margin: 8px 0 8px 8px;
+                }
+                textarea {
+                    display: block;
+                }
+            }
+        }
     }
+}
+.btn {
+    font-size: 16px;
+    display: block;
+    padding: 8px 20px;
+    background-color: var(--primary-color);
+    color: #fff !important;
 }

@@ -61,6 +61,7 @@ function Order() {
         totalMoney: totalMoney + totalMoney / 10 + 30000,
         allProducts: [...products],
     };
+    console.log([...products]);
 
     const handlePay = async () => {
         await billsRef.doc(randomId).set(bill);

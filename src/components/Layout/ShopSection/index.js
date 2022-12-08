@@ -74,9 +74,7 @@ function ShopSection() {
                             </li>
                         </div>
                         <div className={cx('product-name')}>{product.brand}</div>
-                        <div className={cx('product-price')}>
-                            {`${new Intl.NumberFormat('de-DE').format(product.price)} đ`}
-                        </div>
+                        <div className={cx('product-price')}>${product.price}</div>
                         <button
                             onClick={() => {
                                 setName(product.name);

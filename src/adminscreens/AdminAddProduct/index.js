@@ -20,7 +20,7 @@ function AdminAddProduct() {
         productsRef.doc(newDataObj.id).set(newDataObj);
         alert('Thêm sản phẩm thành công');
     };
-
+    let contentEvo = [];
     return (
         <>
             {' '}
@@ -76,7 +76,7 @@ function AdminAddProduct() {
                             <div className={cx('btn')}>
                                 <button
                                     onClick={() => {
-                                        createDoc({ name, brand, price, image, desc, id: uuidv4() });
+                                        createDoc({ name, brand, price, image, desc, id: uuidv4(), contentEvo });
                                         document.getElementById('name').value = '';
                                         document.getElementById('brand').value = '';
                                         document.getElementById('price').value = '';

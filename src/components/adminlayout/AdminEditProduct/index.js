@@ -5,10 +5,9 @@ import firebase from '../../../firebase/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
-const cx = classNames.bind(styles);
-const productsRef = firebase.firestore().collection('products');
-
 function AdminEditProduct({ product, setEditbox }) {
+    const cx = classNames.bind(styles);
+    const productsRef = firebase.firestore().collection('products');
     const [name, setName] = useState('');
     const [brand, setBrand] = useState('');
     const [price, setPrice] = useState('');
@@ -22,7 +21,6 @@ function AdminEditProduct({ product, setEditbox }) {
                 .doc(updtProduct.id)
                 .update(updtProduct)
                 .catch((err) => {
-                    alert(err);
                     console.log(err);
                 });
         }

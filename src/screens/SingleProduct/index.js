@@ -4,7 +4,6 @@ import Footer from '../../components/Layout/Footer';
 import Sidebar from './../../../src/components/Layout/Sidebar';
 import Header from '../../components/Layout/Header';
 import SingleProduct__ from './SingleProduct__';
-import Rate from '../../components/Layout/Rate';
 
 function SingleProduct() {
     window.scrollTo(0, 0);
@@ -22,7 +21,6 @@ function SingleProduct() {
             <Header />
             <Sidebar />
             <SingleProduct__ />
-            <Rate />
             <Footer />
         </>
     );
