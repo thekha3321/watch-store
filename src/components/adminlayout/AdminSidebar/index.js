@@ -26,37 +26,37 @@ function AdminSidebar() {
                     <Link to="/admin/products">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faFolder} />
-                            Sản phẩm
+                            Products
                         </div>
                     </Link>
                     <Link to="/admin/addproduct">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faFolderPlus} />
-                            Thêm sản phẩm
+                            Create Products
                         </div>
                     </Link>
                     <Link to="/admin/bill">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faFileInvoice} />
-                            Hóa đơn
+                            Bills
                         </div>
                     </Link>
                     <Link to="/admin/accountmanager">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faUser} />
-                            Tài khoản
+                            Account
                         </div>
                     </Link>
                     <Link to="/admin/statistical">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faMap} />
-                            Thống kê
+                            Statistical
                         </div>
                     </Link>
                     <Link to="/admin/promotion">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faHandHoldingDollar} />
-                            Khuyến mãi
+                            Promotion
                         </div>
                     </Link>
                 </div>

@@ -28,24 +28,35 @@ function App() {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
+    const [user, setUser] = useState();
     const authentication = getAuth();
     let navigate = useNavigate();
     const usersRef = firebase.firestore().collection('users');
-
+    const getUser = () => {
+        usersRef.where('email', '==', email).onSnapshot((querySnapShot) => {
+            querySnapShot.forEach((doc) => {
+                setUser(doc.data());
+            });
+        });
+    };
     const users = {
         name,
         email,
         password,
         address,
         phone,
+        rule: 0,
         id: uuidv4().slice(0, 6),
     };
     const handleAction = async (id) => {
         if (id === 1) {
             await signInWithEmailAndPassword(authentication, email, password, name, address, phone)
                 .then((response) => {
-                    navigate('/');
                     sessionStorage.setItem('Email', email);
+                    sessionStorage.setItem('Name', name);
+                    sessionStorage.setItem('Uid', user.id);
+                    sessionStorage.setItem('avatar', user.avatar);
+                    navigate('/');
                 })
                 .catch(() => {
                     alert(`Tài khoản Email: ${email} không tồn tại`);
@@ -54,19 +65,29 @@ function App() {
         if (id === 2) {
             await createUserWithEmailAndPassword(authentication, email, password, name, address, phone)
                 .then((response) => {
-                    usersRef.doc(users.id).set(users);
-                    navigate('/');
-                    sessionStorage.setItem('Email', email);
-                    sessionStorage.setItem('Name', name);
-                    sessionStorage.setItem('Address', address);
-                    sessionStorage.setItem('Phone', phone);
+                    usersRef
+                        .doc(users.id)
+                        .set(users)
+                        .then(() => {
+                            navigate('/');
+                            sessionStorage.setItem('Email', email);
+                            sessionStorage.setItem('Name', name);
+                            sessionStorage.setItem('Address', address);
+                            sessionStorage.setItem('Phone', phone);
+                            sessionStorage.setItem('Uid', users.id);
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
                 })
                 .catch(() => {
                     alert(`Tài khoản Email: ${email} đã tồn tại`);
                 });
         }
     };
-    useEffect(() => {}, []);
+    useEffect(() => {
+        getUser();
+    }, [email]);
 
     return (
         <Routes>
@@ -109,7 +130,7 @@ function App() {
             <Route path="/admin/statistical" element={<AdminStatistical />} />
             <Route path="/brand/:productBrand" element={<Brand />} />
             <Route path="/saling" element={<ShopSaling />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:userId" element={<Profile />} />
         </Routes>
     );
 }

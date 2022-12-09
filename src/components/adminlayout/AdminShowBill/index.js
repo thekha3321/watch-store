@@ -36,6 +36,7 @@ function AdminShowBill({ bill }) {
                 <div className={cx('product-title', 'text-upper')}>{billId}</div>
                 <div className={cx('product-title')}>{bill.name}</div>
                 <div className={cx('product-title')}>{bill.email}</div>
+                <div className={cx('product-title')}>{bill.phone}</div>
                 <div className={cx('product-title', 'text-upper')}>{bill.orderDate}</div>
                 <div className={cx('product-title')}>
                     <button className={cx('btn')}>

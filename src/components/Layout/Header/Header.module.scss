@@ -117,12 +117,14 @@
     }
 
     .user-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         box-shadow: 0px 1px 4px 2px rgb(0 0 0 / 12%);
 
         button {
-            background-color: #ffffff !important;
             width: 100%;
-            padding: 10px;
             cursor: pointer;
             &:hover {
             }
@@ -131,11 +133,15 @@
 }
 .btn-profile,
 .btn-logout {
-    padding: 4px;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: sans-serif;
     &:hover {
-        background-color: #ccc;
-        padding-bottom: 2px;
-        opacity: 1 !important;
+        background-color: var(--primary-color);
+        color: #fff;
+        opacity: 1;
     }
 }
 
@@ -151,7 +157,7 @@
 }
 
 .signin-btn {
-    padding: 8px 20px;
+    padding: 8px 22px;
     background-color: var(--primary-color);
     color: #fff !important;
 

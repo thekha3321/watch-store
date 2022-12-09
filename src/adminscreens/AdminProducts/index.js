@@ -32,13 +32,13 @@ function AdminProducts() {
     }, []);
     const renderProducts = (
         <div className={cx('product-info')}>
-            <div className={cx('heading')}>Tất cả sản phẩm </div>
+            <div className={cx('heading')}>All products</div>
             <div className={cx('content')}>
                 <div className={cx('top')}>
-                    <div className={cx('product-title')}>hình ảnh </div>
-                    <div className={cx('product-title')}>tên sản phẩm</div>
-                    <div className={cx('product-title')}>giá</div>
-                    <div className={cx('product-title')}>hành động</div>
+                    <div className={cx('product-title')}>Image</div>
+                    <div className={cx('product-title')}>Product Name</div>
+                    <div className={cx('product-title')}>Price</div>
+                    <div className={cx('product-title')}>Actions</div>
                 </div>
                 {products.map((product) => (
                     <AdminShowProducts product={product} key={product.id} />
@@ -52,10 +52,7 @@ function AdminProducts() {
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <AdminSibar />
-                    <div className={cx('container')}>
-                        {/* <AdminHeader /> */}
-                        {loading ? <Loading /> : renderProducts}
-                    </div>
+                    <div className={cx('container')}>{loading ? <Loading /> : renderProducts}</div>
                 </div>
             </div>
         </>

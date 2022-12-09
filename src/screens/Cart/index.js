@@ -87,15 +87,11 @@ function Cart() {
                                         <Link to={`/products/${product.id}`}>{product.name}</Link>
                                     </div>
                                     <div className={cx('product-info-midle')}>
-                                        <span className={cx('fz-16')}>
-                                            {new Intl.NumberFormat('de-DE').format(product.price)}đ
-                                        </span>
+                                        <span className={cx('fz-16')}>${product.price}</span>
                                     </div>
                                     <div className={cx('product-info-midle')}>1</div>
                                     <div className={cx('product-info-midle')}>
-                                        <span className={cx('fz-16')}>
-                                            {new Intl.NumberFormat('de-DE').format(product.price)}đ
-                                        </span>
+                                        <span className={cx('fz-16')}>${product.price}</span>
                                     </div>
                                     <div className={cx('product-info-midle')}>
                                         <button
@@ -111,9 +107,7 @@ function Cart() {
                             ))}
                             <div className={cx('left-info-bottom')}>
                                 <span className={cx('text-upper')}>Total: </span>
-                                <span className={cx('fz-16')}>{`${new Intl.NumberFormat('de-DE').format(
-                                    totalMoney,
-                                )} đ`}</span>
+                                <span className={cx('fz-16')}>${totalMoney}</span>
                             </div>
                             <div className={cx('checkout')}>
                                 <Link to="/">

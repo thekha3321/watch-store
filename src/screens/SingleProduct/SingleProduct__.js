@@ -55,9 +55,7 @@ function SingleProduct__() {
                 </div>
                 <div className={cx('right')}>
                     <span className={cx('product-name')}>{products[0]?.name}</span>
-                    <span className={cx('product-price')}>
-                        {new Intl.NumberFormat('de-DE').format(products[0]?.price)} đ
-                    </span>
+                    <span className={cx('product-price')}>${products[0]?.price}</span>
                     <span className={cx('product-description')}>{products[0]?.desc}</span>
                     <button
                         onClick={() => {
@@ -77,7 +75,7 @@ function SingleProduct__() {
             <Rate products={products[0]} initContentEvo={initContentEvo} />
             {initContentEvo.map((e) => (
                 <div className={cx('product-evo')}>
-                    <img className={cx('evoluater-avatar')} src="" alt="" />
+                    <img className={cx('evoluater-avatar')} src={e.avatar} alt="" />
                     <div className={cx('evoluater-content')}>
                         <div className={cx('evoluater-name')}>{e.name}</div>
                         <div className={cx('evoluater-rate')}>{e.rating}</div>

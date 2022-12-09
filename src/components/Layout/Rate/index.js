@@ -9,11 +9,22 @@ import { useParams } from 'react-router';
 const Rate = ({ products, initContentEvo }) => {
     const { productId } = useParams();
     const productsRef = firebase.firestore().collection('products');
+    const Uid = sessionStorage.getItem('Uid');
+    const userRef = firebase.firestore().collection('users').where('id', '==', Uid);
     const cx = classNames.bind(styles);
+    const [user, setUser] = useState();
+    const [avatar, setAvatar] = useState();
     const [value, setValue] = useState('');
     const [rating, setRating] = useState(0);
     const [ratingDetail, setRatingDetail] = useState('');
 
+    async function getUser() {
+        await userRef.onSnapshot((querySnapShot) => {
+            querySnapShot.forEach((doc) => {
+                setUser(doc.data());
+            });
+        });
+    }
     const ratingChanged = (newRating) => {
         switch (newRating) {
             case 1:
@@ -34,9 +45,11 @@ const Rate = ({ products, initContentEvo }) => {
             default:
         }
     };
+
     let valueRating = {
         value,
         rating,
+        avatar: sessionStorage.getItem('avatar'),
         name: sessionStorage.getItem('Name'),
     };
     let valueProduct = {
@@ -47,7 +60,7 @@ const Rate = ({ products, initContentEvo }) => {
         try {
             productsRef.doc(productId).set(valueProduct);
         } catch (e) {
-            alert(e);
+            console.error(e);
         }
     };
 
@@ -71,8 +84,8 @@ const Rate = ({ products, initContentEvo }) => {
             default:
                 setRatingDetail('+Your Rating');
         }
-    }, [rating]);
-    console.log(ratingDetail);
+        getUser();
+    }, []);
 
     return (
         <div className={cx('wrapper')}>

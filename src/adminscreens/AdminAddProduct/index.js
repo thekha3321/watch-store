@@ -30,9 +30,9 @@ function AdminAddProduct() {
                     <AdminSidebar />
                     <div className={cx('container')}>
                         <div className={cx('content')}>
-                            <div className={cx('heading')}>Thêm sản phẩm</div>
+                            <div className={cx('heading')}>Create Product</div>
                             <div className={cx('add-info')}>
-                                <label>Tên sản phẩm</label>
+                                <label>Product name</label>
                                 <textarea
                                     id="name"
                                     wrap="soft"
@@ -41,7 +41,7 @@ function AdminAddProduct() {
                                     placeholder=""
                                     onChange={(e) => setName(e.target.value)}
                                 />
-                                <label>Thương hiệu</label>
+                                <label>Brand</label>
                                 <textarea
                                     id="brand"
                                     name="name"
@@ -49,22 +49,22 @@ function AdminAddProduct() {
                                     placeholder=""
                                     onChange={(e) => setBrand(e.target.value)}
                                 />
-                                <label>Giá</label>
+                                <label>Price</label>
                                 <textarea
                                     id="price"
                                     name="name"
                                     type="text"
                                     onChange={(e) => setPrice(Number(e.target.value))}
                                 />
-                                <label>Hình ảnh</label>
+                                <label>Image</label>
                                 <textarea
                                     id="img"
                                     name="name"
                                     type="text"
-                                    placeholder="Đường dẫn hình ảnh"
+                                    placeholder="Link"
                                     onChange={(e) => setImage(e.target.value)}
                                 />
-                                <label>Mô tả</label>
+                                <label>Description</label>
                                 <textarea
                                     id="desc"
                                     name="desc"

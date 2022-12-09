@@ -31,14 +31,14 @@ function AdminAcountManager() {
     }, []);
     const renderUsers = (
         <div className={cx('product-info')}>
-            <div className={cx('heading')}>Quản lý tài khoản</div>
+            <div className={cx('heading')}>Account management</div>
             <div className={cx('content')}>
                 <div className={cx('top')}>
-                    <div className={cx('product-title')}>Mã người dùng </div>
-                    <div className={cx('product-title')}>Tên người dùng</div>
+                    <div className={cx('product-title')}>User Id</div>
+                    <div className={cx('product-title')}>User name</div>
                     <div className={cx('product-title')}>Email</div>
-                    <div className={cx('product-title')}>Vai trò</div>
-                    <div className={cx('product-title')}>hành động</div>
+                    <div className={cx('product-title')}>Rule</div>
+                    <div className={cx('product-title')}>Actions</div>
                 </div>
                 {users.map((user) => (
                     <AdminShowUser user={user} key={user.id} />

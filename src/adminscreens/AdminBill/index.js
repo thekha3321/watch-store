@@ -34,14 +34,15 @@ function AdminBill() {
                     <AdminSidebar />
                     <div className={cx('container')}>
                         <div className={cx('product-info')}>
-                            <div className={cx('heading')}>Quản lý Hóa Đơn</div>
+                            <div className={cx('heading')}>invoices management</div>
                             <div className={cx('content')}>
                                 <div className={cx('top')}>
-                                    <div className={cx('product-title')}>Mã hóa Đơn </div>
-                                    <div className={cx('product-title')}>Tên người dùng</div>
+                                    <div className={cx('product-title')}>Invoice id</div>
+                                    <div className={cx('product-title')}>User name</div>
                                     <div className={cx('product-title')}>Email</div>
-                                    <div className={cx('product-title')}>Vai trò</div>
-                                    <div className={cx('product-title')}>hành động</div>
+                                    <div className={cx('product-title')}>Phone</div>
+                                    <div className={cx('product-title')}>Date</div>
+                                    <div className={cx('product-title')}>Actions</div>
                                 </div>
                                 {bills.map((bill) => (
                                     <AdminShowBill bill={bill} key={bill.id} />

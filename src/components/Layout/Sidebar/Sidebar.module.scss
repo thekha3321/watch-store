@@ -51,6 +51,7 @@
     // border: 1px solid #ccc;
     box-shadow: 0 0 2px 1px rgb(0 0 0 / 12%);
 
+    overflow: hidden;
     border-radius: var(--border-radius-btn);
     text-align: center;
 }
@@ -63,6 +64,7 @@
 .tippy-content {
     overflow: hidden;
     div:hover {
-        background-color: #ccc;
+        background-color: var(--primary-color);
+        color: #fff;
     }
 }

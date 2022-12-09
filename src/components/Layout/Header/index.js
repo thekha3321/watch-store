@@ -15,8 +15,12 @@ import Search from './Search';
 function Header() {
     const cx = classNames.bind(styles);
     const cartRef = firebase.firestore().collection('cart');
+    const userId = sessionStorage.getItem('Uid');
+    const userRef = firebase.firestore().collection('users').where('id', '==', userId);
+
     const [products, setProducts] = useState([]);
     const [small, setSmall] = useState(false);
+    const [user, setUser] = useState();
 
     function getProducts() {
         cartRef.onSnapshot((querySnapShot) => {
@@ -25,6 +29,14 @@ function Header() {
                 items.push(doc.data());
             });
             setProducts(items);
+        });
+    }
+    async function getUser() {
+        await userRef.onSnapshot((querySnapShot) => {
+            const items = [];
+            querySnapShot.forEach((doc) => {
+                setUser(doc.data());
+            });
         });
     }
 
@@ -37,13 +49,13 @@ function Header() {
     let navigate = useNavigate();
     useEffect(() => {
         getProducts();
+        getUser();
         if (typeof window !== 'undefined') {
             window.addEventListener('scroll', () => setSmall(window.pageYOffset > 300));
         }
     }, []);
     let quality = 0;
     products.map((product) => (quality += 1));
-
     const headerRegister = (
         <div>
             <Link to="/register" element={<Register />} className={cx('signup-btn')}>
@@ -61,7 +73,9 @@ function Header() {
                 interactive
                 content={
                     <div className={cx('user-content')}>
-                        <button className={cx('btn-profile')}>Your profile</button>
+                        <Link to={`/profile/${userId}`} className={cx('btn-profile')}>
+                            View profile
+                        </Link>
                         <button onClick={handleLogout} className={cx('btn-logout')}>
                             Log out
                         </button>
@@ -71,7 +85,9 @@ function Header() {
                 <div className={cx('')}>
                     <img
                         className={cx('avatar')}
-                        src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"
+                        src={
+                            user?.avatar || 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'
+                        }
                         alt=""
                     />
                     <FontAwesomeIcon className={cx('avatar-icon')} icon={faCaretDown} />
