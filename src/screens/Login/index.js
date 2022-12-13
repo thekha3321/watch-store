@@ -38,7 +38,7 @@ function Login({ title, setEmail, setPassword, handleAction }) {
                             </div>
                             <p>
                                 <Link to="/register">
-                                    <strong>Create</strong>
+                                    <strong>Create</strong> an account
                                 </Link>
                             </p>
                         </div>

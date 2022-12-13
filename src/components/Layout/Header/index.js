@@ -1,4 +1,4 @@
-import { faCartShopping, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { Link, useNavigate } from 'react-router-dom';
@@ -33,7 +33,6 @@ function Header() {
     }
     async function getUser() {
         await userRef.onSnapshot((querySnapShot) => {
-            const items = [];
             querySnapShot.forEach((doc) => {
                 setUser(doc.data());
             });
@@ -105,7 +104,11 @@ function Header() {
                 <div className={cx('actions')}>
                     <Tippy>
                         <Link to="/cart" element={<Cart />} className={cx('cart')}>
-                            <FontAwesomeIcon className={cx('cart-icon')} icon={faCartShopping} />
+                            <img
+                                className={cx('cart-icon')}
+                                src="https://firebasestorage.googleapis.com/v0/b/sales-watch-92e59.appspot.com/o/images%2FLogocart.png?alt=media&token=6951b11e-5b72-4c03-b18f-4e700457f362"
+                                alt=""
+                            />
                             <span className={cx('quality')}>{quality}</span>
                         </Link>
                     </Tippy>

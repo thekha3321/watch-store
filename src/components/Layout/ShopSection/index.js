@@ -6,7 +6,7 @@ import firebase from '../../../firebase/config';
 import Loading from '../../Layout/Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons';
 
 function ShopSection() {
     const cx = classnames.bind(styles);
@@ -56,42 +56,30 @@ function ShopSection() {
                         <FontAwesomeIcon className={cx('icon-heart')} icon={faHeart} />
                     </div>
                     <div className={cx('bottom')}>
-                        <div className={cx('star-box')}>
-                            <li>
-                                <FontAwesomeIcon className={cx('icon-star')} icon={faStar} />
-                            </li>
-                            <li>
-                                <FontAwesomeIcon className={cx('icon-star')} icon={faStar} />
-                            </li>
-                            <li>
-                                <FontAwesomeIcon className={cx('icon-star')} icon={faStar} />
-                            </li>
-                            <li>
-                                <FontAwesomeIcon className={cx('icon-star')} icon={faStar} />
-                            </li>
-                            <li>
-                                <FontAwesomeIcon className={cx('icon-star')} icon={faStar} />
-                            </li>
+                        <div className={cx('bottom-content')}>
+                            <div className={cx('star-box')}>★★★★★</div>
+                            <div className={cx('product-name')}>{product.brand}</div>
+                            <div className={cx('product-price-tag')}>
+                                <div className={cx('product-price')}>${product.price}</div>
+                                <button
+                                    onClick={() => {
+                                        setName(product.name);
+                                        setBrand(product.brand);
+                                        setImage(product.image);
+                                        setPrice(product.price);
+                                        setDesc(product.desc);
+                                        setId(product.id);
+                                        createDoc({ name, brand, image, price, desc, id });
+                                    }}
+                                    className={cx('btn')}
+                                >
+                                    <FontAwesomeIcon className={cx('icon-add-product')} icon={faCartShopping} />
+                                </button>
+                            </div>
+                            <Link to={`/products/${product.id}`} className={cx('detail')}>
+                                <span>View product</span>
+                            </Link>
                         </div>
-                        <div className={cx('product-name')}>{product.brand}</div>
-                        <div className={cx('product-price')}>${product.price}</div>
-                        <button
-                            onClick={() => {
-                                setName(product.name);
-                                setBrand(product.brand);
-                                setImage(product.image);
-                                setPrice(product.price);
-                                setDesc(product.desc);
-                                setId(product.id);
-                                createDoc({ name, brand, image, price, desc, id });
-                            }}
-                            className={cx('btn')}
-                        >
-                            Add to cart
-                        </button>
-                        <Link to={`/products/${product.id}`} className={cx('detail')}>
-                            <span>View product</span>
-                        </Link>
                     </div>
                 </div>
             ))}
@@ -100,7 +88,7 @@ function ShopSection() {
 
     return (
         <div className={cx('wrapper')}>
-            <header>Featured products</header>
+            <header>Popular Products</header>
             {loading ? <Loading /> : renderProducts}
         </div>
     );

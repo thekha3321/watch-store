@@ -4,12 +4,13 @@ import classNames from 'classnames/bind';
 import styles from './Rate.module.scss';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import firebase from '../../../firebase/config';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 
 const Rate = ({ products, initContentEvo }) => {
     const { productId } = useParams();
     const productsRef = firebase.firestore().collection('products');
     const Uid = sessionStorage.getItem('Uid');
+    const email = sessionStorage.getItem('Email');
     const userRef = firebase.firestore().collection('users').where('id', '==', Uid);
     const cx = classNames.bind(styles);
     const [user, setUser] = useState();
@@ -17,6 +18,7 @@ const Rate = ({ products, initContentEvo }) => {
     const [value, setValue] = useState('');
     const [rating, setRating] = useState(0);
     const [ratingDetail, setRatingDetail] = useState('');
+    const navigate = useNavigate();
 
     async function getUser() {
         await userRef.onSnapshot((querySnapShot) => {
@@ -48,6 +50,7 @@ const Rate = ({ products, initContentEvo }) => {
 
     let valueRating = {
         value,
+        ratingDetail,
         rating,
         avatar: sessionStorage.getItem('avatar'),
         name: sessionStorage.getItem('Name'),
@@ -57,10 +60,15 @@ const Rate = ({ products, initContentEvo }) => {
         contentEvo: [...initContentEvo, valueRating],
     };
     const handlePushEvoluate = () => {
-        try {
-            productsRef.doc(productId).set(valueProduct);
-        } catch (e) {
-            console.error(e);
+        if (firebase.auth().currentUser) {
+            try {
+                productsRef.doc(productId).set(valueProduct);
+            } catch (e) {
+                console.error(e);
+            }
+            // eslint-disable-next-line no-restricted-globals
+        } else if (confirm('bạn chưa đăng nhập, bạn có muốn đăng nhập không ?')) {
+            navigate('/login');
         }
     };
 

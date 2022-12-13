@@ -87,8 +87,8 @@
 
 .cart-icon {
     position: absolute;
-    top: 6px;
-    left: 4px;
+    width: 36px;
+    height: 36px;
 }
 
 .quality {
@@ -98,10 +98,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #339994;
+    background-color: red;
     border-radius: 50%;
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     font-size: 12px;
     font-weight: 500;
     color: #fff;
@@ -148,6 +148,7 @@
 .signup-btn,
 .signin-btn {
     margin-left: 14px;
+    border-radius: var(--border-radius-btn);
     border: 1px solid var(--primary-color);
 }
 
@@ -160,7 +161,6 @@
     padding: 8px 22px;
     background-color: var(--primary-color);
     color: #fff !important;
-
     &:hover {
         opacity: 0.9;
     }
