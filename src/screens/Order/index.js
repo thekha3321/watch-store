@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import firebase from '../../firebase/config';
 
 import sytles from './Order.module.scss';
@@ -13,11 +13,10 @@ function Order() {
     const cx = classNames.bind(sytles);
     const cartRef = firebase.firestore().collection('cart');
     const billsRef = firebase.firestore().collection('bills');
-
+    const navigate = useNavigate();
     const name = sessionStorage.getItem('Name');
     const phone = sessionStorage.getItem('Phone');
     const addr = sessionStorage.getItem('Address');
-
     const [productsInLocal, setProductsInLocal] = useState([]);
     const [products, setProducts] = useState([]);
     const randomId = uuidv4().slice(0, 6);
@@ -25,6 +24,7 @@ function Order() {
     const day = date.getDate();
     let month = date.getMonth() + 1;
     const year = date.getFullYear();
+    const idUser = sessionStorage.getItem('Uid');
 
     const getProductsInLocal = () => {
         if (localStorage.getItem('AllProducts')) {
@@ -53,20 +53,26 @@ function Order() {
 
     let bill = {
         id: randomId,
+        idUser: idUser,
         name: sessionStorage.getItem('Name'),
         email: sessionStorage.getItem('Email'),
         phone: sessionStorage.getItem('Phone'),
         address: sessionStorage.getItem('Address'),
         orderDate: `${day}/${month}/${year}`,
-        totalMoney: totalMoney + totalMoney / 10 + 30000,
+        totalMoney: totalMoney + totalMoney / 10 + 20,
         allProducts: [...products],
     };
-    console.log([...products]);
 
     const handlePay = async () => {
-        await billsRef.doc(randomId).set(bill);
-        await products.forEach((product) => cartRef.doc(product.id).delete());
-        localStorage.clear('Allproducts');
+        try {
+            await billsRef.doc(randomId).set(bill);
+            await products.forEach((product) => cartRef.doc(product.id).delete());
+            localStorage.clear('Allproducts');
+            alert('Bạn đã đặt hàng thành công!');
+            navigate('/');
+        } catch (error) {
+            alert('co loi xay ra');
+        }
     };
 
     return (
@@ -122,22 +128,22 @@ function Order() {
                     <div className={cx('order')}>
                         <div className={cx('order-container')}>
                             <span>Total</span>
-                            <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney)} đ`}</span>
+                            <span>$ {totalMoney}</span>
                         </div>
                         <div className={cx('order-container')}>
                             <span>VAT</span>
-                            <span>{totalMoney / 10}</span>
+                            <span>$ {totalMoney / 10}</span>
                         </div>
                         <div className={cx('order-container')}>
                             <span>Transportation expenses</span>
-                            <span>30.000</span>
+                            <span>$ 20</span>
                         </div>
                         <div className={cx('order-container')}>
                             <span>total payable amount</span>
-                            <span>{`${new Intl.NumberFormat('de-DE').format(totalMoney + 30000)} đ`}</span>
+                            <span>$ {totalMoney + 20}</span>
                         </div>
                         <div className={cx('btn')}>
-                            <button onClick={handlePay} className={cx('order-btn')}>
+                            <button onClick={handlePay} className={cx('order-btn', 'fz-18')}>
                                 Đặt hàng
                             </button>
                         </div>

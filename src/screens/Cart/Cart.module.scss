@@ -3,14 +3,14 @@
     display: flex;
     justify-content: center;
 
+    .paddingHeader {
+        padding-top: 100px;
+    }
     .inner {
         width: var(--max-width);
         display: block;
-
         flex-direction: column;
-
         .container {
-            padding-top: 100px;
             .heading {
                 padding: 20px 0;
                 text-align: center;
@@ -36,10 +36,9 @@
 }
 
 .left {
-    position: absolute;
     display: inline-flex;
     flex-direction: column;
-    width: 1100px;
+    min-width: var(--max-width);
     height: 300px;
 
     .left-heading {

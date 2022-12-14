@@ -14,6 +14,7 @@ function Cart() {
     const cartRef = firebase.firestore().collection('cart');
     const randomId = uuidv4();
     let navigate = useNavigate();
+    const [small, setSmall] = useState(false);
 
     const getProducts = () => {
         cartRef.onSnapshot((querySnapShot) => {
@@ -27,6 +28,9 @@ function Cart() {
 
     useEffect(() => {
         getProducts();
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', () => setSmall(window.pageYOffset > 300));
+        }
     }, []);
 
     let totalMoney = 0;
@@ -61,7 +65,7 @@ function Cart() {
     return (
         <>
             <Header />
-            <div className={cx('wrapper')}>
+            <div className={cx('wrapper', `${small ? 'paddingHeader' : ''}`)}>
                 <div className={cx('inner')}>
                     <div className={cx('container')}>
                         <div className={cx('heading')}>

@@ -15,15 +15,25 @@ function Profile() {
     const [progress, setProgress] = useState(0);
     const userId = sessionStorage.getItem('Uid');
     const [user, setuser] = useState();
+    const [userBill, setUserBill] = useState([]);
 
     const userRef = firebase.firestore().collection('users').where('id', '==', userId);
     const usersRef = firebase.firestore().collection('users');
+    const userBills = firebase.firestore().collection('bills').where('idUser', '==', userId);
     async function getUser() {
         setLoading(true);
         await userRef.onSnapshot((querySnapShot) => {
-            const items = [];
             querySnapShot.forEach((doc) => {
                 setuser(doc.data());
+            });
+            setLoading(false);
+        });
+    }
+    async function getUserBill() {
+        setLoading(true);
+        await userBills.onSnapshot((querySnapShot) => {
+            querySnapShot.forEach((doc) => {
+                setUserBill(doc.data());
             });
             setLoading(false);
         });
@@ -63,12 +73,14 @@ function Profile() {
         ...user,
         avatar: url,
     };
+    console.log(userBill.allProducts.forEach((e) => e.name));
 
     const handleUpdateUser = () => {
         usersRef.doc(user.id).set(userInfo);
     };
     useEffect(() => {
         getUser();
+        getUserBill();
     }, []);
 
     const renderProfile = (
@@ -110,6 +122,17 @@ function Profile() {
                                 <p>Address: {user.address}</p>
                             </div>
                         ) : null}
+                    </div>
+                    <div style={{ padding: 50 }}>
+                        <h1>Lich su mua hang: </h1>
+                        <span style={{ display: 'block' }}>time: {userBill.orderDate}</span>
+                        <span>total: {userBill.totalMoney} $</span>
+                        <div>
+                            san pham:
+                            {/* {userBill.allProducts.map((e) => {
+                                <p>{e.name}</p>;
+                            })} */}
+                        </div>
                     </div>
                 </div>
             </div>

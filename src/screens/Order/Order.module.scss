@@ -1,17 +1,17 @@
 .wrapper {
-    padding-top: 60px;
     width: 100%;
     display: flex;
     justify-content: center;
-
+    background-color: var(--secondary-background-color);
     .inner {
+        padding: 20px 0;
         position: relative;
-        padding-top: 100px;
         width: var(--max-width);
 
         .order-place {
-            box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 12%);
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
             display: flex;
+            background-color: #ffffff;
             justify-content: space-between;
             flex-direction: column;
             padding: 24px;
@@ -69,8 +69,10 @@
         }
 
         .order-bill {
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+            background-color: #ffffff;
             margin-bottom: 10px;
-            box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 12%);
             padding: 24px;
 
             .bill-heading {
@@ -127,11 +129,11 @@
         }
 
         .order {
-            position: absolute;
-            right: 0;
+            position: relative;
+            margin-left: auto;
+            background-color: #ffffff;
             width: 250px;
-            box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 12%);
-
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
             .order-container {
                 display: flex;
                 justify-content: space-between;
@@ -147,6 +149,9 @@
             }
 
             .order-btn {
+                background-color: var(--primary-color);
+                color: #ffffff;
+                border-radius: var(--border-radius-btn);
                 width: 80%;
                 padding: 20px 40px;
                 margin-bottom: 20px;

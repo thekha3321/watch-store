@@ -1,10 +1,9 @@
 .wrapper {
-    padding-top: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 600px;
+    padding: 20px 0;
 }
 
 .inner {
@@ -14,14 +13,14 @@
 }
 
 .form {
+    min-height: 300px;
     width: 300px;
-    height: 406x;
-    box-shadow: 0 1px 3px 4px rgb(0 0 0 / 12%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .container {
+    border-radius: var(--border-radius-btn);
     padding: 20px;
-
     p {
         color: rgb(126 124 125);
         text-align: center;
