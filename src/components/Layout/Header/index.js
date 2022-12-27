@@ -95,7 +95,7 @@ function Header() {
         </div>
     );
     return (
-        <div className={cx('wrapper', `${small ? 'small' : ''}`)}>
+        <div className={cx('wrapper' /*, `${small ? 'small' : ''}`*/)}>
             <div className={cx('inner')}>
                 <Link className={cx('logo')} to="/">
                     <div className={cx('logo-img')} />

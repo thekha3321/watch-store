@@ -129,7 +129,7 @@ function App() {
             <Route path="/admin/promotion" element={<AdminPromotion />} />
             <Route path="/admin/statistical" element={<AdminStatistical />} />
             <Route path="/brand/:productBrand" element={<Brand />} />
-            <Route path="/saling" element={<ShopSaling />} />
+            <Route path="/products" element={<ShopSaling />} />
             <Route path="/profile/:userId" element={<Profile />} />
         </Routes>
     );

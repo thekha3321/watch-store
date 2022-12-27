@@ -9,15 +9,19 @@
     background-color: var(--primary-background-color);
 
     header {
+        color: var(--primary-color);
+        width: var(--max-width);
         text-transform: uppercase;
         padding: 10px;
+        font-size: 20px;
+        font-weight: 600;
     }
 
     .inner {
         width: var(--max-width);
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start;
         flex-wrap: wrap;
 
         .container {

@@ -8,6 +8,7 @@ import Loading from '../Loading';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import SlideBanner from '../SlideBanner';
+import CardProduct from '../CardProduct';
 const cx = classnames.bind(styles);
 
 function ShopSaling() {
@@ -34,18 +35,7 @@ function ShopSaling() {
     const renderProducts = (
         <div className={cx('inner')}>
             {products.map((product, index) => (
-                <Link key={index} className={cx('product')} to={`/products/${product.id}`}>
-                    <div className={cx('top')}>
-                        <img className="product-img" src={product.image} alt="" />
-                        <div className={cx('sale')}>Giãm giá 20%</div>
-                    </div>
-                    <div className={cx('bottom')}>
-                        <span className={cx('product-name')}>{product.name}</span>
-                        <div className={cx('product-price')}>{`${new Intl.NumberFormat('de-DE').format(
-                            product.price,
-                        )} đ`}</div>
-                    </div>
-                </Link>
+                <CardProduct product={product} index={index} />
             ))}
         </div>
     );
@@ -55,7 +45,7 @@ function ShopSaling() {
             <div className={cx('wrapper')}>
                 <Sidebar />
                 <SlideBanner />
-                <header>sản phẩm khuyến mãi</header>
+                <header>Tất cả sản phẩm</header>
                 {loading ? <Loading /> : renderProducts}
             </div>
         </>

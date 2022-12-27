@@ -73,7 +73,6 @@ function Profile() {
         ...user,
         avatar: url,
     };
-    console.log(userBill.allProducts.forEach((e) => e.name));
 
     const handleUpdateUser = () => {
         usersRef.doc(user.id).set(userInfo);
@@ -93,6 +92,7 @@ function Profile() {
                 <div className={cx('user')}>
                     <div className={cx('user-avatar')}>
                         <img
+                            className={cx('avatar')}
                             src={
                                 user
                                     ? user.avatar

@@ -15,7 +15,6 @@ function Sidebar() {
     const [small, setSmall] = useState(false);
 
     const productsRef = firebase.firestore().collection('products');
-
     function getProducts() {
         productsRef.onSnapshot((querySnapShot) => {
             const items = [];
@@ -44,7 +43,7 @@ function Sidebar() {
     }, []);
     //------------------
     return (
-        <div className={cx('wrapper', `${small ? 'paddingHeader' : ''}`)}>
+        <div className={cx('wrapper' /*, `${small ? 'paddingHeader' : ''}`*/)}>
             <div className={cx('inner')}>
                 <Tippy
                     className={cx('tippy-navbar')}
@@ -69,12 +68,13 @@ function Sidebar() {
                     </div>
                 </Tippy>
                 <div className={cx('sidebar-item')}>
-                    Đồng hồ
+                    <Link to="/products">Đồng Hồ</Link>
+
                     <FontAwesomeIcon className={cx('sidebar-item-icon')} />
                 </div>
                 <div className={cx('sidebar-item')}>Phụ Kiện đồng hồ</div>
                 <div className={cx('sidebar-item')}>
-                    <Link to="/saling">khuyến mãi</Link>
+                    <Link to="/products">khuyến mãi</Link>
                 </div>
             </div>
         </div>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames/bind';
 import styles from './Brand.module.scss';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import firebase from '../../firebase/config';
 import Loading from '../../components/Layout/Loading';
 import Sidebar from '../../components/Layout/Sidebar';
 import Header from '../../components/Layout/Header';
 import SlideBanner from '../../components/Layout/SlideBanner';
+import CardProduct from '../../components/Layout/CardProduct';
 
 function Brand() {
     const cx = classnames.bind(styles);
@@ -35,18 +36,7 @@ function Brand() {
             <h3>Thương hiệu {productBrand}</h3>
             <div className={cx('inner')}>
                 {products.map((product, index) => (
-                    <Link key={index} className={cx('product')} to={`/products/${product.id}`}>
-                        <div className={cx('top')}>
-                            <img className="product-img" src={product.image} alt="" />
-                            <div className={cx('pay')}></div>
-                        </div>
-                        <div className={cx('bottom')}>
-                            <span className={cx('product-name')}>{product.name}</span>
-                            <div className={cx('product-price')}>{`${new Intl.NumberFormat('de-DE').format(
-                                product.price,
-                            )} đ`}</div>
-                        </div>
-                    </Link>
+                    <CardProduct product={product} index={index} />
                 ))}
             </div>
         </>
