@@ -9,9 +9,7 @@ import Header from '../../components/Layout/Header';
 
 function AdminProducts() {
     const cx = classNames.bind(styles);
-
     const productsRef = firebase.firestore().collection('products');
-
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 

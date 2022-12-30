@@ -43,7 +43,7 @@
     width: 100%;
     justify-content: center;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: var(--border-radius-btn);
     padding: 10px;
     :focus {
         border-color: black;
@@ -53,9 +53,12 @@ span {
     font-size: 12px;
 }
 .btn {
+    font-size: 16px;
     cursor: pointer;
     justify-content: center;
-    display: flex;
+    display: block;
+    width: 100%;
+    border-radius: var(--border-radius-btn);
     border: 1px solid #ccc;
     padding: 10px 40px;
     margin: 14px auto;

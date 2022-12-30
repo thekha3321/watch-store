@@ -8,11 +8,11 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 function AdminEditProduct({ product, setEditbox }) {
     const cx = classNames.bind(styles);
     const productsRef = firebase.firestore().collection('products');
-    const [name, setName] = useState('');
-    const [brand, setBrand] = useState('');
-    const [price, setPrice] = useState('');
-    const [image, setImage] = useState('');
-    const [desc, setDesc] = useState('');
+    const [name, setName] = useState(product.name);
+    const [brand, setBrand] = useState(product.brand);
+    const [price, setPrice] = useState(product.price);
+    const [image, setImage] = useState(product.image);
+    const [desc, setDesc] = useState(product.desc);
 
     const handleEditProduct = (updtProduct) => {
         // eslint-disable-next-line no-restricted-globals
@@ -39,6 +39,7 @@ function AdminEditProduct({ product, setEditbox }) {
                         <div className={cx('add-info')}>
                             <label>Tên sản phẩm</label>
                             <textarea
+                                value={name}
                                 id="name"
                                 wrap="soft"
                                 name="name"
@@ -48,6 +49,7 @@ function AdminEditProduct({ product, setEditbox }) {
                             />
                             <label>Thương hiệu</label>
                             <textarea
+                                value={brand}
                                 id="brand"
                                 name="name"
                                 type="text"
@@ -56,6 +58,7 @@ function AdminEditProduct({ product, setEditbox }) {
                             />
                             <label>Giá</label>
                             <textarea
+                                value={price}
                                 id="price"
                                 name="name"
                                 type="text"
@@ -63,6 +66,7 @@ function AdminEditProduct({ product, setEditbox }) {
                             />
                             <label>Hình ảnh</label>
                             <textarea
+                                value={image}
                                 id="img"
                                 name="name"
                                 type="text"
@@ -71,6 +75,7 @@ function AdminEditProduct({ product, setEditbox }) {
                             />
                             <label>Mô tả</label>
                             <textarea
+                                value={desc}
                                 id="desc"
                                 name="desc"
                                 type="text"

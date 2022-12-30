@@ -81,7 +81,7 @@ function App() {
                         });
                 })
                 .catch(() => {
-                    alert(`Tài khoản Email: ${email} đã tồn tại`);
+                    alert(`Tài khoản Email: ${email} không đúng hoặc đã tồn tại`);
                 });
         }
     };

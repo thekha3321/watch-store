@@ -32,9 +32,16 @@ function Login({ title, setEmail, setPassword, handleAction }) {
                                 className={cx('input')}
                             />
                             <div className={cx('')}>
-                                <div type="submit" onClick={() => handleAction(1)} className={cx('btn')}>
+                                <button
+                                    type="submit"
+                                    className={cx('btn')}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleAction(1);
+                                    }}
+                                >
                                     {title}
-                                </div>
+                                </button>
                             </div>
                             <p>
                                 <Link to="/register">

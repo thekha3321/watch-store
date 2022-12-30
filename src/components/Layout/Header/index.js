@@ -21,6 +21,7 @@ function Header() {
     const [products, setProducts] = useState([]);
     const [small, setSmall] = useState(false);
     const [user, setUser] = useState();
+    const userName = sessionStorage.getItem('Name');
 
     function getProducts() {
         cartRef.onSnapshot((querySnapShot) => {
@@ -81,14 +82,15 @@ function Header() {
                     </div>
                 }
             >
-                <div className={cx('')}>
-                    <img
+                <div className={cx('border')}>
+                    {/* <img
                         className={cx('avatar')}
                         src={
                             user?.avatar || 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'
                         }
                         alt=""
-                    />
+                    /> */}
+                    <span style={{ fontSize: 16 }}>Hi, {userName}</span>
                     <FontAwesomeIcon className={cx('avatar-icon')} icon={faCaretDown} />
                 </div>
             </Tippy>

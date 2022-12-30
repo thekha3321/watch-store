@@ -74,14 +74,14 @@ function Cart() {
                     </div>
                     <div className="content">
                         <div className={cx('left')}>
-                            <span className={cx('left-heading')}>
+                            <div className={cx('left-heading')}>
                                 <div className={cx('product-info-top', 'text-upper')}>Image</div>
                                 <div className={cx('product-info-top', 'text-upper')}>Product name</div>
                                 <div className={cx('product-info-top', 'text-upper')}>Price</div>
                                 <div className={cx('product-info-top', 'text-upper')}>quality</div>
                                 <div className={cx('product-info-top', 'text-upper')}>Amount</div>
                                 <div className={cx('product-info-top', 'text-upper')}>Delete</div>
-                            </span>
+                            </div>
                             {products.map((product, index) => (
                                 <div key={index} className={cx('left-content')}>
                                     <div className={cx('product-info-midle')}>

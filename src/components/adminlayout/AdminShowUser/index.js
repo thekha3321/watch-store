@@ -27,7 +27,7 @@ function AdminShowUser({ user }) {
                 <div className={cx('product-title', 'text-upper')}>{user.id}</div>
                 <div className={cx('product-title')}>{user.name}</div>
                 <div className={cx('product-title')}>{user.email}</div>
-                <div className={cx('product-title')}>{user.rule}</div>
+                <div className={cx('product-title')}>{user.rule === 0 ? 'khách hàng' : 'Quản trị viên'}</div>
                 <div className={cx('product-title')}>
                     <button className={cx('btn')}>
                         <FontAwesomeIcon icon={faPenToSquare} />

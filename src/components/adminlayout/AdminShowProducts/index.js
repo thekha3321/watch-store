@@ -31,12 +31,17 @@ function AdminShowProducts({ product }) {
                     <img src={product.image} alt="" />
                 </div>
                 <div className={cx('product-title')}>{product.name}</div>
-                <div className={cx('product-title')}>{new Intl.NumberFormat('de-DE').format(product.price)} đ</div>
+                <div className={cx('product-title')}>${product.price}</div>
                 <div className={cx('product-title')}>
                     <button className={cx('btn')} onClick={() => setEditbox(!editbox)}>
                         <FontAwesomeIcon icon={faPenToSquare} />
                     </button>
-                    <button className={cx('btn')} onClick={() => handleDeleteProduct(product)}>
+                    <button
+                        className={cx('btn')}
+                        onClick={() => {
+                            handleDeleteProduct(product);
+                        }}
+                    >
                         <FontAwesomeIcon icon={faTrash} />
                     </button>
                 </div>
