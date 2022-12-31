@@ -30,19 +30,27 @@ function AdminShowBill({ bill }) {
         }
         //eslint-disable-line
     };
+    const handleAcceptBill = async () => {
+        await billsRef.doc(bill.id).set(_bill);
+        alert('Chấp nhận đơn thành công !');
+    };
+    let _bill = {
+        ...bill,
+        status: 'Done',
+    };
     return (
         <div>
             <div className={cx('bottom')}>
                 <div className={cx('product-title', 'text-upper')}>{billId}</div>
-                <div className={cx('product-title')}>{bill.name}</div>
                 <div className={cx('product-title')}>{bill.email}</div>
+                <div className={cx('product-title')}>{bill.status ? bill.status : 'Waiting'}</div>
                 <div className={cx('product-title')}>{bill.phone}</div>
                 <div className={cx('product-title', 'text-upper')}>{bill.orderDate}</div>
                 <div className={cx('product-title')}>
                     <button className={cx('btn')}>
                         <FontAwesomeIcon icon={faInfoCircle} />
                     </button>
-                    <button className={cx('btn')}>
+                    <button className={cx('btn')} onClick={handleAcceptBill}>
                         <FontAwesomeIcon icon={faCheck} />
                     </button>
                     <button className={cx('btn')}>

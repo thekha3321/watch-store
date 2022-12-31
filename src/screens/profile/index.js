@@ -6,6 +6,7 @@ import { storage } from '../../firebase/config';
 import firebase from '../../firebase/config';
 import { useEffect } from 'react';
 import Loading from '../../components/Layout/Loading';
+import Footer from '../../components/Layout/Footer';
 function Profile() {
     const cx = classNames.bind(styles);
     const [url, setUrl] = useState(null);
@@ -20,7 +21,8 @@ function Profile() {
 
     const userRef = firebase.firestore().collection('users').where('id', '==', userId);
     const usersRef = firebase.firestore().collection('users');
-    const userBills = firebase.firestore().collection('bills').where('idUser', '==', userId);
+    const userBillsRef = firebase.firestore().collection('bills');
+    // .where('idUser', '==', userId);
     async function getUser() {
         setLoading(true);
         await userRef.onSnapshot((querySnapShot) => {
@@ -32,10 +34,12 @@ function Profile() {
     }
     async function getUserBill() {
         setLoading(true);
-        await userBills.onSnapshot((querySnapShot) => {
+        await userBillsRef.onSnapshot((querySnapShot) => {
+            const items = [];
             querySnapShot.forEach((doc) => {
-                setUserBill(doc.data());
+                if (doc.data().idUser === userId) items.push(doc.data());
             });
+            setUserBill(items);
             setLoading(false);
         });
     }
@@ -74,7 +78,6 @@ function Profile() {
         ...user,
         avatar: url,
     };
-
     const handleUpdateUser = () => {
         usersRef.doc(user.id).set(userInfo);
     };
@@ -109,14 +112,36 @@ function Profile() {
             </div>
         </div>
     );
-    const renderOrderLists = <div>a</div>;
+    const renderOrderLists = (
+        <div className={cx('setting')}>
+            <div className={cx('top')}>
+                <table>
+                    <tr className={cx('tr')}>
+                        <td className={cx('title', 'text-upper', 'fw-600')}>id</td>
+                        <td className={cx('title', 'text-upper', 'fw-600')}>status</td>
+                        <td className={cx('title', 'text-upper', 'fw-600')}>date</td>
+                        <td className={cx('title', 'text-upper', 'fw-600')}>total</td>
+                    </tr>
+                    {userBill.map((e) => (
+                        <tr className={cx(e.status === 'Done' ? 'done' : 'waiting')}>
+                            <td className={cx('title')}>{e.id}</td>
+                            <td className={cx('title')}>{e.status}</td>
+                            <td className={cx('title')}>{e.orderDate}</td>
+                            <td className={cx('title')}>${e.totalMoney}</td>
+                        </tr>
+                    ))}
+                </table>
+            </div>
+            <div className={cx('bot')}></div>
+        </div>
+    );
     const renderProfile = (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 {/* <div className={cx('title')}>
                     <h1>Thông tin cá nhân</h1>
-                    {showProgress ? <progress value={progress} max="100" /> : null}
                 </div> */}
+                {showProgress ? <progress value={progress} max="100" /> : null}
                 <div className={cx('user')}>
                     <div className={cx('user-avatar')}>
                         <div className={cx('user-content')}>
@@ -133,13 +158,9 @@ function Profile() {
                             />
                             <label className={cx('label')}>
                                 <input type="file" required onChange={handleChange} />
-                                <span>Chọn ảnh đại diện</span>
+                                <span>Change avatar</span>
                             </label>
-                            <button
-                                className={cx('btn')}
-                                onClick={handleUpdateUser}
-                                style={{ padding: 10, backgroundColor: '#959599', borderRadius: 16 }}
-                            >
+                            <button className={cx('btn')} onClick={handleUpdateUser}>
                                 Update
                             </button>
                         </div>
@@ -170,6 +191,7 @@ function Profile() {
                     </div>
                     <div onClick={() => setShowSetting(false)} className={cx('action', showSetting ? '' : 'active')}>
                         Order Lists
+                        <span className={cx('quality')}>{userBill.length}</span>
                     </div>
                 </div>
                 {showSetting ? renderSetting : renderOrderLists}
@@ -180,6 +202,7 @@ function Profile() {
         <>
             <Header />
             {loading ? <Loading /> : renderProfile}
+            <Footer />
         </>
     );
 }

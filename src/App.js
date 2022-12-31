@@ -53,7 +53,9 @@ function App() {
             await signInWithEmailAndPassword(authentication, email, password, name, address, phone)
                 .then((response) => {
                     sessionStorage.setItem('Email', email);
-                    sessionStorage.setItem('Name', name);
+                    sessionStorage.setItem('Address', user.address);
+                    sessionStorage.setItem('Phone', user.phone);
+                    sessionStorage.setItem('Name', user.name);
                     sessionStorage.setItem('Uid', user.id);
                     sessionStorage.setItem('avatar', user.avatar);
                     navigate('/');

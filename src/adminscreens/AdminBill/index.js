@@ -37,12 +37,12 @@ function AdminBill() {
                             <div className={cx('heading')}>invoices management</div>
                             <div className={cx('content')}>
                                 <div className={cx('top')}>
-                                    <div className={cx('product-title')}>Invoice id</div>
-                                    <div className={cx('product-title')}>User name</div>
-                                    <div className={cx('product-title')}>Email</div>
-                                    <div className={cx('product-title')}>Phone</div>
-                                    <div className={cx('product-title')}>Date</div>
-                                    <div className={cx('product-title')}>Actions</div>
+                                    <div className={cx('product-title', 'fw-600')}>Invoice id</div>
+                                    <div className={cx('product-title', 'fw-600')}>Email</div>
+                                    <div className={cx('product-title', 'fw-600')}>Status</div>
+                                    <div className={cx('product-title', 'fw-600')}>Phone</div>
+                                    <div className={cx('product-title', 'fw-600')}>Date</div>
+                                    <div className={cx('product-title', 'fw-600')}>Actions</div>
                                 </div>
                                 {bills.map((bill) => (
                                     <AdminShowBill bill={bill} key={bill.id} />

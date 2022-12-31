@@ -58,6 +58,7 @@ function Order() {
         email: sessionStorage.getItem('Email'),
         phone: sessionStorage.getItem('Phone'),
         address: sessionStorage.getItem('Address'),
+        status: 'Waiting',
         orderDate: `${day}/${month}/${year}`,
         totalMoney: totalMoney + totalMoney / 10 + 20,
         allProducts: [...products],
