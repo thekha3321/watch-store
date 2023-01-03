@@ -1,5 +1,4 @@
 .wapper {
-    margin: 20px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -11,7 +10,6 @@
     }
 
     .heading {
-        padding-top: 20px;
         text-align: center;
         font-weight: 600;
         text-transform: uppercase;
@@ -28,6 +26,7 @@
         width: 100%;
 
         .left {
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             width: 40%;
@@ -49,7 +48,8 @@
             }
 
             .product-name {
-                font-size: 17px;
+                font-weight: 600;
+                font-size: 18px;
             }
 
             .product-price {

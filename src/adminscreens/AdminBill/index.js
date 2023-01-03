@@ -40,7 +40,7 @@ function AdminBill() {
                                     <div className={cx('product-title', 'fw-600')}>Invoice id</div>
                                     <div className={cx('product-title', 'fw-600')}>Email</div>
                                     <div className={cx('product-title', 'fw-600')}>Status</div>
-                                    <div className={cx('product-title', 'fw-600')}>Phone</div>
+                                    <div className={cx('product-title', 'fw-600')}>Total</div>
                                     <div className={cx('product-title', 'fw-600')}>Date</div>
                                     <div className={cx('product-title', 'fw-600')}>Actions</div>
                                 </div>

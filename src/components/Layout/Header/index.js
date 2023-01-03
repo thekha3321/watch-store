@@ -54,8 +54,7 @@ function Header() {
             window.addEventListener('scroll', () => setSmall(window.pageYOffset > 300));
         }
     }, []);
-    let quality = 0;
-    products.map((product) => (quality += 1));
+
     const headerRegister = (
         <div>
             <Link to="/register" element={<Register />} className={cx('signup-btn')}>
@@ -111,7 +110,7 @@ function Header() {
                                 src="https://firebasestorage.googleapis.com/v0/b/sales-watch-92e59.appspot.com/o/images%2FLogocart.png?alt=media&token=6951b11e-5b72-4c03-b18f-4e700457f362"
                                 alt=""
                             />
-                            <span className={cx('quality')}>{quality}</span>
+                            <span className={cx('quality')}>{products.length}</span>
                         </Link>
                     </Tippy>
                     {sessionStorage.getItem('Email') ? headerUser : headerRegister}

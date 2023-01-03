@@ -26,10 +26,11 @@ img {
     margin-right: 4px;
     text-transform: uppercase;
     background-color: transparent;
-    &:first-child {
-        background-color: #d1e7dd;
-    }
-    &:last-child {
-        background-color: #f8d7da;
-    }
+}
+
+.waiting {
+    background-color: palevioletred;
+}
+.done {
+    background-color: aquamarine;
 }

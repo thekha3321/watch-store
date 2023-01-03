@@ -63,18 +63,18 @@ function Sidebar() {
                     }
                 >
                     <div className={cx('sidebar-item')}>
-                        Thương hiệu
+                        Brand
                         <FontAwesomeIcon className={cx('sidebar-item-icon')} icon={faCaretDown} />
                     </div>
                 </Tippy>
                 <div className={cx('sidebar-item')}>
-                    <Link to="/products">Đồng Hồ</Link>
+                    <Link to="/products">Products</Link>
 
                     <FontAwesomeIcon className={cx('sidebar-item-icon')} />
                 </div>
-                <div className={cx('sidebar-item')}>Phụ Kiện đồng hồ</div>
+                <div className={cx('sidebar-item')}>accessory</div>
                 <div className={cx('sidebar-item')}>
-                    <Link to="/products">khuyến mãi</Link>
+                    <Link to="/products">Promotion</Link>
                 </div>
             </div>
         </div>

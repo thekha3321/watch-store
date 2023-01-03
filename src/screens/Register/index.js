@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 function Register({ title, setEmail, setPassword, handleAction, setName, setAddress, setPhone }) {
     const cx = classnames.bind(styles);
+    const handleSubmit = () => {};
+
     const [isValid1, setIsValid1] = useState(false);
     const [isValid2, setIsValid2] = useState(false);
     const [isValid3, setIsValid3] = useState(false);
@@ -17,7 +19,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
             <Header />
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
-                    <form className={cx('form')}>
+                    <form onSubmit={handleSubmit} className={cx('form')}>
                         <div className={cx('container')}>
                             <h1 className={cx('heading')}>{title}</h1>
                             <label htmlFor="user" className={cx('title')}>
@@ -114,6 +116,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                             <span style={{ color: 'red', fontSize: 12 }} id="notiphone"></span>
 
                             <button
+                                type="submit"
                                 id="btn"
                                 variant="contained"
                                 onClick={(e) => {

@@ -99,7 +99,7 @@ function Profile() {
             </div>
             <div className={cx('setting-top')}>
                 <div className={cx('wrap-input')}>
-                    <label className={cx('label')}>EMAIL-ADDRESS</label>
+                    <label className={cx('label')}>PASSWORD</label>
                     <input className={cx('input')} />
                 </div>
                 <div className={cx('wrap-input')}>

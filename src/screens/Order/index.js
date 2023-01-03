@@ -115,13 +115,9 @@ function Order() {
                                     <div>{product.name}</div>
                                 </div>
                                 <div className={cx('title')}>
-                                    <span className={cx('heading-title')}>{`${new Intl.NumberFormat('de-DE').format(
-                                        product.price,
-                                    )} đ`}</span>
+                                    <span className={cx('heading-title')}>${product.price} </span>
                                     <span className={cx('heading-title')}>1</span>
-                                    <span className={cx('heading-title')}>{`${new Intl.NumberFormat('de-DE').format(
-                                        product.price,
-                                    )} đ`}</span>
+                                    <span className={cx('heading-title')}>${product.price}</span>
                                 </div>
                             </div>
                         ))}

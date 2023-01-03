@@ -17,7 +17,7 @@ const Rate = ({ products, initContentEvo }) => {
     const [avatar, setAvatar] = useState();
     const [value, setValue] = useState('');
     const [rating, setRating] = useState(0);
-    const [ratingDetail, setRatingDetail] = useState('');
+    const [ratingDetail, setRatingDetail] = useState('+Your Rating');
     const navigate = useNavigate();
 
     async function getUser() {
@@ -31,19 +31,25 @@ const Rate = ({ products, initContentEvo }) => {
         switch (newRating) {
             case 1:
                 setRating('★');
+                setRatingDetail('Very bad');
                 break;
             case 2:
                 setRating('★★');
+                setRatingDetail('Bad');
                 break;
             case 3:
                 setRating('★★★');
+                setRatingDetail('Good');
                 break;
             case 4:
                 setRating('★★★★');
+                setRatingDetail('Very Good');
                 break;
             case 5:
                 setRating('★★★★★');
+                setRatingDetail('Excellent');
                 break;
+
             default:
         }
     };
@@ -73,25 +79,6 @@ const Rate = ({ products, initContentEvo }) => {
     };
 
     useEffect(() => {
-        switch (rating) {
-            case '★':
-                setRatingDetail('Very bad');
-                break;
-            case '★★':
-                setRatingDetail('Bad');
-                break;
-            case '★★★':
-                setRatingDetail('Good');
-                break;
-            case '★★★★':
-                setRatingDetail('Very Good');
-                break;
-            case '★★★★★':
-                setRatingDetail('Excellent');
-                break;
-            default:
-                setRatingDetail('+Your Rating');
-        }
         getUser();
     }, []);
 

@@ -2,16 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './AdminShowBill.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCheck,
-    faCheckCircle,
-    faClose,
-    faInfo,
-    faInfoCircle,
-    faLock,
-    faPenToSquare,
-    faTrash,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faClose, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import firebase from '../../../firebase/config';
 
 function AdminShowBill({ bill }) {
@@ -31,8 +22,10 @@ function AdminShowBill({ bill }) {
         //eslint-disable-line
     };
     const handleAcceptBill = async () => {
-        await billsRef.doc(bill.id).set(_bill);
-        alert('Chấp nhận đơn thành công !');
+        try {
+            await billsRef.doc(bill.id).set(_bill);
+            alert('Chấp nhận đơn thành công !');
+        } catch (error) {}
     };
     let _bill = {
         ...bill,
@@ -40,11 +33,11 @@ function AdminShowBill({ bill }) {
     };
     return (
         <div>
-            <div className={cx('bottom')}>
+            <div className={cx('bottom', bill.status ? 'done' : 'waiting')}>
                 <div className={cx('product-title', 'text-upper')}>{billId}</div>
                 <div className={cx('product-title')}>{bill.email}</div>
                 <div className={cx('product-title')}>{bill.status ? bill.status : 'Waiting'}</div>
-                <div className={cx('product-title')}>{bill.phone}</div>
+                <div className={cx('product-title')}>${bill.totalMoney}</div>
                 <div className={cx('product-title', 'text-upper')}>{bill.orderDate}</div>
                 <div className={cx('product-title')}>
                     <button className={cx('btn')}>

@@ -35,9 +35,17 @@ function SingleProduct__() {
             setLoading(false);
         });
     }
+    let product = {
+        name: products[0]?.name,
+        brand: products[0]?.brand,
+        image: products[0]?.image,
+        price: products[0]?.price,
+        desc: products[0]?.desc,
+        id: products[0]?.id,
+    };
     // push product to cart
-    const createDoc = (props) => {
-        cartRef.doc(props.id).set(props);
+    const createDoc = async () => {
+        await cartRef.doc(products[0].id).set(product);
         alert('Đã thêm sản phẩm vào giỏ hàng');
     };
     useEffect(() => {
@@ -59,13 +67,7 @@ function SingleProduct__() {
                     <span className={cx('product-description')}>{products[0]?.desc}</span>
                     <button
                         onClick={() => {
-                            setName(products[0].name);
-                            setBrand(products[0].brand);
-                            setImage(products[0].image);
-                            setPrice(products[0].price);
-                            setDesc(products[0].desc);
-                            setId(products[0].id);
-                            createDoc({ name, brand, image, price, desc, id });
+                            createDoc();
                         }}
                     >
                         Add to cart
@@ -77,9 +79,15 @@ function SingleProduct__() {
                 <div className={cx('product-evo')}>
                     <img className={cx('evoluater-avatar')} src={e.avatar} alt="" />
                     <div className={cx('evoluater-content')}>
-                        <div className={cx('evoluater-name')}>{e.name}</div>
-                        <div className={cx('evoluater-rate')}>{e.rating}</div>
-                        <div className={cx('evoluater-content')}>{e.value}</div>
+                        <div className={cx('evoluater-name', 'fz-18')}>{e.name}</div>
+                        <div className={cx('fl-row')}>
+                            <div className={cx('evoluater-rate', 'fz-18')}>{e.rating}</div>
+                            <span className={cx('evoluater-name', 'fz-18')} style={{ marginLeft: 8 }}>
+                                {e.ratingDetail}
+                            </span>
+                        </div>
+
+                        <div className={cx('evoluater-content', 'fz-18')}>{e.value}</div>
                     </div>
                 </div>
             ))}

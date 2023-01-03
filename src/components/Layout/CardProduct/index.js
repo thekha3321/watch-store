@@ -7,8 +7,22 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-function CardProduct({ product, index, handleBuy }) {
+import firebase from '../../../firebase/config';
+function CardProduct({ product, index }) {
+    const cartRef = firebase.firestore().collection('cart');
+
     const cx = classnames.bind(styles);
+    let _product = {
+        name: product.name,
+        brand: product.brand,
+        image: product.image,
+        price: product.price,
+        desc: product.desc,
+        id: product.id,
+    };
+    const handleBuy = async () => {
+        await cartRef.doc(product.id).set(_product);
+    };
 
     return (
         <Fragment>

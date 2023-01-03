@@ -34,6 +34,11 @@ body {
 .border-bot {
     border-bottom: 2px solid black;
 }
+.fl-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .text-upper {
     text-transform: uppercase;
 }
