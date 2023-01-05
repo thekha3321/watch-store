@@ -8,6 +8,8 @@ import Header from '../../components/Layout/Header';
 import { v4 as uuidv4 } from 'uuid';
 import firebase from '../../firebase/config';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Cart() {
     const cx = classNames.bind(styles);
     const [products, setProducts] = useState([]);
@@ -37,12 +39,12 @@ function Cart() {
     products.map((product) => (totalMoney += product.price));
 
     const handleDeleteProduct = (docx) => {
-        cartRef
-            .doc(docx.id)
-            .delete()
-            .catch((err) => {
-                alert(err);
-            });
+        try {
+            cartRef.doc(docx.id).delete();
+            toast.success('Successfully!');
+        } catch (error) {
+            toast.error('Fail!');
+        }
         //eslint-disable-line
     };
     let bill = {
@@ -58,13 +60,14 @@ function Cart() {
             localStorage.setItem('AllProducts', JSON.stringify(bill.allProducts));
             navigate('/order');
         } else {
-            alert('bạn chưa có đơn hàng');
+            alert("You don't have an order");
         }
     };
 
     return (
         <>
             <Header />
+            <ToastContainer />
             <div className={cx('wrapper', `${small ? 'paddingHeader' : ''}`)}>
                 <div className={cx('inner')}>
                     <div className={cx('container')}>
@@ -120,10 +123,10 @@ function Cart() {
 
                                 <button
                                     onClick={() => {
-                                        if (firebase.auth().currentUser) {
+                                        if (sessionStorage.getItem('Name')) {
                                             handleCreateBill();
                                             // eslint-disable-next-line no-restricted-globals
-                                        } else if (confirm('bạn chưa đăng nhập, bạn có muốn đăng nhập không ?')) {
+                                        } else if (confirm('you are not logged in, would you like to login ?')) {
                                             navigate('/login');
                                         }
                                     }}

@@ -6,6 +6,8 @@ import firebase from '../../../firebase/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function AdminShowProducts({ product }) {
     const cx = classNames.bind(styles);
     const productsRef = firebase.firestore().collection('products');
@@ -14,18 +16,20 @@ function AdminShowProducts({ product }) {
     const handleDeleteProduct = (docx) => {
         // eslint-disable-next-line no-restricted-globals
         if (confirm('Bạn có chắc muốn xóa sản phẩm này không ?')) {
-            productsRef
-                .doc(docx.id)
-                .delete()
-                .catch((err) => {
-                    alert(err);
-                });
+            try {
+                productsRef.doc(docx.id).delete();
+                toast.success('Successfully!');
+            } catch (error) {
+                toast.error('Fail!');
+            }
         }
         //eslint-disable-line
     };
 
     return (
         <div>
+            <ToastContainer />
+
             <div key={product.id} className={cx('bottom')}>
                 <div className={cx('product-title')}>
                     <img src={product.image} alt="" />

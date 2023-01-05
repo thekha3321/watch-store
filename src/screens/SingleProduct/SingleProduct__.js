@@ -6,9 +6,11 @@ import { useParams } from 'react-router-dom';
 import styles from './SingleProduct.module.scss';
 import Loading from '../../components/Layout/Loading';
 import Rate from '../../components/Layout/Rate';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function SingleProduct__() {
     const cx = classNames.bind(styles);
+
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [initContentEvo, setInitContentEvo] = useState([]);
@@ -45,8 +47,12 @@ function SingleProduct__() {
     };
     // push product to cart
     const createDoc = async () => {
-        await cartRef.doc(products[0].id).set(product);
-        alert('Đã thêm sản phẩm vào giỏ hàng');
+        try {
+            await cartRef.doc(products[0].id).set(product);
+            toast.success('Successfully!');
+        } catch (error) {
+            toast.error('Fail!');
+        }
     };
     useEffect(() => {
         getProducts();
@@ -54,6 +60,7 @@ function SingleProduct__() {
 
     const renderproduct = (
         <div className={cx('inner')}>
+            <ToastContainer />
             <div className={cx('heading')}>
                 <span>products information</span>
             </div>

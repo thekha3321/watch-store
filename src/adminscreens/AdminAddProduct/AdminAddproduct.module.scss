@@ -23,6 +23,8 @@
                 flex-direction: column;
 
                 label {
+                    height: 30px;
+                    width: 100px;
                     font-size: 18px;
                 }
 
@@ -51,7 +53,6 @@
                 margin-top: 20px;
                 display: flex;
                 justify-content: center;
-
                 button {
                     color: #fff;
                     cursor: pointer;
@@ -61,4 +62,41 @@
             }
         }
     }
+}
+.label {
+    display: flex;
+    width: 150px;
+    justify-content: center;
+    flex-direction: row;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    background: #dddddd;
+    .input {
+        border: none;
+        position: absolute;
+        top: -1000px;
+    }
+    .span {
+        color: #000000;
+        font-size: 16;
+        font-weight: 500;
+    }
+    &:hover {
+    }
+    &:active {
+        background: #9fa1a0;
+    }
+    &:invalid + .span {
+        color: #000000;
+    }
+    &:valid {
+        color: #ffffff;
+    }
+}
+
+.img {
+    border: 1px solid #ccc;
 }

@@ -4,8 +4,11 @@ import styles from './ShopSection.module.scss';
 import firebase from '../../../firebase/config';
 import Loading from '../../Layout/Loading';
 import CardProduct from '../CardProduct';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ShopSection() {
+    const notify = () => toast.success('Successfully!');
     const cx = classnames.bind(styles);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -56,13 +59,15 @@ function ShopSection() {
     const renderProducts = (
         <div className={cx('inner')}>
             {products.slice(0, 4).map((product, index) => (
-                <CardProduct product={product} index={index} handleBuy={handleBuy} />
+                <CardProduct product={product} index={index} handleBuy={handleBuy} notify={notify} />
             ))}
         </div>
     );
 
     return (
         <div className={cx('wrapper')}>
+            <ToastContainer />
+
             <header>Popular Products</header>
             {loading ? <Loading /> : renderProducts}
         </div>

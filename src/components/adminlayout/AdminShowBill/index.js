@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClose, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import firebase from '../../../firebase/config';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function AdminShowBill({ bill }) {
     const billId = bill.id.slice(0, 6);
     const billsRef = firebase.firestore().collection('bills');
@@ -12,20 +14,24 @@ function AdminShowBill({ bill }) {
     const handleDeleteBill = (docx) => {
         // eslint-disable-next-line no-restricted-globals
         if (confirm('Bạn có chắc muốn xóa hóa đơn này không ?')) {
-            billsRef
-                .doc(docx.id)
-                .delete()
-                .catch((err) => {
-                    alert(err);
-                });
+            try {
+                billsRef.doc(docx.id).delete();
+                toast.success('Successfully!');
+            } catch (error) {
+                toast.error('Fail!');
+            }
         }
         //eslint-disable-line
     };
-    const handleAcceptBill = async () => {
-        try {
-            await billsRef.doc(bill.id).set(_bill);
-            alert('Chấp nhận đơn thành công !');
-        } catch (error) {}
+    const handleAcceptBill = async (status) => {
+        if (status === 'Waiting') {
+            try {
+                await billsRef.doc(bill.id).set(_bill);
+                toast.success('Successfully!');
+            } catch (error) {
+                toast.error('Fail!');
+            }
+        }
     };
     let _bill = {
         ...bill,
@@ -33,7 +39,8 @@ function AdminShowBill({ bill }) {
     };
     return (
         <div>
-            <div className={cx('bottom', bill.status ? 'done' : 'waiting')}>
+            <ToastContainer />
+            <div className={cx('bottom', bill.status === 'Done' ? 'done' : 'waiting')}>
                 <div className={cx('product-title', 'text-upper')}>{billId}</div>
                 <div className={cx('product-title')}>{bill.email}</div>
                 <div className={cx('product-title')}>{bill.status ? bill.status : 'Waiting'}</div>
@@ -43,7 +50,7 @@ function AdminShowBill({ bill }) {
                     <button className={cx('btn')}>
                         <FontAwesomeIcon icon={faInfoCircle} />
                     </button>
-                    <button className={cx('btn')} onClick={handleAcceptBill}>
+                    <button className={cx('btn')} onClick={() => handleAcceptBill(bill.status)}>
                         <FontAwesomeIcon icon={faCheck} />
                     </button>
                     <button className={cx('btn')}>

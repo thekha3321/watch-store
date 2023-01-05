@@ -8,6 +8,8 @@ import AdminSidebar from '../../components/adminlayout/AdminSidebar';
 import Loading from '../../components/Layout/Loading';
 import AdminShowUser from '../../components/adminlayout/AdminShowUser';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function AdminAcountManager() {
     const cx = classNames.bind(styles);
 
@@ -41,7 +43,7 @@ function AdminAcountManager() {
                     <div className={cx('product-title')}>Actions</div>
                 </div>
                 {users.map((user) => (
-                    <AdminShowUser user={user} key={user.id} />
+                    <AdminShowUser toast={toast} user={user} key={user.id} />
                 ))}
             </div>
         </div>
@@ -49,6 +51,7 @@ function AdminAcountManager() {
     return (
         <>
             <Header />
+            <ToastContainer />
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <AdminSidebar />

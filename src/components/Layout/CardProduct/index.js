@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import firebase from '../../../firebase/config';
-function CardProduct({ product, index }) {
+function CardProduct({ product, index, notify }) {
     const cartRef = firebase.firestore().collection('cart');
 
     const cx = classnames.bind(styles);
@@ -40,6 +40,7 @@ function CardProduct({ product, index }) {
                             <button
                                 onClick={() => {
                                     handleBuy(product);
+                                    notify();
                                 }}
                                 className={cx('btn')}
                             >

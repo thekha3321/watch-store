@@ -6,6 +6,8 @@ import TextareaAutosize from '@mui/base/TextareaAutosize';
 import firebase from '../../../firebase/config';
 import { useParams, useNavigate } from 'react-router';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Rate = ({ products, initContentEvo }) => {
     const { productId } = useParams();
     const productsRef = firebase.firestore().collection('products');
@@ -69,8 +71,9 @@ const Rate = ({ products, initContentEvo }) => {
         if (firebase.auth().currentUser) {
             try {
                 productsRef.doc(productId).set(valueProduct);
+                toast.success('Successfully!');
             } catch (e) {
-                console.error(e);
+                toast.error('Fail!');
             }
             // eslint-disable-next-line no-restricted-globals
         } else if (confirm('bạn chưa đăng nhập, bạn có muốn đăng nhập không ?')) {
@@ -84,6 +87,7 @@ const Rate = ({ products, initContentEvo }) => {
 
     return (
         <div className={cx('wrapper')}>
+            <ToastContainer />
             <div className={cx('container')}>
                 <h4 className={cx('text-upper')}>Evaluate products</h4>
                 <div className={cx('evaluate')}>

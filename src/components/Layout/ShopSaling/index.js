@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames/bind';
 import styles from './ShopSaling.module.scss';
-import { Link } from 'react-router-dom';
 
 import firebase from '../../../firebase/config';
 import Loading from '../Loading';
@@ -45,7 +44,7 @@ function ShopSaling() {
             <div className={cx('wrapper')}>
                 <Sidebar />
                 <SlideBanner />
-                <header>Tất cả sản phẩm</header>
+                <header>Products</header>
                 {loading ? <Loading /> : renderProducts}
             </div>
         </>

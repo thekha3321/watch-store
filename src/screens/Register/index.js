@@ -29,8 +29,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                                 onChange={(e) => setEmail(e.target.value)}
                                 onBlur={(e) =>
                                     e.target.value.length === 0
-                                        ? ((document.getElementById('notiuser').innerText =
-                                              'Mục này không được để trống'),
+                                        ? ((document.getElementById('notiuser').innerText = 'Field can not be empty.'),
                                           setIsValid1(false))
                                         : ((document.getElementById('notiuser').innerText = ''), setIsValid1(true))
                                 }
@@ -48,7 +47,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                                 onBlur={(e) =>
                                     e.target.value.length === 0
                                         ? ((document.getElementById('notipassword').innerText =
-                                              'Mục này không được để trống'),
+                                              'Field can not be empty.'),
                                           setIsValid2(false))
                                         : ((document.getElementById('notipassword').innerText = ''), setIsValid2(true))
                                 }
@@ -65,8 +64,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                                 onChange={(e) => setName(e.target.value)}
                                 onBlur={(e) =>
                                     e.target.value.length === 0
-                                        ? ((document.getElementById('notiname').innerText =
-                                              'Mục này không được để trống'),
+                                        ? ((document.getElementById('notiname').innerText = 'Field can not be empty.'),
                                           setIsValid3(false))
                                         : ((document.getElementById('notiname').innerText = ''), setIsValid3(true))
                                 }
@@ -85,7 +83,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                                 onBlur={(e) =>
                                     e.target.value.length === 0
                                         ? ((document.getElementById('notiaddress').innerText =
-                                              'Mục này không được để trống'),
+                                              'Field can not be empty.'),
                                           setIsValid4(false))
                                         : ((document.getElementById('notiaddress').innerText = ''), setIsValid4(true))
                                 }
@@ -103,8 +101,7 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                                 onChange={(e) => setPhone(e.target.value)}
                                 onBlur={(e) =>
                                     e.target.value.length === 0
-                                        ? ((document.getElementById('notiphone').innerText =
-                                              'Mục này không được để trống'),
+                                        ? ((document.getElementById('notiphone').innerText = 'Field can not be empty.'),
                                           setIsValid5(false))
                                         : ((document.getElementById('notiphone').innerText = ''), setIsValid5(true))
                                 }

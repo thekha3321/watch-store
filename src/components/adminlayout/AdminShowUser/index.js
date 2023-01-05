@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './AdminShowUser.module.scss';
 import firebase from '../../../firebase/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function AdminShowUser({ user }) {
+function AdminShowUser({ user, toast }) {
     const usersRef = firebase.firestore().collection('users');
     const cx = classNames.bind(styles);
 
     const handleDeleteProduct = async (user) => {
         // eslint-disable-next-line no-restricted-globals
         if (confirm('Bạn có chắc muốn xóa sản phẩm này không ?')) {
-            await usersRef
-                .doc(user.id)
-                .delete()
-                .catch((err) => {
-                    alert(err);
-                });
+            try {
+                await usersRef.doc(user.id).delete();
+                toast.success('Successfully!');
+            } catch (error) {
+                toast.error('Fail!');
+            }
         }
         //eslint-disable-line
     };
