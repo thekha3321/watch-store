@@ -13,9 +13,9 @@ function AdminShowProducts({ product }) {
     const productsRef = firebase.firestore().collection('products');
     const [editbox, setEditbox] = useState(false);
 
-    const handleDeleteProduct = (docx) => {
+    const handleDeleteProduct = async (docx) => {
         // eslint-disable-next-line no-restricted-globals
-        if (confirm('Bạn có chắc muốn xóa sản phẩm này không ?')) {
+        if (await confirm('Are you sure ?')) {
             try {
                 productsRef.doc(docx.id).delete();
                 toast.success('Successfully!');

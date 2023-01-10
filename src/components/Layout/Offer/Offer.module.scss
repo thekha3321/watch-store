@@ -1,0 +1,78 @@
+.wrapper {
+    width: 100%;
+    background-color: var(--secondary-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+    .container {
+        max-width: var(--max-width);
+        display: flex;
+        flex-direction: column;
+        header {
+            margin-top: 10px;
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+            span {
+                color: red;
+                font-size: 30px;
+                font-weight: 700;
+            }
+        }
+
+        .content {
+            margin: 10px auto;
+            display: flex;
+            justify-content: space-around;
+            .offer {
+                background-color: #ffffff;
+                height: 386px;
+                border-radius: 10px;
+                width: 23%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.3s linear;
+                &:hover {
+                    background-color: var(--primary-color);
+                }
+                &:hover * {
+                    color: #ffffff;
+                }
+                .img-top {
+                    padding: 10px;
+                    transition: all 0.3s linear;
+                    margin: 5px auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                    background-color: var(--secondary-background-color);
+                    width: 160px;
+                    height: 160px;
+                    img {
+                        width: 80px;
+                        height: 80px;
+                    }
+                }
+                .gif {
+                    padding: 10px;
+
+                    margin: 5px auto;
+                    background-color: var(--secondary-background-color);
+                    border-radius: 50%;
+                    width: 60px;
+                    height: 60px;
+                }
+                p {
+                    padding: 10px;
+                    margin: 5px auto;
+                    transition: all 0.3s linear;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

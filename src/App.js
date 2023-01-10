@@ -21,6 +21,7 @@ import Register from './screens/Register';
 import Shipping from './screens/Shipping';
 import SingleProduct from './screens/SingleProduct';
 import Profile from './screens/profile';
+import Cala from './components/Layout/Comfirm/Confirm';
 
 function App() {
     const [email, setEmail] = useState('');

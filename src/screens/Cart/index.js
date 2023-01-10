@@ -7,7 +7,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import Header from '../../components/Layout/Header';
 import { v4 as uuidv4 } from 'uuid';
 import firebase from '../../firebase/config';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Cart() {

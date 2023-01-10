@@ -1,88 +1,96 @@
+// .wrapper * {
+//     border: 1px solid black;
+// }
 .wrapper {
     box-shadow: 0px 1px 5px rgb(0 0 0 / 20%);
     margin-top: var(--margin-component);
     width: 100%;
     display: flex;
     justify-content: center;
-
+    background-color: rgb(69 117 216/0.05);
     .container {
-        margin: var(--margin-component) 0 0 0;
-        width: 100%;
-        background: url('https://demo.artureanec.com/themes/cosmecos-new/wp-content/uploads/2021/01/home2-bg-10.jpg');
+        padding: 20px;
+        width: var(--max-width);
         .top {
-            margin-top: var(--margin-component);
-            font-size: 16px;
-            font-weight: 500;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            h4 {
-                font-size: 24px;
-                font-weight: 600;
+            justify-content: space-between;
+            .logo {
+                padding: 10px;
+                width: 60px;
+                height: 60px;
             }
-            .contact-icon {
-                margin-right: 8px;
-            }
-            .left {
-                width: 25%;
-                margin: 30px 10px 0 10px;
-            }
-            .mid {
-                width: 25%;
-                margin: 30px 10px 0 10px;
+            .webflow {
+                margin: auto 0;
+                padding: 6px 10px;
+                height: 40px;
+                color: #ffffff;
+                background-color: var(--primary-color);
+                border-radius: 20px;
                 display: flex;
+                justify-content: center;
+                align-items: center;
+                .webflow-img {
+                    width: 30px;
+                    height: 30px;
+                }
             }
-            .right {
-                width: 25%;
-                margin: 30px 10px 0 10px;
-                input {
-                    background-color: initial;
-                    width: 100%;
-                    height: 50px;
+        }
+        .mid {
+            display: flex;
+            justify-content: space-between;
+            .about {
+                display: flex;
+                flex-direction: column;
+                header {
                     font-size: 18px;
-                    padding: 8px;
-                    border-bottom: 1px solid black;
-                    &:focus {
-                        border: 1px solid #ccc;
+                    font-weight: 600;
+                }
+                .desc {
+                    display: flex;
+                    justify-content: space-around;
+                    width: 200px;
+                    margin-top: 8px;
+                }
+                .desc-aboutus {
+                    margin-top: 8px;
+                }
+                .desc-img {
+                    background-color: #ffffff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 10px 20px -8px rgb(0 111 255 / 53%);
+                    transition: all 0.25s linear;
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 50%;
+                    &:hover .social {
+                        background-color: black;
+                        transform: translateY(-4px);
+                    }
+                    &:hover {
+                        background-color: black;
                     }
                 }
-                button {
-                    margin-top: 8px;
-                    font-size: 18px;
-                    font-weight: 500;
-                    text-transform: uppercase;
-                    border: 1px solid black;
-                    background-color: initial;
-                    display: block;
-                    width: 100%;
-                    height: 50px;
+                .social {
+                    background-color: #ffffff;
+                    transition: all 0.25s linear;
+                    width: 26px;
+                    height: 26px;
+                }
+                p {
+                    margin: 10px 0;
                 }
             }
         }
         .bot {
-            border-top: 1px solid #ccc;
-            padding: 30px 50px;
-            margin-top: var(--margin-component);
+            margin-top: 50px;
             display: flex;
             justify-content: space-between;
-            span {
-            }
-            ul {
-                display: flex;
-                height: 10px;
-                li {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border: 1px solid #ccc;
-                    border-radius: 50%;
-                    margin: 0 10px;
-                    width: 30px;
-                    height: 30px;
-                    transition: all 0.3s linear;
-                    &:hover {
-                        background-color: rgb(214, 214, 214);
-                    }
+            .copyright {
+                font-weight: 600;
+                span {
+                    margin-left: 20px;
                 }
             }
         }

@@ -27,6 +27,7 @@
         "react": "^18.2.0",
         "react-awesome-stars-rating": "^0.13.1",
         "react-bootstrap": "^2.7.0",
+        "react-confirm": "^0.2.3",
         "react-dom": "^18.2.0",
         "react-firebase-hooks": "^5.0.3",
         "react-rating-stars-component": "^2.2.0",
