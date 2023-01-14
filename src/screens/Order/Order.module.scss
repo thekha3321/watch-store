@@ -146,6 +146,7 @@
 
             .btn {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
             }
 
@@ -153,10 +154,7 @@
                 background-color: var(--primary-color);
                 color: #ffffff;
                 border-radius: var(--border-radius-btn);
-                width: 80%;
                 padding: 20px 40px;
-                margin-bottom: 20px;
-
                 &:hover {
                     cursor: pointer;
                 }

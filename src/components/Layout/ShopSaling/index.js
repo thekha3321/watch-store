@@ -8,6 +8,7 @@ import Header from '../Header';
 import Sidebar from '../Sidebar';
 import SlideBanner from '../SlideBanner';
 import CardProduct from '../CardProduct';
+import Footer from '../Footer';
 const cx = classnames.bind(styles);
 
 function ShopSaling() {
@@ -46,6 +47,7 @@ function ShopSaling() {
                 <SlideBanner />
                 <header>Products</header>
                 {loading ? <Loading /> : renderProducts}
+                <Footer />
             </div>
         </>
     );

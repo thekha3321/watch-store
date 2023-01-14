@@ -22,6 +22,7 @@ import Shipping from './screens/Shipping';
 import SingleProduct from './screens/SingleProduct';
 import Profile from './screens/profile';
 import Cala from './components/Layout/Comfirm/Confirm';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 function App() {
     const [email, setEmail] = useState('');
@@ -47,6 +48,7 @@ function App() {
         address,
         phone,
         rule: 0,
+        avatar: 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
         id: uuidv4().slice(0, 6),
     };
     const handleAction = async (id) => {
@@ -76,6 +78,10 @@ function App() {
                             sessionStorage.setItem('Email', email);
                             sessionStorage.setItem('Name', name);
                             sessionStorage.setItem('Address', address);
+                            sessionStorage.setItem(
+                                'avatar',
+                                'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
+                            );
                             sessionStorage.setItem('Phone', phone);
                             sessionStorage.setItem('Uid', users.id);
                         })
@@ -93,48 +99,55 @@ function App() {
     }, [email]);
 
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-                path="/login"
-                element={
-                    <Login
-                        title="Login"
-                        setEmail={setEmail}
-                        setPassword={setPassword}
-                        handleAction={() => handleAction(1)}
-                    />
-                }
-            />
-            <Route
-                path="/register"
-                element={
-                    <Register
-                        title="Sign up"
-                        setEmail={setEmail}
-                        setPassword={setPassword}
-                        setName={setName}
-                        setAddress={setAddress}
-                        setPhone={setPhone}
-                        handleAction={() => handleAction(2)}
-                    />
-                }
-            />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/shipping" element={<Shipping />} />
-            <Route path="/order" element={<Order />} />
-            <Route path="/products/:productId" element={<SingleProduct />} />
-            <Route path="/admin" element={<AdminHome />} />
-            <Route path="/admin/products" element={<AdminProducts />} />
-            <Route path="/admin/addproduct" element={<AdminAddProduct />} />
-            <Route path="/admin/bill" element={<AdminBill />} />
-            <Route path="/admin/accountmanager" element={<AdminAccountManager />} />
-            <Route path="/admin/promotion" element={<AdminPromotion />} />
-            <Route path="/admin/statistical" element={<AdminStatistical />} />
-            <Route path="/brand/:productBrand" element={<Brand />} />
-            <Route path="/products" element={<ShopSaling />} />
-            <Route path="/profile/:userId" element={<Profile />} />
-        </Routes>
+        <PayPalScriptProvider
+            options={{
+                'client-id': 'AR8mDO-pNbDE2wtBToLYuAJcc-WG3Nd7i_RVmIzjmdPLMRGhGQRoaAoRzX_ov07YiEP2tE5f9yptvbnq',
+            }}
+        >
+            {' '}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route
+                    path="/login"
+                    element={
+                        <Login
+                            title="Login"
+                            setEmail={setEmail}
+                            setPassword={setPassword}
+                            handleAction={() => handleAction(1)}
+                        />
+                    }
+                />
+                <Route
+                    path="/register"
+                    element={
+                        <Register
+                            title="Sign up"
+                            setEmail={setEmail}
+                            setPassword={setPassword}
+                            setName={setName}
+                            setAddress={setAddress}
+                            setPhone={setPhone}
+                            handleAction={() => handleAction(2)}
+                        />
+                    }
+                />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/shipping" element={<Shipping />} />
+                <Route path="/order" element={<Order />} />
+                <Route path="/products/:productId" element={<SingleProduct />} />
+                <Route path="/admin" element={<AdminHome />} />
+                <Route path="/admin/products" element={<AdminProducts />} />
+                <Route path="/admin/addproduct" element={<AdminAddProduct />} />
+                <Route path="/admin/bill" element={<AdminBill />} />
+                <Route path="/admin/accountmanager" element={<AdminAccountManager />} />
+                <Route path="/admin/promotion" element={<AdminPromotion />} />
+                <Route path="/admin/statistical" element={<AdminStatistical />} />
+                <Route path="/brand/:productBrand" element={<Brand />} />
+                <Route path="/products" element={<ShopSaling />} />
+                <Route path="/profile/:userId" element={<Profile />} />
+            </Routes>
+        </PayPalScriptProvider>
     );
 }
 

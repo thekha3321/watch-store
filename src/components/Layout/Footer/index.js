@@ -27,7 +27,7 @@ function Footer() {
                 </div>
                 <div className={cx('mid')}>
                     <div className={cx('about')}>
-                        <header>Follow our Socials</header>
+                        <span className={cx('title')}>Follow our Socials</span>
                         <div className={cx('desc')}>
                             <div className={cx('desc-img')}>
                                 <img
@@ -60,7 +60,7 @@ function Footer() {
                         </div>
                     </div>
                     <div className={cx('about')}>
-                        <header>Company</header>
+                        <span className={cx('title')}>Company</span>
                         <div className={cx('desc-aboutus')}>
                             <p>About us</p>
                             <p>Press</p>
@@ -69,7 +69,7 @@ function Footer() {
                         </div>
                     </div>
                     <div className={cx('about')}>
-                        <header>Cloneables</header>
+                        <span className={cx('title')}>Cloneables</span>
                         <div className={cx('desc-aboutus')}>
                             <p>All product</p>
                             <p>Templates</p>
@@ -78,7 +78,7 @@ function Footer() {
                         </div>
                     </div>
                     <div className={cx('about')}>
-                        <header>Recourses</header>
+                        <span className={cx('title')}>Recourses</span>
                         <div className={cx('desc-aboutus')}>
                             <p>Learning Center</p>
                             <p>Promotion</p>
@@ -88,7 +88,7 @@ function Footer() {
                         </div>
                     </div>
                     <div className={cx('about')}>
-                        <header>Store</header>
+                        <span className={cx('title')}>Store</span>
                         <div className={cx('desc-aboutus')}>
                             <p>View Store</p>
                             <p>Forest UI kit</p>
@@ -98,7 +98,7 @@ function Footer() {
                 </div>
                 <div className={cx('bot')}>
                     <div className={cx('copyright')}>
-                        Copyright © 2023 DevTK <span> Powered by @DevDT</span>
+                        Copyright © 2023 DevTK <span> Powered by @DevTK</span>
                     </div>
                     <div className={cx('copyright')}>
                         <span style={{ fontSize: 16 }}>Privacy policy</span>

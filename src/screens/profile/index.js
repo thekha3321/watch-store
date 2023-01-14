@@ -186,10 +186,16 @@ function Profile() {
                             })} 
                         </div>
                     </div> */}
-                    <div onClick={() => setShowSetting(true)} className={cx('action', showSetting ? 'active' : '')}>
+                    <div
+                        onClick={() => setShowSetting(true)}
+                        className={cx('action', 'fw-600', showSetting ? 'active' : '')}
+                    >
                         Profile settings
                     </div>
-                    <div onClick={() => setShowSetting(false)} className={cx('action', showSetting ? '' : 'active')}>
+                    <div
+                        onClick={() => setShowSetting(false)}
+                        className={cx('action', 'fw-600', showSetting ? '' : 'active')}
+                    >
                         Order Lists
                         <span className={cx('quality')}>{userBill.length}</span>
                     </div>

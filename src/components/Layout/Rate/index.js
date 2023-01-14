@@ -68,7 +68,7 @@ const Rate = ({ products, initContentEvo }) => {
         contentEvo: [...initContentEvo, valueRating],
     };
     const handlePushEvoluate = () => {
-        if (firebase.auth().currentUser) {
+        if (sessionStorage.getItem('Name')) {
             try {
                 productsRef.doc(productId).set(valueProduct);
                 toast.success('Successfully!');
