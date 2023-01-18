@@ -42,6 +42,11 @@ body {
     flex-direction: row;
     align-items: center;
 }
+.df-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .text-upper {
     text-transform: uppercase;
 }

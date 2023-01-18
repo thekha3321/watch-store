@@ -1,0 +1,100 @@
+.wrapper {
+    .container {
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: var(--max-width);
+        .title {
+            font-weight: 600;
+            font-size: 20px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .content {
+            position: relative;
+            height: 1000px;
+            width: 100%;
+        }
+
+        .left {
+            margin: 10px auto;
+            display: inline-flex;
+            flex-direction: column;
+            min-width: var(--max-width);
+
+            .left-heading {
+                display: flex;
+                font-size: 14px;
+                justify-content: space-between;
+                height: 54px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .left-content {
+                border-bottom: 1px solid #ccc;
+                display: flex;
+                justify-content: space-between;
+
+                img {
+                    height: 90px;
+                    width: 90px;
+                }
+            }
+        }
+
+        .width20 {
+            width: 20%;
+        }
+
+        .width30 {
+            width: 30%;
+        }
+
+        .width10 {
+            width: 10%;
+        }
+
+        .product-info-top {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            padding: 0 10px;
+            width: 116px;
+        }
+
+        .product-info-midle {
+            height: 120px;
+            padding: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 128px;
+        }
+
+        .left-info-bottom {
+            display: flex;
+            justify-content: flex-end;
+            margin: 20px 40px;
+        }
+    }
+    .total-modal {
+        margin-top: 10px;
+        margin-left: auto;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        font-size: 18px;
+        margin-right: 10px;
+        .total-title {
+            display: flex;
+            justify-content: space-between;
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+}

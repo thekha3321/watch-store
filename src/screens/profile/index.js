@@ -7,6 +7,10 @@ import firebase from '../../firebase/config';
 import { useEffect } from 'react';
 import Loading from '../../components/Layout/Loading';
 import Footer from '../../components/Layout/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Tippy from '@tippyjs/react';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 function Profile() {
     const cx = classNames.bind(styles);
     const [url, setUrl] = useState(null);
@@ -128,6 +132,13 @@ function Profile() {
                             <td className={cx('title')}>{e.status}</td>
                             <td className={cx('title')}>{e.orderDate}</td>
                             <td className={cx('title')}>${e.totalMoney}</td>
+                            <td className={cx('title')} style={{ height: 26, width: 26 }}>
+                                <Tippy content="View more" animation="fade" arrow={true}>
+                                    <Link to={`/bill/${e.id}`}>
+                                        <FontAwesomeIcon style={{ padding: 4 }} icon={faInfoCircle} />
+                                    </Link>
+                                </Tippy>
+                            </td>
                         </tr>
                     ))}
                 </table>

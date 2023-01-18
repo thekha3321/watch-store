@@ -70,19 +70,19 @@ function Cart() {
             <div className={cx('wrapper', `${small ? 'paddingHeader' : ''}`)}>
                 <div className={cx('inner')}>
                     <div className={cx('container')}>
-                        <div className={cx('heading')}>
+                        <div className={cx('heading', 'fw-600')}>
                             <span>Cart</span>
                         </div>
                     </div>
                     <div className="content">
                         <div className={cx('left')}>
                             <div className={cx('left-heading')}>
-                                <div className={cx('product-info-top', 'text-upper')}>Image</div>
-                                <div className={cx('product-info-top', 'text-upper')}>Product name</div>
-                                <div className={cx('product-info-top', 'text-upper')}>Price</div>
-                                <div className={cx('product-info-top', 'text-upper')}>quality</div>
-                                <div className={cx('product-info-top', 'text-upper')}>Amount</div>
-                                <div className={cx('product-info-top', 'text-upper')}>Delete</div>
+                                <div className={cx('product-info-top', 'text-upper', 'fw-600')}>Image</div>
+                                <div className={cx('product-info-top', 'text-upper', 'fw-600')}>Product name</div>
+                                <div className={cx('product-info-top', 'text-upper', 'fw-600')}>Price</div>
+                                <div className={cx('product-info-top', 'text-upper', 'fw-600')}>quality</div>
+                                <div className={cx('product-info-top', 'text-upper', 'fw-600')}>Amount</div>
+                                <div className={cx('product-info-top', 'text-upper', 'fw-600')}>Delete</div>
                             </div>
                             {products.map((product, index) => (
                                 <div key={index} className={cx('left-content')}>

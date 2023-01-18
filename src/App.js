@@ -23,7 +23,7 @@ import SingleProduct from './screens/SingleProduct';
 import Profile from './screens/profile';
 import Cala from './components/Layout/Comfirm/Confirm';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
-
+import Bill from './screens/Bill/index';
 function App() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -146,6 +146,7 @@ function App() {
                 <Route path="/brand/:productBrand" element={<Brand />} />
                 <Route path="/products" element={<ShopSaling />} />
                 <Route path="/profile/:userId" element={<Profile />} />
+                <Route path="/bill/:billId" element={<Bill />} />
             </Routes>
         </PayPalScriptProvider>
     );

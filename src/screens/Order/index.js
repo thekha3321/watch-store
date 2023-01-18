@@ -19,7 +19,6 @@ function Order() {
     const cx = classNames.bind(sytles);
     const cartRef = firebase.firestore().collection('cart');
     const billsRef = firebase.firestore().collection('bills');
-    const navigate = useNavigate();
     const name = sessionStorage.getItem('Name');
     const phone = sessionStorage.getItem('Phone');
     const addr = sessionStorage.getItem('Address');
