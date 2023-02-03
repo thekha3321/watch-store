@@ -12,10 +12,10 @@ import Footer from '../Footer';
 const cx = classnames.bind(styles);
 
 function ShopSaling() {
-    //lay db tu firebase
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    //lay db tu firebase
     const productsRef = firebase.firestore().collection('products');
 
     function getProducts() {
@@ -32,6 +32,7 @@ function ShopSaling() {
     useEffect(() => {
         getProducts();
     }, []);
+    //
     const renderProducts = (
         <div className={cx('inner')}>
             {products.map((product, index) => (

@@ -8,9 +8,10 @@ import AdminShowBill from '../../components/adminlayout/AdminShowBill';
 
 function AdminBill() {
     const cx = classNames.bind(styles);
-    const billsRef = firebase.firestore().collection('bills');
     const [bills, setBills] = useState([]);
     const [loading, setLoading] = useState([]);
+
+    const billsRef = firebase.firestore().collection('bills');
     function getBills() {
         setLoading(true);
         billsRef.onSnapshot((querySnapShot) => {

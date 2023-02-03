@@ -13,10 +13,10 @@ import 'react-toastify/dist/ReactToastify.css';
 function AdminAcountManager() {
     const cx = classNames.bind(styles);
 
-    const usersRef = firebase.firestore().collection('users');
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    const usersRef = firebase.firestore().collection('users');
     function getUsers() {
         setLoading(true);
         usersRef.onSnapshot((querySnapShot) => {
