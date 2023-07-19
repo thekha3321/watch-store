@@ -36,7 +36,7 @@ function ShopSaling() {
     const renderProducts = (
         <div className={cx('inner')}>
             {products.map((product, index) => (
-                <CardProduct product={product} index={index} />
+                <CardProduct key={index} product={product} index={index}  />
             ))}
         </div>
     );

@@ -59,7 +59,7 @@ function ShopSection() {
     const renderProducts = (
         <div className={cx('inner')}>
             {products.slice(0, 4).map((product, index) => (
-                <CardProduct product={product} index={index} handleBuy={handleBuy} notify={notify} />
+                <CardProduct key={index} product={product} index={index} handleBuy={handleBuy} notify={notify} />
             ))}
         </div>
     );

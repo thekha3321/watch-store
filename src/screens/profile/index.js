@@ -126,8 +126,8 @@ function Profile() {
                         <td className={cx('title', 'text-upper', 'fw-600')}>date</td>
                         <td className={cx('title', 'text-upper', 'fw-600')}>total</td>
                     </tr>
-                    {userBill.map((e) => (
-                        <tr className={cx(e.status === 'Done' ? 'done' : 'waiting')}>
+                    {userBill.map((e,index) => (
+                        <tr key={index} className={cx(e.status === 'Done' ? 'done' : 'waiting')}>
                             <td className={cx('title')}>{e.id}</td>
                             <td className={cx('title')}>{e.status}</td>
                             <td className={cx('title')}>{e.orderDate}</td>

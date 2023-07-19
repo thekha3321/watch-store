@@ -42,8 +42,8 @@ function AdminAcountManager() {
                     <div className={cx('product-title')}>Rule</div>
                     <div className={cx('product-title')}>Actions</div>
                 </div>
-                {users.map((user) => (
-                    <AdminShowUser toast={toast} user={user} key={user.id} />
+                {users.map((user, index) => (
+                    <AdminShowUser key={user.id} toast={toast} user={user} />
                 ))}
             </div>
         </div>

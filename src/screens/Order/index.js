@@ -108,7 +108,6 @@ function Order() {
     const onChangeVl = (value) => {
         setCheck(value);
     };
-    console.log(bill1.totalMoney);
     const renderUI = (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -139,8 +138,8 @@ function Order() {
                             <div className={cx('heading-title')}>Total</div>
                         </div>
                     </div>
-                    {productsInLocal.map((product) => (
-                        <div className={cx('bill-info')}>
+                    {productsInLocal.map((product, index) => (
+                        <div key={index} className={cx('bill-info')}>
                             <div className={cx('product-info')}>
                                 <img src={product.image} alt="" />
                                 <div>{product.name}</div>

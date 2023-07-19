@@ -37,8 +37,8 @@ function Offer() {
                     What The <span>Offer</span>
                 </header>
                 <div className={cx('content')}>
-                    {offer.map((off) => (
-                        <div className={cx('offer')}>
+                    {offer.map((off,index) => (
+                        <div key={index} className={cx('offer')}>
                             <div className={cx('img-top')}>
                                 <img src={off.img} alt="" />
                             </div>

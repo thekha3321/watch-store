@@ -36,7 +36,7 @@ function Brand() {
             <h3>Thương hiệu {productBrand}</h3>
             <div className={cx('inner')}>
                 {products.map((product, index) => (
-                    <CardProduct product={product} index={index} />
+                    <CardProduct key={index} product={product} index={index} />
                 ))}
             </div>
         </>

@@ -35,7 +35,7 @@ function SlideBanner() {
             <div className={cx('inner')}>
                 <Slide indicators={true} className={cx('slide')}>
                     {banners.map((banner, index) => (
-                        <div className="each-slide" key={index}>
+                        <div key={index} className="each-slide" >
                             <img src={banner.url} alt="Banner" />
                             <span>
                                 <h1>{banner.name}</h1>
