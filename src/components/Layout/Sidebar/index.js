@@ -58,7 +58,6 @@ function Sidebar() {
                                 </Link>
                             ))}
                         </div>
-                        // <Link to='/login' className={cx('heading')}>hello</Link>
                     }
                 >
                     <div className={cx('sidebar-item')}>
