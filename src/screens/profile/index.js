@@ -126,7 +126,7 @@ function Profile() {
                         <td className={cx('title', 'text-upper', 'fw-600')}>date</td>
                         <td className={cx('title', 'text-upper', 'fw-600')}>total</td>
                     </tr>
-                    {userBill.map((e,index) => (
+                    {userBill.map((e, index) => (
                         <tr key={index} className={cx(e.status === 'Done' ? 'done' : 'waiting')}>
                             <td className={cx('title')}>{e.id}</td>
                             <td className={cx('title')}>{e.status}</td>
@@ -211,7 +211,7 @@ function Profile() {
                         <span className={cx('quality')}>{userBill.length}</span>
                     </div>
                 </div>
-                {showSetting ? renderSetting : renderOrderLists}
+                {showSetting ? renderOrderLists : renderSetting}
             </div>
         </div>
     );

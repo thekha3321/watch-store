@@ -21,7 +21,6 @@ import Register from './screens/Register';
 import Shipping from './screens/Shipping';
 import SingleProduct from './screens/SingleProduct';
 import Profile from './screens/profile';
-import Cala from './components/Layout/Comfirm/Confirm';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import Bill from './screens/Bill/index';
 function App() {
@@ -53,9 +52,9 @@ function App() {
     };
     const handleAction = async (id) => {
         if (id === 1) {
-            await signInWithEmailAndPassword(auth, email, password, name, address, phone)
+            await signInWithEmailAndPassword(auth, email, password)
                 .then((response) => {
-                    if(auth) console.log(auth.currentUser)
+                    if (auth) console.log(auth.currentUser);
                     sessionStorage.setItem('Email', email);
                     sessionStorage.setItem('Address', user.address);
                     sessionStorage.setItem('Phone', user.phone);
@@ -76,7 +75,6 @@ function App() {
                         .set(users)
                         .then(() => {
                             navigate('/');
-                            if(auth) console.log(auth.currentUser)
                             sessionStorage.setItem('Email', email);
                             sessionStorage.setItem('Name', name);
                             sessionStorage.setItem('Address', address);

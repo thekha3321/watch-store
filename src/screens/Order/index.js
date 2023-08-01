@@ -13,6 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Order() {
+    const navigate = useNavigate();
     const notify = () => toast.success('Successfully!');
     const [loading, setLoading] = useState(false);
     const [check, setCheck] = useState(false);
@@ -88,6 +89,7 @@ function Order() {
         paymentMethod: 1,
         allProducts: [...products],
     };
+
     const handlePay = async (props) => {
         try {
             if (props === 0) {
@@ -95,6 +97,7 @@ function Order() {
                 await products.forEach((product) => cartRef.doc(product.id).delete());
                 localStorage.clear('Allproducts');
                 notify();
+                navigate(`/profile/${idUser}`);
             } else {
                 await billsRef.doc(randomId).set(bill1);
                 await products.forEach((product) => cartRef.doc(product.id).delete());

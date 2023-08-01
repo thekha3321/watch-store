@@ -45,9 +45,9 @@ function Register({ title, setEmail, setPassword, handleAction, setName, setAddr
                             <input
                                 onChange={(e) => setPassword(e.target.value)}
                                 onBlur={(e) =>
-                                    e.target.value.length === 0
+                                    e.target.value.length < 6
                                         ? ((document.getElementById('notipassword').innerText =
-                                              'Field can not be empty.'),
+                                              'This field needs at least 6 characters.'),
                                           setIsValid2(false))
                                         : ((document.getElementById('notipassword').innerText = ''), setIsValid2(true))
                                 }
