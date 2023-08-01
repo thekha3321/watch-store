@@ -31,7 +31,7 @@ function App() {
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
     const [user, setUser] = useState();
-    const authentication = getAuth();
+    const auth = getAuth();
     let navigate = useNavigate();
     const usersRef = firebase.firestore().collection('users');
     const getUser = () => {
@@ -53,8 +53,9 @@ function App() {
     };
     const handleAction = async (id) => {
         if (id === 1) {
-            await signInWithEmailAndPassword(authentication, email, password, name, address, phone)
+            await signInWithEmailAndPassword(auth, email, password, name, address, phone)
                 .then((response) => {
+                    if(auth) console.log(auth.currentUser)
                     sessionStorage.setItem('Email', email);
                     sessionStorage.setItem('Address', user.address);
                     sessionStorage.setItem('Phone', user.phone);
@@ -68,13 +69,14 @@ function App() {
                 });
         }
         if (id === 2) {
-            await createUserWithEmailAndPassword(authentication, email, password, name, address, phone)
+            await createUserWithEmailAndPassword(auth, email, password, name, address, phone)
                 .then((response) => {
                     usersRef
                         .doc(users.id)
                         .set(users)
                         .then(() => {
                             navigate('/');
+                            if(auth) console.log(auth.currentUser)
                             sessionStorage.setItem('Email', email);
                             sessionStorage.setItem('Name', name);
                             sessionStorage.setItem('Address', address);
