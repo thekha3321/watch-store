@@ -28,9 +28,12 @@ function Brand() {
             setLoading(false);
         });
     }
+    console.log(products);
     useEffect(() => {
         getProducts();
     }, []);
+
+    useEffect(() => {}, [products]);
     const renderProducts = (
         <>
             <h3>Thương hiệu {productBrand}</h3>

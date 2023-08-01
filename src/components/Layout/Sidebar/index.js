@@ -8,9 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import firebase from '../../../firebase/config';
 
-const cx = classnames.bind(styles);
-
 function Sidebar() {
+    const cx = classnames.bind(styles);
     const [products, setProducts] = useState([]);
     const [small, setSmall] = useState(false);
 
@@ -72,7 +71,6 @@ function Sidebar() {
 
                     <FontAwesomeIcon className={cx('sidebar-item-icon')} />
                 </div>
-                <div className={cx('sidebar-item')}>accessory</div>
                 <div className={cx('sidebar-item')}>
                     <Link to="/products">Promotion</Link>
                 </div>

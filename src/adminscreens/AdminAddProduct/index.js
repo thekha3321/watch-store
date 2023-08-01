@@ -107,7 +107,7 @@ function AdminAddProduct() {
                                         name="name"
                                         type="text"
                                         placeholder=""
-                                        onChange={(e) => setBrand(e.target.value)}
+                                        onChange={(e) => setBrand(e.target.value.toUpperCase())}
                                     />
                                     <span style={{ color: 'red' }} id="notibrand"></span>
                                 </div>
