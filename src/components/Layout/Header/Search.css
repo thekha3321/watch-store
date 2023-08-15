@@ -23,6 +23,11 @@
     max-height: 300px;
     overflow-y: auto;
 }
+.product-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 span:hover {
     text-decoration: underline;
 }

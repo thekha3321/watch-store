@@ -72,6 +72,7 @@ const Rate = ({ products, initContentEvo }) => {
             try {
                 productsRef.doc(productId).set(valueProduct);
                 toast.success('Successfully!');
+                document.getElementById('text-rate').value = '';
             } catch (e) {
                 toast.error('Fail!');
             }
@@ -97,6 +98,7 @@ const Rate = ({ products, initContentEvo }) => {
                         <span className={cx('fz-16', 'fw-600')}>{ratingDetail}</span>
                     </div>
                     <TextareaAutosize
+                        id="text-rate"
                         onChange={(e) => setValue(e.target.value)}
                         maxRows={4}
                         aria-label="maximum height"

@@ -78,6 +78,9 @@
                 display: flex;
                 justify-content: flex-end;
                 .user-info-content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
                     width: 68%;
                 }
             }

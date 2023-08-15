@@ -62,7 +62,39 @@ function Cart() {
             alert("You don't have an order");
         }
     };
-
+    const renderCartList = (
+        <div className={cx('')}>
+            {products.map((product, index) => (
+                <div key={index} className={cx('left-content')}>
+                    <div className={cx('product-info-midle')}>
+                        <img src={product.image} alt="" />
+                    </div>
+                    <div className={cx('product-info-midle', 'ta-none')}>
+                        <Link className={cx('cur-pointer')} to={`/products/${product.id}`}>
+                            {product.name}
+                        </Link>
+                    </div>
+                    <div className={cx('product-info-midle')}>
+                        <span className={cx('fz-16')}>${product.price}</span>
+                    </div>
+                    <div className={cx('product-info-midle')}>1</div>
+                    <div className={cx('product-info-midle')}>
+                        <span className={cx('fz-16')}>${product.price}</span>
+                    </div>
+                    <div className={cx('product-info-midle')}>
+                        <button
+                            className={cx('delete-icon')}
+                            onClick={() => {
+                                handleDeleteProduct(product);
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faXmark} />
+                        </button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
     return (
         <>
             <Header />
@@ -84,33 +116,11 @@ function Cart() {
                                 <div className={cx('product-info-top', 'text-upper', 'fw-600')}>Amount</div>
                                 <div className={cx('product-info-top', 'text-upper', 'fw-600')}>Delete</div>
                             </div>
-                            {products.map((product, index) => (
-                                <div key={index} className={cx('left-content')}>
-                                    <div className={cx('product-info-midle')}>
-                                        <img src={product.image} alt="" />
-                                    </div>
-                                    <div className={cx('product-info-midle', 'ta-none')}>
-                                        <Link to={`/products/${product.id}`}>{product.name}</Link>
-                                    </div>
-                                    <div className={cx('product-info-midle')}>
-                                        <span className={cx('fz-16')}>${product.price}</span>
-                                    </div>
-                                    <div className={cx('product-info-midle')}>1</div>
-                                    <div className={cx('product-info-midle')}>
-                                        <span className={cx('fz-16')}>${product.price}</span>
-                                    </div>
-                                    <div className={cx('product-info-midle')}>
-                                        <button
-                                            className={cx('delete-icon')}
-                                            onClick={() => {
-                                                handleDeleteProduct(product);
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon={faXmark} />
-                                        </button>
-                                    </div>
-                                </div>
-                            ))}
+                            {/*  */}
+
+                            {products.length ? renderCartList : <div style={{ minHeight: 310 }}></div>}
+
+                            {/*  */}
                             <div className={cx('left-info-bottom')}>
                                 <span className={cx('text-upper')}>Total: </span>
                                 <span className={cx('fz-16')}>${totalMoney}</span>

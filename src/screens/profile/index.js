@@ -201,13 +201,13 @@ function Profile() {
                         onClick={() => setShowSetting(true)}
                         className={cx('action', 'fw-600', showSetting ? 'active' : '')}
                     >
-                        Profile settings
+                        Order Lists
                     </div>
                     <div
                         onClick={() => setShowSetting(false)}
                         className={cx('action', 'fw-600', showSetting ? '' : 'active')}
                     >
-                        Order Lists
+                        Profile settings
                         <span className={cx('quality')}>{userBill.length}</span>
                     </div>
                 </div>

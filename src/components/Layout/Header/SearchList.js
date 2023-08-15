@@ -41,7 +41,10 @@ function SearchList({ isBlur, value, input }) {
                           <Link key={index} to={`/products/${product.id}`}>
                               <li className="product" key={product.id}>
                                   <img src={product.image} alt="" />
-                                  <span>{product.name}</span>
+                                  <div className="product-container">
+                                      <span>{product.name}</span>
+                                      <h5 style={{ color: 'red' }}>${product.price}</h5>
+                                  </div>
                               </li>
                           </Link>
                       ))

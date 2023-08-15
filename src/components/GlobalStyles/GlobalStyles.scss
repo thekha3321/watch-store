@@ -20,6 +20,15 @@
 html {
     font-size: 62.5%;
 }
+.cur-pointer {
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+.mh-310 {
+    max-height: 310px;
+}
 
 body {
     font-family: Montserrat, sans-serif;
