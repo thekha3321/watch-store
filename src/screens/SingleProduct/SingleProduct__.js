@@ -86,10 +86,10 @@ function SingleProduct__() {
                 <div className={cx('product-evo')}>
                     <img className={cx('evoluater-avatar')} src={e.avatar} alt="" />
                     <div className={cx('evoluater-content')}>
-                        <div className={cx('evoluater-name', 'fz-18')}>{e.name}</div>
+                        <div className={cx('evoluater-name', 'fz-18', 'fw-600')}>{e.name}</div>
                         <div className={cx('fl-row')}>
                             <div className={cx('evoluater-rate', 'fz-18')}>{e.rating}</div>
-                            <span className={cx('evoluater-name', 'fz-18')} style={{ marginLeft: 8 }}>
+                            <span className={cx('evoluater-name', 'fz-18', 'fw-500')} style={{ marginLeft: 8 }}>
                                 {e.ratingDetail}
                             </span>
                         </div>
