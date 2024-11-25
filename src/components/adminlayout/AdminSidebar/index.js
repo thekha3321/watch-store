@@ -41,13 +41,13 @@ function AdminSidebar() {
                             Bills
                         </div>
                     </Link>
-                    <Link to="/admin/accountmanager">
+                    {/* <Link to="/admin/accountmanager">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faUser} />
                             Account
                         </div>
                     </Link>
-                    {/* <Link to="/admin/statistical">
+                    <Link to="/admin/statistical">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faMap} />
                             Statistical
