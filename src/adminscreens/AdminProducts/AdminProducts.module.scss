@@ -1,5 +1,5 @@
 .wrapper {
-    width: 85.5%;
+    width: calc(100% - 220px);
     margin: 0 0 0 220px;
     background-color: var(--primary-background-color);
     box-shadow: 0px 0px 3px 2px rgb(0 0 0 / 12%);
@@ -7,7 +7,7 @@
     .inner {
         .container {
             padding-top: 100px;
-            width: 1200px;
+            width: 100%;
             min-height: 683px;
             .product-info {
                 width: 100%;

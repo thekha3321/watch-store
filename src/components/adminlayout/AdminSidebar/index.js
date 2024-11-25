@@ -47,7 +47,7 @@ function AdminSidebar() {
                             Account
                         </div>
                     </Link>
-                    <Link to="/admin/statistical">
+                    {/* <Link to="/admin/statistical">
                         <div className={cx('content')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faMap} />
                             Statistical
@@ -58,7 +58,7 @@ function AdminSidebar() {
                             <FontAwesomeIcon className={cx('icon')} icon={faHandHoldingDollar} />
                             Promotion
                         </div>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </div>

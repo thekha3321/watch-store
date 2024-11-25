@@ -54,16 +54,21 @@ function App() {
         if (id === 1) {
             await signInWithEmailAndPassword(auth, email, password)
                 .then((response) => {
-                    if (auth) console.log(auth.currentUser);
                     sessionStorage.setItem('Email', email);
-                    sessionStorage.setItem('Address', user.address);
-                    sessionStorage.setItem('Phone', user.phone);
-                    sessionStorage.setItem('Name', user.name);
-                    sessionStorage.setItem('Uid', user.id);
-                    sessionStorage.setItem('avatar', user.avatar);
-                    navigate('/');
+                    if (user) {
+                        sessionStorage.setItem('Address', user.address);
+                        sessionStorage.setItem('Phone', user.phone);
+                        sessionStorage.setItem('Name', user.name);
+                        sessionStorage.setItem('Uid', user.id);
+                        sessionStorage.setItem('avatar', user.avatar);
+                    }
+                    if (auth && auth.currentUser && auth.currentUser.email === 'admin@gmail.com') {
+                        navigate('/admin/products');
+                    } else {
+                        navigate('/');
+                    }
                 })
-                .catch(() => {
+                .catch((err) => {
                     alert(`Tài khoản Email: ${email} không tồn tại`);
                 });
         }
@@ -89,7 +94,9 @@ function App() {
                             console.log(e);
                         });
                 })
-                .catch(() => {
+                .catch((err) => {
+                    console.log(err);
+                    debugger;
                     alert(`Tài khoản Email: ${email} không đúng hoặc đã tồn tại`);
                 });
         }
